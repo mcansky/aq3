@@ -1,0 +1,17 @@
+# app/config/application.yml
+defaults: &defaults
+  application:
+    name: III Aquarii
+    contact: riboulet@gmail.com
+  logs:
+    email: email.log
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+
