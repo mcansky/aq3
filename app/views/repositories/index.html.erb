@@ -1,0 +1,7 @@
+<h1><%= t(:repositories) %></h1>
+<div id="repositories">
+	<% for repo in @repositories %>
+		<h2><%= link_to repo.name, repo %></h2>
+	<% end %>
+	<%= link_to t(:repo_new), new_repository_path %>
+</div>
