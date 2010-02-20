@@ -14,6 +14,7 @@ gem "sqlite3-ruby", :require => "sqlite3"
 gem "authlogic", :git => "git://github.com/binarylogic/authlogic.git"
 gem "settingslogic"
 gem "RedCloth"
+gem "nifty-generators"
 
 ## Bundle the gems you use:
 # gem "bj"
