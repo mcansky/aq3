@@ -13,7 +13,7 @@ class AqRepositoriesController < ApplicationController
   end
 
   def create
-    @repository = AqRepository.new(params[:repository])
+    @repository = AqRepository.new(params[:aq_repository])
     if @repository.save
       flash[:notice] = t(:repo_create_ok)
       redirect_to @repository
@@ -29,7 +29,7 @@ class AqRepositoriesController < ApplicationController
 
   def update
     @repository = AqRepository.find(params[:id])
-    if @repository.update_attributes(params[:repository])
+    if @repository.update_attributes(params[:aq_repository])
       flash[:notice] = t(:repo_update_ok)
       redirect_to @repository
     else
