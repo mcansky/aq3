@@ -1,7 +1,9 @@
 <h1><%= t(:repositories) %></h1>
 <div id="repositories">
+	<ul>
 	<% for repo in @repositories %>
-		<h2><%= link_to repo.name, repo %></h2>
+		<li><%= link_to repo.name, repo %> <%= link_to t(:repo_del), repo, :confirm => t(:confirm_ask), :method => :delete %></li>
 	<% end %>
+	</ul>
 	<%= link_to t(:repo_new), new_aq_repository_path %>
 </div>

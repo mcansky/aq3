@@ -1,0 +1,5 @@
+<h1><%= @repository.name %></h1>
+
+<p><%= @repository.kind %></p>
+
+<%= link_to t(:repositories) %> | <%= link_to t(:repo_del), @repository, :confirm => t(:confirm_ask), :method => :delete %>
