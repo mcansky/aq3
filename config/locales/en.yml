@@ -3,9 +3,14 @@
 
 en:
   hello: "Hello world"
+  name: "Name"
+  submit: "Submit"
   repositories: "Repositories"
   repo_new: "New repository"
-  repo_update_ok: "Respository updated successfully."
+  repo_list: "All repositories"
+  repo_create_ok: "Repository created successfully."
+  repo_create_ko: "Repository not created successfully."
+  repo_update_ok: "Repository updated successfully."
   repo_update_ko: "Repository not updated successfully."
   repo_destroy_ok: "Repository destroyed successfully."
   repo_destroy_ko: "Repository not updated  successfully."

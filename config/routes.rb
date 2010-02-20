@@ -12,7 +12,7 @@ IIIaquarii::Application.routes.draw do |map|
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :repositories
+  resources :aq_repositories
 
   # Sample resource route with options:
   #   resources :products do

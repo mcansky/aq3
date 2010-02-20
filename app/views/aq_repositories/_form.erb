@@ -1,0 +1,5 @@
+<% form_for repository do |f| %>
+	<%= f.error_messages %>
+	<p><%= t(:name) %> : <%= f.text_field :name %></p>
+	<p><%= f.submit t(:submit) %></p>
+<% end %>

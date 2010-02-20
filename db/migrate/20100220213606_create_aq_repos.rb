@@ -1,14 +1,14 @@
 class CreateAqRepos < ActiveRecord::Migration
   def self.up
-    create_table :aq_repos do |t|
+    create_table :aq_repositories do |t|
       t.string :name
       t.string :path
-      t.string :type, :default => "git"
+      t.string :kind, :default => "git"
       t.timestamps
     end
   end
 
   def self.down
-    drop_table :aq_repos
+    drop_table :aq_repositories
   end
 end

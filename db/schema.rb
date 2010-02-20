@@ -11,10 +11,10 @@
 
 ActiveRecord::Schema.define(:version => 20100220213606) do
 
-  create_table "aq_repos", :force => true do |t|
+  create_table "aq_repositories", :force => true do |t|
     t.string   "name"
     t.string   "path"
-    t.string   "type",       :default => "git"
+    t.string   "kind",       :default => "git"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
