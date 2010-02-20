@@ -3,8 +3,13 @@ defaults: &defaults
   application:
     name: III Aquarii
     contact: riboulet@gmail.com
+    root_dir: /Users
+    repo_user: aq_repo
+    repo_git_path: git
+    repo_hg_path: hg
   logs:
     email: email.log
+
 
 development:
   <<: *defaults
