@@ -3,4 +3,4 @@
 <p><strong>Kind : </strong><%= @repository.kind %></p>
 <p><strong>Path : </strong><%= @repository.path %></p>
 
-<%= link_to t(:repositories), aq_repositories_path %> | <%= link_to t(:repo_del), @repository, :confirm => t(:confirm_ask), :method => :delete %>
+<%= link_to t(:repositories), aq_repositories_path %> | <%= button_to "delete", @repository, :confirm => "sure ?", :method => :delete %>
