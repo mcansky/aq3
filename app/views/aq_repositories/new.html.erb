@@ -1,9 +1,5 @@
 <h1><%= t(:repo_new) %></h1>
 
-<% form_for @repository do |f| %>
-	<%= f.error_messages %>
-	<p><%= t(:name) %> : <%= f.text_field :name %></p>
-	<p><%= f.submit t(:submit) %></p>
-<% end %>
+<%= render "form", :repository => @repository %>
 
 <%= link_to t(:repo_list), :controller => "aq_repositories", :action => "index" %>
