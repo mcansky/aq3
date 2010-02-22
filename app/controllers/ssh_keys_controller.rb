@@ -13,6 +13,7 @@ class SshKeysController < ApplicationController
   
   def create
     @key = SshKey.new(params[:ssh_key])
+    @key.extract_login
     if @key.save
       flash[:notice] = t(:sshkey_created_ok)
       redirect_to @key
@@ -27,7 +28,8 @@ class SshKeysController < ApplicationController
   
   def update
     @key = SshKey.find(params[:id])
-    if @key.update_attributes(params[:user])
+    if @key.update_attributes(params[:ssh_key])
+      @key.extract_login
       flash[:notice] = t(:sshkey_update_ok)
       redirect_to @key
     else
