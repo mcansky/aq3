@@ -8,9 +8,6 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
       flash[:notice] = t(:login_ok)
-			if active_order?
-				session[:active_order] = active_order.id
-			end
 	   	redirect_to root_url
     else
       redirect_to :action => 'new'
