@@ -9,12 +9,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100221101739) do
+ActiveRecord::Schema.define(:version => 20100222134347) do
 
   create_table "aq_repositories", :force => true do |t|
     t.string   "name"
     t.string   "path"
     t.string   "kind",       :default => "git"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ssh_keys", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_sessions", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
