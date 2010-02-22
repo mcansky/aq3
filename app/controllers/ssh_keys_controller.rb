@@ -1,0 +1,2 @@
+class SshKeysController < ApplicationController
+end
