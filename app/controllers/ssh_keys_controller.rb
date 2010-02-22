@@ -1,4 +1,6 @@
 class SshKeysController < ApplicationController
+  before_filter :login_required
+
   def index
     @keys = SshKey.all
   end

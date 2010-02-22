@@ -9,6 +9,7 @@ en:
   delete: "Delete"
   email: "Email"
   login: "Login"
+  login_required: "Login required"
   key: "Key"
   login_or_email: "Login or email"
   login_ok: "Login successfull"
