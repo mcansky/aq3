@@ -16,7 +16,6 @@ class UserSessionsController < ApplicationController
   
   def destroy
     @user_session = UserSession.find
-		session[:active_order] = nil
     @user_session.destroy
     flash[:notice] = t(:logout_ok)
     redirect_to root_url
