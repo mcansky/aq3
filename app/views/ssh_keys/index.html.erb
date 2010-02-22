@@ -1,0 +1,9 @@
+<h1><%= t(:sshkeys_list )%></h1>
+
+<ul>
+	<% for key in @keys %>
+		<li><%= link_to key.name, key %> <%= link_to t(:sshkey_edit), :action => "edit", :id => key.id %></li>
+	<% end %>
+</ul>
+
+<%= link_to t(:sshkey_new), new_ssh_key_path %>

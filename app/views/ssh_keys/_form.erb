@@ -1,0 +1,8 @@
+<% form_for key do |f| %>
+	<%= f.error_messages %>
+	<p><%= t(:name) %> : <%= f.text_field :name %></p>
+	<p><%= t(:key) %> :<br />
+		<%= f.text_area :key, :rows => 10 %>
+	</p>
+	<p><%= f.submit t(:submit) %></p>
+<% end %>
