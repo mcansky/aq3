@@ -1,0 +1,5 @@
+<h1><%= t(:sshkey_edit) %></h1>
+
+<%= render "form", :key => @key %>
+
+<%= link_to t(:sshkeys_list), ssh_keys_path %> | <%= link_to t(:cancel), @key %>

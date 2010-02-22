@@ -1,0 +1,8 @@
+<h1><%= t(:sshkey) %> <%= @key.name %></h1>
+
+<p><strong><%= t(:login) %></strong> : <%= @key.login %> (<%= t(:extracted_from_key)%>)</p>
+<p><strong><%= t(:key) %></strong> :<br />
+<%= @key.key %>
+</p>
+
+<%= link_to t(:sshkeys_list), ssh_keys_path %>
