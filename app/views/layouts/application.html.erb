@@ -13,7 +13,12 @@
 
 <body>
 	<div id="login">
-		<%= link_to t(:login), login_url %> :: <%= link_to t(:logout), logout_path %>
+		<% if current_user %>
+			<%= link_to t(:user_edit), {:controller => "users", :action => "edit", :id => current_user.id} %>
+			<%= link_to t(:logout), logout_path %>
+		<% else %>
+			<%= link_to t(:login), login_url %>
+		<% end %>
 	</div>
 <%= yield %>
 
