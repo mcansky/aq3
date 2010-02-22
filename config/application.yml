@@ -4,9 +4,10 @@ defaults: &defaults
     name: III Aquarii
     contact: riboulet@gmail.com
     root_dir: /Users
-    repo_user: aq_repo
+    repo_user: aq_git
     repo_git_path: git
     repo_hg_path: hg
+    aq_shell: aq-shell
   logs:
     email: email.log
 

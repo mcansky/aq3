@@ -62,4 +62,10 @@ class SshKeysController < ApplicationController
     flash[:notice] = t(:sshkey_destroy_ok)
     redirect_to ssh_keys_url
   end
+  
+  def export
+    @key = SshKey.find(params[:id])
+    @key.export_to_sys
+    redirect_to ssh_keys_url
+  end
 end

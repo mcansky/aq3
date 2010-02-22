@@ -6,6 +6,7 @@
 			<%= link_to key.name, key %>
 			(<%= key.login %>)
 			<%= link_to t(:sshkey_edit), :action => "edit", :id => key.id %>
+			<%= link_to t(:sshkey_export), :action => "export", :id => key.id %>
 		</li>
 	<% end %>
 </ul>
