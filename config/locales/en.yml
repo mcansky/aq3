@@ -43,4 +43,5 @@ en:
   sshkey_edit: "Edit SSH Key"
   sshkey_delete: "Delete"
   sshkeys_list: "All SSH Keys"
+  sshkey_not_owner: "You don't own this key"
   extracted_from_key: "Extracted from key"
