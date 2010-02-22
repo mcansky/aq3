@@ -12,6 +12,9 @@
 </head>
 
 <body>
+	<div id="login">
+		<%= link_to t(:login), login_url %> :: <%= link_to t(:logout), logout_path %>
+	</div>
 <%= yield %>
 
 </body>
