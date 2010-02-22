@@ -16,6 +16,8 @@ class SshKeysController < ApplicationController
   
   def new
     @key = SshKey.new
+    keys_size = current_user.ssh_keys.size
+    @key.name = "another key #{keys_size}" if keys_size > 0
   end
   
   def create
