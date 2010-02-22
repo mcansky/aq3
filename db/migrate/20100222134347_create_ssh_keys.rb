@@ -1,9 +1,9 @@
 class CreateSshKeys < ActiveRecord::Migration
   def self.up
     create_table :ssh_keys do |t|
-      t.name :name, :default => "default"
-      t.key :key
-      t.login :login
+      t.string :name, :default => "default"
+      t.text :key
+      t.string :login
       t.integer :user_id
       t.timestamps
     end
