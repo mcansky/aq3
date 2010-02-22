@@ -2,7 +2,11 @@
 
 <ul>
 	<% for key in @keys %>
-		<li><%= link_to key.name, key %> <%= link_to t(:sshkey_edit), :action => "edit", :id => key.id %></li>
+		<li>
+			<%= link_to key.name, key %>
+			(<%= key.login %>)
+			<%= link_to t(:sshkey_edit), :action => "edit", :id => key.id %>
+		</li>
 	<% end %>
 </ul>
 
