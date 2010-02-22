@@ -1,0 +1,5 @@
+<h1><%= @repository.name %></h1>
+
+<%= render "form", :repository => @repository %>
+
+<%= link_to t(:repo_list), aq_repositories_path %>
