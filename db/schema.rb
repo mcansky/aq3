@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100223141853) do
+ActiveRecord::Schema.define(:version => 20100223201844) do
 
   create_table "aq_repositories", :force => true do |t|
     t.string   "name"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20100223141853) do
     t.string   "role"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status"
   end
 
   create_table "ssh_keys", :force => true do |t|
