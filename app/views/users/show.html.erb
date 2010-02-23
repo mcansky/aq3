@@ -1,8 +1,16 @@
-<h1><%= t(:user) %> <%= @user.login %></h1>
+<h2><%= image_tag("/images/icons/user-silhouette.png", :title => nil, :alt => nil, :border => 0) %> <%= @user.login %></h2>
 
-<p>
-	<strong><%= @user.login %></strong><br />
-	<%= @user.email %>
-</p>
 
-<%= link_to t(:user_list), :controller => "users", :action => "index" %>
+<div id="user">
+	<p>
+		<strong><%= t(:contact) %> :</strong> <%= @user.email %>
+	</p>
+</div>
+
+<div id="repositories">
+	<h3><%= t(:repositories) %></h3>
+	<%= render "application/repositories", :repositories => @user.aq_repositories, :user => @user %>
+</div>
+
+<div id="commits">
+</div>

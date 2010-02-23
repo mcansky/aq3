@@ -131,3 +131,7 @@ div.clear {
 	background: #DDD;
 	padding: 5px;
 }
+
+#content div#user {
+	margin-bottom: 20px;
+}
