@@ -63,6 +63,7 @@ class SshKeysController < ApplicationController
     redirect_to ssh_keys_url
   end
   
+  private
   def export
     @key = SshKey.find(params[:id])
     @key.export_to_sys
