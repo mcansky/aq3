@@ -17,11 +17,11 @@ class AqRepository < ActiveRecord::Base
     git_dir.mkdir if base_dir.exist? && !git_dir.exist?
     
     # repo dir is the repository own path
-    repo_dir = git_dir + self.name
+    repo_dir = git_dir + (self.name + ".git")
     repo_dir.mkdir if !repo_dir.exist?
     
     # the dot git dir is the .git located in the repository
-    dot_git = repo_dir + ".git"
+    dot_git = repo_dir
     dot_git.mkdir if !dot_git.exist?
     
     self.path = repo_dir.to_s
@@ -34,7 +34,7 @@ class AqRepository < ActiveRecord::Base
       "refs" => {"heads"=> nil, "tags" => nil}}
     files = ["HEAD", "config", "description"]
     
-    dot_git = Pathname(self.path) + ".git"
+    dot_git = Pathname(self.path)
 
     # creating the dirs
     l_mkdirs(dot_git, dirs)
