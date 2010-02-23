@@ -1,8 +1,8 @@
 class AqRepositoriesController < ApplicationController
-  before_filter :login_required
+  before_filter :login_required, :except => [:index, :show]
 
   def index
-    @repositories = current_user.aq_repositories
+    @repositories = AqRepository.find(:all)
   end
 
   def show
