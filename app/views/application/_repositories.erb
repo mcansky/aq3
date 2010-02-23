@@ -5,9 +5,9 @@
 			<% for user in repo.users %>
 				<% if user == repo.owner %>
 					<% if user == current_user %>
-						<%= image_tag("/images/icons/user-business.png", :title => t(:owner), :alt => t(:owner), :border => 0)%>
+						<%= image_tag("/images/icons/user-worker-boss.png", :title => t(:owner), :alt => t(:owner), :border => 0)%>
 					<% else %>
-						<%= link_to image_tag("/images/icons/user-business.png", :title => t(:owner), :alt => t(:owner), :border => 0), user %>
+						<%= link_to image_tag("/images/icons/user-worker-boss.png", :title => t(:owner), :alt => t(:owner), :border => 0), user %>
 					<% end %>
 				<% end %>
 				<% if repo.committers.include?(user) %>
