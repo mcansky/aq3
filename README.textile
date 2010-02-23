@@ -11,17 +11,22 @@ Copyright (C) 2010 Yusuke Kamiyamane. All rights reserved.
 The icons are licensed under a Creative Commons Attribution
 3.0 license. <http://creativecommons.org/licenses/by/3.0/>
 
+
+h2. Licence
+
+We looked at Gitauth and gitosos in awe, then decided to start from scratch on our own, adding new ideas along the way. One of those ideas was to release the code under the MIT Licence.
+
 h2. Todo
 
 This gonna be big. First push to GitHub repository is really really a first draft of the base project.
 
 h3. Base project
 
-The base project goal is to provide an alternative to gitosis written in Ruby. Inspired by GitAuth, but thought to rely more on the web interface to manage the ssh keys, the repositories and the users.
+The base project goal is to provide an alternative to gitosis written in Ruby. Inspired by GitAuth, but thought to rely only on the web interface to manage the ssh keys, the repositories and the users.
 
 It comes in two parts : the main rails app and the shell. Both need to use the same database to keep synched.
 
-As of the first tag (0.0.1) it's almost usable.
+As of the first tag (0.0.1) it's almost usable. You need to check the aq_lib too.
 
 
 h3. Long run
@@ -37,3 +42,8 @@ The long run is a bit more complex : the aim is to provide something similar to 
 - git and hg support with automatic commit push between root repositories
 - ... more
 
+h2. Install
+
+Right now it's not really usable, yet it works. You need to checkout the aq_lib first and put it somewhere safe.
+Clone this code, and edit the config/application.yml file and database.yml file.
+aq_lib contains a kindda shell (aquarii-sh.rb), you need to have it executable, and write down it's direct path in some corner. It also has a config file (config/application.yml) that you need to tweak to your likings. You have to specify the same db config info as in 3 Aquarii conf file.
