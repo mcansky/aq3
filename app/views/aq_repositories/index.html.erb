@@ -5,7 +5,6 @@
 		<li><%= link_to repo.name, repo %>
 			<% if current_user && (repo.owner == current_user) %>
 				<%= link_to t(:repo_edit), :action => "edit", :id => repo.id %>
-				<%= button_to t(:repo_del), repo, :confirm => t(:confirm_ask), :method => :delete %>
 			<% end %>
 		</li>
 	<% end %>
