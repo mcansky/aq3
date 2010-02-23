@@ -5,3 +5,4 @@ tmp/**/*
 .DS_Store
 vendor/bundled_gems
 vendor/cache
+config/application.yml
