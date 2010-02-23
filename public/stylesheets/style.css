@@ -1,0 +1,37 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: #222;
+}
+#main {
+	width: 95%;
+	margin-right: auto;
+	margin-left: auto;
+	background: #FFF;
+	border-right: 1px solid #888;
+	border-left: 1px solid #888;
+}
+
+#content {
+	padding: 20px;
+}
+
+#login {
+	float: right;
+	margin-right: 10px;
+	margin-top: 10px;
+	padding: 3px;
+	text-align: right;
+	width: 30%;
+	background: #DDD;
+	border: 1px solid #999;
+	font-family: monospace;
+}
+
+#login a {
+	text-decoration: none;
+	font-weight: bold;
+}
