@@ -1,7 +1,7 @@
 IIIaquarii::Application.routes.draw do |map|
   # The priority is based upon order of creation:
   # first created -> highest priority.
-  
+
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
@@ -18,10 +18,13 @@ IIIaquarii::Application.routes.draw do |map|
   match "/logout" => 'user_sessions#destroy', :as => "logout"
   match "/login" => 'user_sessions#new', :as => "login"
   match "/signup" => 'users#new', :as => "signup"
-  
+
   # ssh key export
   match "/ssh_keys/export/:id" => "ssh_keys#export"
-  
+
+  # repo join
+  match "/aq_repository/join/:id" => "aq_repository#join"
+
   # Sample resource route with options:
   #   resources :products do
   #     member do

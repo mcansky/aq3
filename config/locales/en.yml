@@ -22,6 +22,7 @@ en:
   user: "User"
   login_required: "Login required"
   key: "Key"
+  ask_join: "Ask to join"
   login_or_email: "Login or email"
   login_ok: "Login successfull"
   login_fail: "Sorry: login failed : wrong credentials."

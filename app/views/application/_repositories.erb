@@ -14,6 +14,9 @@
 					<%= image_tag("/images/icons/user-worker.png", :title => t(:committer), :alt => t(:committer), :border => 0)%>
 				<% end %>
 			<% end %>
+			<% if current_user && !repo.users.include?(current_user) %>
+				<%= link_to image_tag("/images/icons/hard-hat.png", :title => t(:ask_join), :alt => t(:ask_join), :border => 0), {:controller => "aq_repository", :action => "join", :id => repo.id} %>
+			<% end %>
 		</h3>
 		<div class="desc">
 			<span class="img"><%= image_tag("/images/icons/big/drives_11.png", :border => 0) %></span>
