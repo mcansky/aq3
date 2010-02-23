@@ -12,7 +12,7 @@ IIIaquarii::Application.routes.draw do |map|
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :aq_repositories, :users, :user_sessions, :ssh_keys
+  resources :aq_repositories, :users, :user_sessions, :ssh_keys, :rights
 
   # login routes
   match "/logout" => 'user_sessions#destroy', :as => "logout"
@@ -26,8 +26,8 @@ IIIaquarii::Application.routes.draw do |map|
   match "/aq_repositories/join/:id" => "aq_repositories#join"
 
   # right accept and reject
-  match "/rights/accept/:id" => "/rights#accept"
-  match "/rights/reject/:id" => "/rights#reject"
+  match "/rights/accept/:id" => "rights#accept"
+  match "/rights/reject/:id" => "rights#reject"
 
   # Sample resource route with options:
   #   resources :products do

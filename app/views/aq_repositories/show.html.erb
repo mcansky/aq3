@@ -17,7 +17,7 @@
 
 	<div class="people">
 		<% for right in @repository.rights %>
-		<div class="commiter">
+		<div class="committer">
 			<h4>
 				<%= image_tag("/images/icons/user-silhouette.png", :title => nil, :alt => nil, :border => 0) %>
 				<%= right.user.login %>
@@ -26,12 +26,12 @@
 				<strong>Status :</strong>
 				<% if right.pending? %>
 					<%= image_tag("/images/icons/clock-frame.png", :title => t(:pending), :alt => t(:pending), :border => 0)%> <%= t(:pending) %>
-					<%= link_to image_tag("/images/icons/thumbs-up.png", :title => t(:accept), :alt => t(:accept), :border => 0), {:controller => "rights", :action => "accept", :id => right.id } %>
-					<%= link_to image_tag("/images/icons/thumbs.png", :title => t(:reject), :alt => t(:reject), :border => 0), {:controller => "rights", :action => "reject", :id => right.id } %>
+					<%= link_to image_tag("/images/icons/thumb-up.png", :title => t(:accept), :alt => t(:accept), :border => 0), {:controller => "rights", :action => "accept", :id => right.id } %>
+					<%= link_to image_tag("/images/icons/thumb.png", :title => t(:reject), :alt => t(:reject), :border => 0), {:controller => "rights", :action => "reject", :id => right.id } %>
 				<% elsif right.user == @repository.owner %>
 					<%= image_tag("/images/icons/user-worker-boss.png", :title => t(:owner), :alt => t(:owner), :border => 0) %> <%= t(:owner) %>
 				<% elsif @repository.committers.include?(right.user) %>
-					<%= image_tag("/images/icons/user-worker.png", :title => t(:committer), :alt => t(:committer), :border => 0) %> <%= t(:commiter) %>
+					<%= image_tag("/images/icons/user-worker.png", :title => t(:committer), :alt => t(:committer), :border => 0) %> <%= t(:committer) %>
 				<% end %>
 			</p>
 		</div>

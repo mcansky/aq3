@@ -135,3 +135,11 @@ div.clear {
 #content div#user {
 	margin-bottom: 20px;
 }
+
+#content div.committer {
+	margin-bottom: 10px;
+}
+
+#content div#repository {
+	width: 40%;
+}
