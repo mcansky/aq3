@@ -1,3 +1,39 @@
 h1. III Aquarii
 
 3 Aquarii is an app thought to bridge some gaps.
+
+
+h2. Icons
+
+web icons (small ones) are from the Fugue Icons pack :
+
+Copyright (C) 2010 Yusuke Kamiyamane. All rights reserved.
+The icons are licensed under a Creative Commons Attribution
+3.0 license. <http://creativecommons.org/licenses/by/3.0/>
+
+h2. Todo
+
+This gonna be big. First push to GitHub repository is really really a first draft of the base project.
+
+h3. Base project
+
+The base project goal is to provide an alternative to gitosis written in Ruby. Inspired by GitAuth, but thought to rely more on the web interface to manage the ssh keys, the repositories and the users.
+
+It comes in two parts : the main rails app and the shell. Both need to use the same database to keep synched.
+
+As of the first tag (0.0.1) it's almost usable.
+
+
+h3. Long run
+
+The long run is a bit more complex : the aim is to provide something similar to GitHub, with some other functionalities.
+
+- Mostly no "social network" thing
+- wiki
+- bug tracking
+- milestones and features tracking
+- features / tasks assignment
+- hugs
+- git and hg support with automatic commit push between root repositories
+- ... more
+
