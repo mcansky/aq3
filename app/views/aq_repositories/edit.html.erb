@@ -2,4 +2,4 @@
 
 <%= render "form", :repository => @repository %>
 
-<%= link_to t(:repo_list), aq_repositories_path %>
+<%= button_to "delete", @repository, :confirm => "sure ?", :method => :delete %>
