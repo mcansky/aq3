@@ -23,7 +23,7 @@ IIIaquarii::Application.routes.draw do |map|
   match "/ssh_keys/export/:id" => "ssh_keys#export"
 
   # repo join
-  match "/aq_repository/join/:id" => "aq_repository#join"
+  match "/aq_repositories/join/:id" => "aq_repositories#join"
 
   # Sample resource route with options:
   #   resources :products do

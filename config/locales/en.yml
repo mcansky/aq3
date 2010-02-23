@@ -16,6 +16,7 @@ en:
   path: "Path"
   owner: "Owner"
   committer: "Committer"
+  pending: "Pending"
   public_path: "Public Path"
   owner: "Owner"
   users: "Users"

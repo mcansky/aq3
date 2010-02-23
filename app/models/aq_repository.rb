@@ -12,7 +12,7 @@ class AqRepository < ActiveRecord::Base
   end
 
   def committers
-    some_rights = self.rights.find(:all, :conditions => ["role = ?",'c'])
+    some_rights = self.rights.find(:all, :conditions => ["role = ? AND status != ?",'c', 'p'])
     r_committers = []
     some_rights.each do |a_right|
       r_committers << a_right.user

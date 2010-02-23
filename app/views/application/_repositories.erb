@@ -9,13 +9,14 @@
 					<% else %>
 						<%= link_to image_tag("/images/icons/user-worker-boss.png", :title => t(:owner), :alt => t(:owner), :border => 0), user %>
 					<% end %>
-				<% end %>
-				<% if repo.committers.include?(user) %>
+				<% elsif repo.committers.include?(user) %>
 					<%= image_tag("/images/icons/user-worker.png", :title => t(:committer), :alt => t(:committer), :border => 0)%>
+				<% else %>
+					<%= image_tag("/images/icons/clock-frame.png", :title => t(:pending), :alt => t(:pending), :border => 0)%>
 				<% end %>
 			<% end %>
 			<% if current_user && !repo.users.include?(current_user) %>
-				<%= link_to image_tag("/images/icons/hard-hat.png", :title => t(:ask_join), :alt => t(:ask_join), :border => 0), {:controller => "aq_repository", :action => "join", :id => repo.id} %>
+				<%= link_to image_tag("/images/icons/hard-hat.png", :title => t(:ask_join), :alt => t(:ask_join), :border => 0), {:controller => "aq_repositories", :action => "join", :id => repo.id} %>
 			<% end %>
 		</h3>
 		<div class="desc">
