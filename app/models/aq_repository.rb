@@ -11,6 +11,15 @@ class AqRepository < ActiveRecord::Base
     owner = a_right.user
   end
 
+  def committers
+    some_rights = self.rights.find(:all, :conditions => ["role = ?",'c'])
+    r_committers = []
+    some_rights.each do |a_right|
+      r_committers << a_right.user
+    end
+    return r_committers
+  end
+
   def public_path
     split_path = self.path.split("/")
     ppath = "git://" + Settings.application.repo_user + "@" + Settings.application.hostname + ":" + split_path[-2] + "/" + split_path[-1]

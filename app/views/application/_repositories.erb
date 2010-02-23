@@ -2,9 +2,16 @@
 	<div class="repository">
 		<h3>
 			<%= link_to repo.name, repo %>
-			<% if controller_name == "users" %>
+			<% for user in repo.users %>
 				<% if user == repo.owner %>
-					<%= image_tag("/images/icons/user-business.png", :title => t(:owner), :alt => t(:owner), :border => 0)%>
+					<% if user == current_user %>
+						<%= image_tag("/images/icons/user-business.png", :title => t(:owner), :alt => t(:owner), :border => 0)%>
+					<% else %>
+						<%= link_to image_tag("/images/icons/user-business.png", :title => t(:owner), :alt => t(:owner), :border => 0), user %>
+					<% end %>
+				<% end %>
+				<% if repo.committers.include?(user) %>
+					<%= image_tag("/images/icons/user-worker.png", :title => t(:committer), :alt => t(:committer), :border => 0)%>
 				<% end %>
 			<% end %>
 		</h3>
