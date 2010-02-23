@@ -7,11 +7,6 @@ class AqRepositoriesController < ApplicationController
 
   def show
     @repository = AqRepository.find(params[:id])
-    if @repository.user != current_user
-      @repository = nil
-      flash[:notice] = t(:insufficient_rights)
-      redirect_to root_path
-    end
   end
 
   def new
@@ -37,6 +32,15 @@ class AqRepositoriesController < ApplicationController
 
   def edit
     @repository = AqRepository.find(params[:id])
+    if @repository.owner != current_user
+      @repository = nil
+      flash[:notice] = t(:insufficient_rights)
+      redirect_to root_path
+    end
+  end
+
+  def update
+    @repository = AqRepository.find(params[:id])
     if @repository.rights.size == 0
       a_right = Right.new
       a_right.user = current_user
@@ -46,10 +50,6 @@ class AqRepositoriesController < ApplicationController
       @repository.rights << a_right
       a_right.save
     end
-  end
-
-  def update
-    @repository = AqRepository.find(params[:id])
     if @repository.update_attributes(params[:aq_repository])
       flash[:notice] = t(:repo_update_ok)
       redirect_to @repository
