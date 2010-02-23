@@ -1,14 +1,20 @@
-<h1><%= t(:sshkeys_list )%></h1>
-
-<ul>
-	<% for key in @keys %>
-		<li>
-			<%= link_to key.name, key %>
-			(<%= key.login %>)
-			<%= link_to t(:sshkey_edit), :action => "edit", :id => key.id %>
-			<%= link_to t(:sshkey_export), :action => "export", :id => key.id %>
-		</li>
+<h1>
+	<%= t(:sshkeys_yours )%>
+	<% if current_user %>
+		<%= link_to image_tag("/images/icons/big/drives_17.png", :title => t(:sshkey_new), :alt => t(:sshkey_new), :border => 0, :width => "30px"), {:action => "new"}%>
 	<% end %>
-</ul>
+</h1>
 
-<%= link_to t(:sshkey_new), new_ssh_key_path %>
+<div id="sshkeys">
+	<% for key in @keys %>
+		<div class="sshkey">
+			<h3>
+				<%= image_tag("/images/icons/license-key.png", :title => t(:sshkey), :alt => t(:sshkey), :border => 0)%>
+				<%= link_to key.name, key %> (<%= key.login %>) <%= link_to image_tag("/images/icons/pencil.png", :title => t(:sshkey_edit), :alt => t(:sshkey_edit), :border => 0), :action => "edit", :id => key.id %>
+			</h3>
+			<p>
+
+			</p>
+		</div>
+	<% end %>
+</div>

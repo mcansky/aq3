@@ -5,7 +5,5 @@
 <%= @key.key %>
 </p>
 
-<hr />
-<p><%= @key.short %></p>
 
 <%= link_to t(:sshkey_edit), :action => "edit", :id => @key.id %> <%= link_to t(:sshkeys_list), ssh_keys_path %>

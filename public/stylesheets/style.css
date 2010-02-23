@@ -99,3 +99,22 @@ div.clear {
 #content div.repository h3 a:hover {
 	text-decoration: underline;
 }
+
+#content div#sshkeys {
+	width: 40%;
+	margin-left: 20px;
+}
+
+#content div.sshkey {
+	margin-top: 10px;
+}
+
+#content div.sshkey a {
+	text-decoration: none;
+	color: #1d5794;
+	font-family: monospace;
+}
+
+#content div.sshkey a:hover {
+	text-decoration: underline;
+}
