@@ -10,7 +10,7 @@
 						<%= link_to image_tag("/images/icons/user-worker-boss.png", :title => t(:owner), :alt => t(:owner), :border => 0), user %>
 					<% end %>
 				<% elsif repo.committers.include?(user) %>
-					<%= image_tag("/images/icons/user-worker.png", :title => t(:committer), :alt => t(:committer), :border => 0)%>
+					<%= image_tag("/images/icons/user-worker.png", :title => t(:committer), :alt => t(:committer), :border => 0) %>
 				<% else %>
 					<%= image_tag("/images/icons/clock-frame.png", :title => t(:pending), :alt => t(:pending), :border => 0)%>
 				<% end %>

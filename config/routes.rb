@@ -25,6 +25,10 @@ IIIaquarii::Application.routes.draw do |map|
   # repo join
   match "/aq_repositories/join/:id" => "aq_repositories#join"
 
+  # right accept and reject
+  match "/rights/accept/:id" => "/rights#accept"
+  match "/rights/reject/:id" => "/rights#reject"
+
   # Sample resource route with options:
   #   resources :products do
   #     member do

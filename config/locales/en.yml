@@ -17,6 +17,8 @@ en:
   owner: "Owner"
   committer: "Committer"
   pending: "Pending"
+  accept: "Accept"
+  reject: "Reject"
   public_path: "Public Path"
   owner: "Owner"
   users: "Users"
