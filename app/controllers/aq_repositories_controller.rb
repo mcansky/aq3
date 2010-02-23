@@ -2,11 +2,15 @@ class AqRepositoriesController < ApplicationController
   before_filter :login_required, :except => ["index", "show"]
 
   def index
-    @repositories = AqRepository.find(:all)
+    @repositories = current_user.aq_repositories
   end
 
   def show
     @repository = AqRepository.find(params[:id])
+    if @repository.user != current_user
+      @repository = nil
+      flash[:notice] = t(:insufficient_rights)
+      redirect_to root_path
   end
 
   def new
