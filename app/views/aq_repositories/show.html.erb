@@ -1,11 +1,18 @@
-<h1><%= @repository.name %></h1>
+<h2>
+	<%= @repository.name %>
+	<% if current_user && @repository.owner == current_user %>
+		<%= link_to image_tag("/images/icons/pencil.png", :title => t(:repo_edit), :alt => t(:repo_edit), :border => 0), :action => "edit", :id => @repository.id %>
+	<% end %>
+</h2>
 
-<p><strong><%= t(:kind) %> : </strong><%= @repository.kind %></p>
-<p><strong><%= t(:public_path) %> : </strong><%= @repository.public_path %></p>
-<p><strong><%= t(:owner) %> : </strong><%= link_to @repository.owner.login, @repository.owner %></p>
+<div class="repository">
 
-<%= link_to t(:repositories), aq_repositories_path %> | 
-<% if current_user && @repository.owner == current_user %>
-	<%= link_to t(:repo_edit), :action => "edit", :id => @repository.id %>
-	<%= button_to "delete", @repository, :confirm => "sure ?", :method => :delete %>
-<% end %>
+	<div class="desc">
+		<span class="img"><%= image_tag("/images/icons/big/drives_11.png", :border => 0) %></span>
+		<p><strong><%= t(:kind) %> : </strong><%= @repository.kind %></p>
+		<p><strong><%= t(:public_path) %> : </strong><%= @repository.public_path %></p>
+		<p><strong><%= t(:owner) %> : </strong><%= link_to @repository.owner.login, @repository.owner %></p>
+		<div class="clear"></div>
+	</div>
+
+</div>
