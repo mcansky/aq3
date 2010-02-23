@@ -1,4 +1,9 @@
-<h1><%= t(:repositories) %></h1>
+<h1>
+	<%= t(:repositories) %>
+	<% if current_user %>
+		<%= link_to image_tag("/images/icons/big/dbplus2.png", :title => t(:repo_new), :alt => t(:repo_new), :border => 0, :width => "30px"), {:action => "new"}%>
+	<% end %>
+</h1>
 <div id="repositories">
 	<% for repo in @repositories %>
 		<div class="repository">
@@ -11,8 +16,5 @@
 				<div class="clear"></div>
 			</div>
 		</div>
-	<% end %>
-	<% if current_user %>
-		<%= link_to t(:repo_new), new_aq_repository_path %>
 	<% end %>
 </div>
