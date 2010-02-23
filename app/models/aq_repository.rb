@@ -7,7 +7,7 @@ class AqRepository < ActiveRecord::Base
   has_many :users, :through => :rights
 
   def owner
-    a_right = rights.find(:all, :conditions => ["role = ?",'o']).first
+    a_right = self.rights.find(:all, :conditions => ["role = ?",'o']).first
     owner = a_right.user
   end
 
