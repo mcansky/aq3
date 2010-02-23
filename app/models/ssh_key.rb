@@ -1,6 +1,6 @@
 class SshKey < ActiveRecord::Base
   belongs_to :user
-  
+
   # extract the login from the pasted key and insert it in the db
   def extract_login
     if self.valid
@@ -41,7 +41,7 @@ class SshKey < ActiveRecord::Base
       command.join(",")
     end
   end
-  
+
   # export to the user directory ssh folder
   def export_to_sys
     if self.valid

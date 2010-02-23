@@ -1,9 +1,10 @@
-<h1><%= t(:sshkey) %> <%= @key.name %></h1>
+<h2>
+	<%= image_tag("/images/icons/license-key.png", :title => t(:sshkey), :alt => t(:sshkey), :border => 0)%> 
+	<%= @key.name %>
+	<%= link_to image_tag("/images/icons/pencil.png", :title => t(:sshkey_edit), :alt => t(:sshkey_edit), :border => 0), :action => "edit", :id => @key.id %>
+	</h2>
 
-<p><strong><%= t(:login) %></strong> : <%= @key.login %> (<%= t(:extracted_from_key)%>)</p>
-<p><strong><%= t(:key) %></strong> :<br />
-<%= @key.key %>
-</p>
+<div class="sshkey">
+	<p><strong><%= t(:login) %></strong> : <%= @key.login %> (<%= t(:extracted_from_key)%>)</p>
+</div>
 
-
-<%= link_to t(:sshkey_edit), :action => "edit", :id => @key.id %> <%= link_to t(:sshkeys_list), ssh_keys_path %>

@@ -118,3 +118,16 @@ div.clear {
 #content div.sshkey a:hover {
 	text-decoration: underline;
 }
+
+#content div.sshkey {
+	width: 80%;
+}
+#content div.sshkey p.sshkey {
+	width: 70%;
+	margin-left: 20px;
+	font-size: 10px;
+	font-family: monospace;
+	border: 1px solid #999;
+	background: #DDD;
+	padding: 5px;
+}
