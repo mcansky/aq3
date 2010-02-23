@@ -7,7 +7,7 @@ defaults: &defaults
     repo_user: aq_git
     repo_git_path: git
     repo_hg_path: hg
-    aq_shell: aq-shell
+    aq_shell: /Users/mcansky/Code/aquarii/aquarii-lib/aquarii-sh.rb
   logs:
     email: email.log
 
