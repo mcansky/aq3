@@ -13,6 +13,7 @@ body {
 	background: #FFF;
 	border-right: 1px solid #888;
 	border-left: 1px solid #888;
+	border-bottom: 1px solid #888;
 }
 
 #content {
@@ -34,4 +35,27 @@ body {
 #login a {
 	text-decoration: none;
 	font-weight: bold;
+}
+
+input, textarea {
+	background: #FFF;
+	border: 1px solid #CCC;
+	margin: 5px;
+	padding: 2px;
+}
+
+#root {
+	float: left;
+	margin-top: 15px;
+	margin-left: 30%;
+	background: #DDD;
+	border: 1px solid #999;
+	padding: 10px 10px 5px 10px;
+}
+#root img {
+	width: 32px;
+}
+
+div.clear {
+	clear: both;
 }

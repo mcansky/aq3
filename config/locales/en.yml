@@ -3,6 +3,7 @@
 
 en:
   hello: "Hello world"
+  home: "Home"
   name: "Name"
   submit: "Submit"
   cancel: "Cancel"
@@ -45,6 +46,7 @@ en:
   repo_destroy_ok: "Repository destroyed successfully."
   repo_destroy_ko: "Repository not updated  successfully."
   sshkey: "SSH Key"
+  sshkeys: "SSH Keys"
   sshkey_new: "New SSH Key"
   sshkey_edit: "Edit SSH Key"
   sshkey_delete: "Delete"
