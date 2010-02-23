@@ -1,6 +1,8 @@
 h1. III Aquarii
 
-3 Aquarii is an app thought to bridge some gaps.
+The project aims to provide a quite complete web app to manage small, medium or big quantities of git and hg repositories. We want to include repository management, ssh keys management, repository browser, commits browser, diff display, tickets and milestones management.
+
+Before starting this project we dissected Gitauth, to extract its very essence. We then decided to start from scratch on our own, tossing everything and starting from a clean slate. So it probably looks similar to GithAuth, or Gitosis, since these projects are pretty much the state-of-the-art.
 
 
 h2. Icons
@@ -14,22 +16,19 @@ The icons are licensed under a Creative Commons Attribution
 
 h2. Licence
 
-We looked at Gitauth and gitosos in awe, then decided to start from scratch on our own, adding new ideas along the way. One of those ideas was to release the code under the MIT Licence.
+This project is released under MIT Licence.
 
 h2. Todo
 
 This gonna be big. First push to GitHub repository is really really a first draft of the base project.
 
-h3. Base project
 
-The base project goal is to provide an alternative to gitosis written in Ruby. Inspired by GitAuth, but thought to rely only on the web interface to manage the ssh keys, the repositories and the users.
-
-It comes in two parts : the main rails app and the shell. Both need to use the same database to keep synched.
+h2. 0.0.1
 
 As of the first tag (0.0.1) it's almost usable. You need to check the aq_lib too.
+It only manage ssh keys and repositories though. But just with that you can say good bye to gitosis. (well first we need to wait for some comments and tests).
 
-
-h3. Long run
+h2. Long run
 
 The long run is a bit more complex : the aim is to provide something similar to GitHub, with some other functionalities.
 
@@ -46,4 +45,9 @@ h2. Install
 
 Right now it's not really usable, yet it works. You need to checkout the aq_lib first and put it somewhere safe.
 Clone this code, and edit the config/application.yml file and database.yml file.
-aq_lib contains a kindda shell (aquarii-sh.rb), you need to have it executable, and write down it's direct path in some corner. It also has a config file (config/application.yml) that you need to tweak to your likings. You have to specify the same db config info as in 3 Aquarii conf file.
+Clone the aq_lib too and check config/application file too, tweak it accordingly to the previous one.
+aq_lib contains a kindda shell (aquarii-sh.rb), you need to have it executable.
+
+h2. Contact
+
+On the GitHub page, and on freenode.
