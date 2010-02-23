@@ -4,13 +4,9 @@
 			<%= link_to repo.owner.login + "/" + repo.name, repo %>
 			<% for user in repo.users %>
 				<% if user == repo.owner %>
-					<% if user == current_user %>
-						<%= image_tag("/images/icons/user-worker-boss.png", :title => t(:owner), :alt => t(:owner), :border => 0)%>
-					<% else %>
-						<%= link_to image_tag("/images/icons/user-worker-boss.png", :title => t(:owner), :alt => t(:owner), :border => 0), user %>
-					<% end %>
+						<%= link_to image_tag("/images/icons/user-worker-boss.png", :title => "#{user.login} (#{t(:owner)})", :alt => "#{user.login} (#{t(:owner)})", :border => 0), user %>
 				<% elsif repo.committers.include?(user) %>
-					<%= image_tag("/images/icons/user-worker.png", :title => t(:committer), :alt => t(:committer), :border => 0) %>
+					<%= link_to image_tag("/images/icons/user-worker.png", :title => "#{user.login} (#{t(:committer)})", :alt => "#{user.login} (#{t(:committer)})", :border => 0), user %>
 				<% else %>
 					<%= image_tag("/images/icons/clock-frame.png", :title => t(:pending), :alt => t(:pending), :border => 0)%>
 				<% end %>
