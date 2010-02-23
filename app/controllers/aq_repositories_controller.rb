@@ -1,4 +1,5 @@
 class AqRepositoriesController < ApplicationController
+  before_filter :login_required, :except => ["index", "show"]
 
   def index
     @repositories = AqRepository.find(:all)
@@ -14,6 +15,8 @@ class AqRepositoriesController < ApplicationController
 
   def create
     @repository = AqRepository.new(params[:aq_repository])
+    a_right = Right.new(current_user, self, 'w', 'o')
+    @repository.rights << a_right
     if @repository.save
       flash[:notice] = t(:repo_create_ok)
       redirect_to @repository
@@ -25,6 +28,11 @@ class AqRepositoriesController < ApplicationController
 
   def edit
     @repository = AqRepository.find(params[:id])
+    if @repository.rights.size == 0
+      a_right = Right.new(current_user, self, 'w', 'o')
+      @repository.rights << a_right
+      a_right.save
+    end
   end
 
   def update
