@@ -1,7 +1,7 @@
 <h1><%= @repository.name %></h1>
 
 <p><strong><%= t(:kind) %> : </strong><%= @repository.kind %></p>
-<p><strong><%= t(:path) %> : </strong><%= @repository.path %></p>
+<p><strong><%= t(:public_path) %> : </strong><%= @repository.public_path %></p>
 <p><strong><%= t(:owner) %> : </strong><%= link_to @repository.owner.login, @repository.owner %></p>
 
 <%= link_to t(:repositories), aq_repositories_path %> | <%= button_to "delete", @repository, :confirm => "sure ?", :method => :delete %>
