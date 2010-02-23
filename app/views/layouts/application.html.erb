@@ -28,14 +28,16 @@
 			<% end %>
 		</div>
 
-		<% if current_user %>
 		<div id="root">
+			<% if current_user %>
 				<%= link_to image_tag("/images/icons/big/120px-Assistant.png", :title => t(:home), :alt => t(:home), :border => 0), current_user %>
 				<%= link_to image_tag("/images/icons/big/db.png", :title => t(:repositories), :alt => t(:repositories), :border => 0), aq_repositories_path %>
 				<%= link_to image_tag("/images/icons/big/blueprint_tool.png", :title => t(:sshkeys), :alt => t(:sshkeys), :border => 0), ssh_keys_path %>
+			<% else %>
+				<%= link_to image_tag("/images/icons/big/database42.png", :title => t(:home), :alt => t(:home), :border => 0), root_url %>
+			<% end %>
 		</div>
 		<div class="clear"></div>
-		<% end %>
 
 		<div id="content">
 			<%= yield %>
