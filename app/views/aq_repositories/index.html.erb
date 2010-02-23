@@ -10,5 +10,7 @@
 		</li>
 	<% end %>
 	</ul>
-	<%= link_to t(:repo_new), new_aq_repository_path %>
+	<% if current_user %>
+		<%= link_to t(:repo_new), new_aq_repository_path %>
+	<% end %>
 </div>
