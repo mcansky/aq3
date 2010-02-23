@@ -43,6 +43,7 @@ class AqRepository < ActiveRecord::Base
 
   # initilizing the repository
   def repo_init
+    File.umask(0001)
     dirs = { "hooks" => nil,
       "info" => nil,
       "objects" => {"info" => nil, "pack" => nil},
