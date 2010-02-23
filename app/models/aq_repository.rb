@@ -11,6 +11,9 @@ class AqRepository < ActiveRecord::Base
   	return @current_user
   end
 
+  # generating the repo path
+  #
+  # check the config/application.yml file for setup
   def repo_path
     # root dir is system home folder, need to exist prior to app launch
     # /home
@@ -38,6 +41,7 @@ class AqRepository < ActiveRecord::Base
     self.path = dot_git.to_s
   end
 
+  # initilizing the repository
   def repo_init
     dirs = { "hooks" => nil,
       "info" => nil,
