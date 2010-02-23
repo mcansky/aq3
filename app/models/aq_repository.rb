@@ -3,6 +3,8 @@ require 'pathname'
 class AqRepository < ActiveRecord::Base
   before_save :repo_path
   after_save :repo_init
+  has_many :rights
+  has_many :users, :throught => :rights
 
   private
   def current_user
