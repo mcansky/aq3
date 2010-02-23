@@ -11,6 +11,7 @@ class AqRepositoriesController < ApplicationController
       @repository = nil
       flash[:notice] = t(:insufficient_rights)
       redirect_to root_path
+    end
   end
 
   def new
