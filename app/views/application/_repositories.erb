@@ -2,7 +2,7 @@
 	<div class="repository">
 		<h3>
 			<%= link_to repo.owner.login + "/" + repo.name, repo %>
-			<% for user in repo.users %>
+			<% for user in repo.users.first(10) %>
 				<% if user == repo.owner %>
 						<%= link_to image_tag("/images/icons/user-worker-boss.png", :title => "#{user.login} (#{t(:owner)})", :alt => "#{user.login} (#{t(:owner)})", :border => 0), user %>
 				<% elsif repo.committers.include?(user) %>
