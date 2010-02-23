@@ -9,6 +9,7 @@ en:
   delete: "Delete"
   email: "Email"
   login: "Login"
+  signup: "Signup"
   kind: "Kind"
   path: "Path"
   public_path: "Public Path"

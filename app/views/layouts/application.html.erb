@@ -17,7 +17,8 @@
 			<%= link_to t(:user_edit), {:controller => "users", :action => "edit", :id => current_user.id} %>
 			<%= link_to t(:logout), logout_path %>
 		<% else %>
-			<%= link_to t(:login), login_url %>
+			<%= link_to t(:login), login_url %> or
+			<%= link_to t(:signup), signup_url %>
 		<% end %>
 	</div>
 <%= yield %>

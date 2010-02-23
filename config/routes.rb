@@ -17,6 +17,7 @@ IIIaquarii::Application.routes.draw do |map|
   # login routes
   match "/logout" => 'user_sessions#destroy', :as => "logout"
   match "/login" => 'user_sessions#new', :as => "login"
+  match "/signup" => 'users#new', :as => "signup"
   
   # ssh key export
   match "/ssh_keys/export/:id" => "ssh_keys#export"
