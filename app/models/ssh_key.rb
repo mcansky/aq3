@@ -47,8 +47,8 @@ class SshKey < ActiveRecord::Base
     if self.valid
       #auth_keys_file = Settings.application.root_dir + "/" + Settings.application.repo_user + "/.ssh/authorized_keys"
       auth_keys_file = "/tmp/authorized_keys"
-      #ssh_line = "#{command} #{self.short}"
-      ssh_line = "#{self.short}"
+      ssh_line = "#{command} #{self.short}"
+      #ssh_line = "#{self.short}"
       File.open(auth_keys_file, "w+") { |akf| akf.write ssh_line}
     end
   end
