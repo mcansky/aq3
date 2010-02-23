@@ -1,14 +1,17 @@
 <h1><%= t(:repositories) %></h1>
 <div id="repositories">
-	<ul>
 	<% for repo in @repositories %>
-		<li><%= link_to repo.name, repo %>
-			<% if current_user && (repo.owner == current_user) %>
-				<%= link_to t(:repo_edit), :action => "edit", :id => repo.id %>
-			<% end %>
-		</li>
+		<div class="repository">
+			<h3>
+				<%= link_to repo.name, repo %>
+			</h3>
+			<div class="desc">
+				<span class="img"><%= image_tag("/images/icons/big/drives_11.png", :border => 0) %></span>
+				<p>blah</p>
+				<div class="clear"></div>
+			</div>
+		</div>
 	<% end %>
-	</ul>
 	<% if current_user %>
 		<%= link_to t(:repo_new), new_aq_repository_path %>
 	<% end %>

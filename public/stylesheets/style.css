@@ -71,3 +71,31 @@ input, textarea {
 div.clear {
 	clear: both;
 }
+
+#content div#repositories {
+	width: 40%;
+}
+#content div.repository {
+	margin-left: 15px;
+	border-bottom: 2px solid #999;
+	margin-bottom: 10px;
+}
+#content div.repository span.img {
+	float: left;
+	margin: 10px;
+}
+#content div.repository p {
+	font-size: 12px;
+}
+#content div.repository h3 {
+	font-size: 16px;
+}
+#content div.repository h3 a {
+	text-decoration: none;
+	color: #1d5794;
+	font-family: monospace;
+}
+
+#content div.repository h3 a:hover {
+	text-decoration: underline;
+}

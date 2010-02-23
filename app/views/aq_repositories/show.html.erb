@@ -6,5 +6,6 @@
 
 <%= link_to t(:repositories), aq_repositories_path %> | 
 <% if current_user && @repository.owner == current_user %>
+	<%= link_to t(:repo_edit), :action => "edit", :id => @repository.id %>
 	<%= button_to "delete", @repository, :confirm => "sure ?", :method => :delete %>
 <% end %>
