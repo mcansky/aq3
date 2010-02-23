@@ -1,3 +1,9 @@
 <h1>3 Aquarii</h1>
 
-<%= link_to t(:repositories), :controller => "aq_repositories" %>
+<div id="repositories">
+	<h3><%= t(:repositories) %></h3>
+	<%= render "application/repositories", :repositories => @repositories %>
+</div>
+
+<div id="commits">
+</div>

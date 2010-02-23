@@ -1,7 +1,7 @@
 <% for repo in repositories %>
 	<div class="repository">
 		<h3>
-			<%= link_to repo.name, repo %>
+			<%= link_to repo.owner.login + "/" + repo.name, repo %>
 			<% for user in repo.users %>
 				<% if user == repo.owner %>
 					<% if user == current_user %>

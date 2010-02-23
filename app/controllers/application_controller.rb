@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_session, :current_user, :login_required
 
   def index
+    @repositories = AqRepository.find(:all)
   end
 
 	private
