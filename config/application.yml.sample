@@ -1,0 +1,23 @@
+# app/config/application.yml
+defaults: &defaults
+  application:
+    name: III Aquarii
+    contact: some@email.bx
+    root_dir: /home
+    repo_user: aq_git
+    repo_git_path: git
+    repo_hg_path: hg
+    aq_shell: aquarii-lib/aquarii-sh.rb
+  logs:
+    email: email.log
+
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+
