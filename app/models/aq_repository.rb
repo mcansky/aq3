@@ -7,21 +7,26 @@ class AqRepository < ActiveRecord::Base
   private
   def repo_path
     # root dir is system home folder, need to exist prior to app launch
+    # /home
     root_dir = Pathname(Settings.application.root_dir)
     
     # base dir is aq_git user home folder, need to exist prior to app launch
+    # /home/aq_git
     base_dir = root_dir + Settings.application.repo_user
     
     # git_dir is where the repositories are gonna be stored, creating if needed
+    # /home/aq_git/git
     git_dir = base_dir + Settings.application.repo_git_path
     git_dir.mkdir if base_dir.exist? && !git_dir.exist?
     
     # repo dir is the repository own path
-    repo_dir = git_dir + (self.name + ".git")
+    # /home/aq_git/git/username
+    repo_dir = git_dir + current_user.name
     repo_dir.mkdir if !repo_dir.exist?
     
     # the dot git dir is the .git located in the repository
-    dot_git = repo_dir
+    # /home/aq_git/git/username/reposit.git
+    dot_git = repo_dir + (self.name + ".git")
     dot_git.mkdir if !dot_git.exist?
     
     self.path = repo_dir.to_s
