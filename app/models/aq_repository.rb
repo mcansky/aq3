@@ -4,7 +4,12 @@ class AqRepository < ActiveRecord::Base
   before_save :repo_path
   after_save :repo_init
   has_many :rights
-  has_many :users, :throught => :rights
+  has_many :users, :through => :rights
+
+  def owner
+    a_right = rights.find(:all, :conditions => ["role = ?",'o']).first
+    owner = a_right.user
+  end
 
   private
   def current_user
@@ -63,7 +68,9 @@ class AqRepository < ActiveRecord::Base
       File.open("#{dot_git}/#{l_file}", "a") do |file_out|
         template_dir = "templates"
         template_dir += "-bare" if bare
-        IO.foreach("#{Rails.root}/config/#{template_dir}/#{l_file}") { |w| file_out.puts(w) }
+        if !File.exist?(file_out)
+          IO.foreach("#{Rails.root}/config/#{template_dir}/#{l_file}") { |w| file_out.puts(w) }
+        end
       end
     end
 
@@ -76,7 +83,7 @@ class AqRepository < ActiveRecord::Base
   # if subdirs need to be created in those then the key points to another hash
   def l_mkdirs(root, dir_hash)
     dir_hash.each_key do |s_dir|
-      Dir.mkdir(root + s_dir)
+      Dir.mkdir(root + s_dir) if !(root + s_dir).exist?
       l_mkdirs(root + s_dir, dir_hash[s_dir]) if dir_hash[s_dir]
     end
   end

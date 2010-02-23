@@ -15,7 +15,11 @@ class AqRepositoriesController < ApplicationController
 
   def create
     @repository = AqRepository.new(params[:aq_repository])
-    a_right = Right.new(current_user, self, 'w', 'o')
+    a_right = Right.new
+    a_right.user = current_user
+    a_right.aq_repository = @repository
+    a_right.right = 'w'
+    a_right.role = 'o'
     @repository.rights << a_right
     if @repository.save
       flash[:notice] = t(:repo_create_ok)
@@ -29,7 +33,11 @@ class AqRepositoriesController < ApplicationController
   def edit
     @repository = AqRepository.find(params[:id])
     if @repository.rights.size == 0
-      a_right = Right.new(current_user, self, 'w', 'o')
+      a_right = Right.new
+      a_right.user = current_user
+      a_right.aq_repository = @repository
+      a_right.right = 'w'
+      a_right.role = 'o'
       @repository.rights << a_right
       a_right.save
     end
