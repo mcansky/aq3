@@ -26,7 +26,7 @@ This gonna be big. First push to GitHub repository is really really a first draf
 h2. 0.0.1
 
 As of the first tag (0.0.1) it's almost usable. You need to check the aq_lib too.
-It only manage ssh keys and repositories though. But just with that you can say good bye to gitosis. (well first we need to wait for some comments and tests).
+It only manage ssh keys and repositories though. But just with that you can say good bye to gitosis. (well first we need to wait for some comments and tests). Yet you still need a git server to provide public read only access to your repositories.
 
 h2. Long run
 
@@ -43,11 +43,9 @@ The long run is a bit more complex : the aim is to provide something similar to 
 
 h2. Install
 
-Right now it's not really usable, yet it works. You need to checkout the aq_lib first and put it somewhere safe.
-Clone this code, and edit the config/application.yml file and database.yml file.
-Clone the aq_lib too and check config/application file too, tweak it accordingly to the previous one.
-aq_lib contains a kindda shell (aquarii-sh.rb), you need to have it executable.
+Right now it's not really usable, yet it works. 
+Clone this code, and edit the config/application.yml file and database.yml file. You also need to tweak vendor/aq_sh/config/application.yml accordingly.
 
 h2. Contact
 
-On the GitHub page, and on freenode.
+On the GitHub page.
