@@ -143,3 +143,12 @@ div.clear {
 #content div#repository {
 	width: 40%;
 }
+
+div.desc {
+	margin-bottom: 20px;
+}
+
+#content p.desc {
+	margin-top: 10px;
+	margin-bottom: 5px;
+}

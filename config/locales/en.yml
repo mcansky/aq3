@@ -15,6 +15,7 @@ en:
   kind: "Kind"
   path: "Path"
   owner: "Owner"
+  desc: "Description"
   committer: "Committer"
   pending: "Pending"
   accept: "Accept"
