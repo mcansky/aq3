@@ -16,6 +16,7 @@ en:
   path: "Path"
   owner: "Owner"
   desc: "Description"
+  members: "Members"
   committer: "Committer"
   pending: "Pending"
   accept: "Accept"

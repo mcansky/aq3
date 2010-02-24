@@ -152,3 +152,7 @@ div.desc {
 	margin-top: 10px;
 	margin-bottom: 5px;
 }
+
+#content p.members {
+	margin-top: 3px;
+}
