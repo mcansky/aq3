@@ -81,16 +81,19 @@ module AqLib
       begin
         key = SshKey.find_by_login(user)
       rescue
-        puts "Couldn't find key #{user}"
+        self.aqlog("Couldn't find key #{user}")
       end
-      exit(1) if !key
-      self.aq_user = User.find(key.user_id)
-      self.user_login = self.aq_user.login
-      self.user_email = self.aq_user.email
-      self.user_id = key.user_id
-      self.aqlog("Found #{user} : #{self.aq_user.email}")
-      self.aqlog("Want to :#{command}:")
-      # can be either r (read) or w (write)
+      if !key
+        exit(1)
+      else
+        self.aq_user = User.find(key.user_id)
+        self.user_login = self.aq_user.login
+        self.user_email = self.aq_user.email
+        self.user_id = key.user_id
+        self.aqlog("Found #{user} : #{self.aq_user.email}")
+        self.aqlog("Want to :#{command}:")
+        # can be either r (read) or w (write)
+      end
     end
 
     def repo(command)
