@@ -5,6 +5,7 @@ class AqRepository < ActiveRecord::Base
   after_save :repo_init
   has_many :rights
   has_many :users, :through => :rights
+  has_many :beans
 
   def owner
     a_right = self.rights.find(:all, :conditions => ["role = ?",'o']).first
