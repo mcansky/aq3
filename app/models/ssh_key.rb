@@ -36,7 +36,7 @@ class SshKey < ActiveRecord::Base
   # prepare the command for the export to the filesystem
   def command
     if self.valid
-      command = ["command=\"#{Settings.application.aq_shell} #{self.login}\"",
+      command = ["command=\"#{Rails.root}/#{Settings.application.aq_shell} #{self.login}\"",
                   "no-port-forwarding", "no-X11-forwarding", "no-agent-forwarding"]
       command.join(",")
     end
