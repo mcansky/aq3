@@ -156,3 +156,7 @@ div.desc {
 #content p.members {
 	margin-top: 3px;
 }
+
+#content div.beans {
+	margin-bottom: 20px;
+}

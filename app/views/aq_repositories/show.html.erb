@@ -16,6 +16,16 @@
 		<div class="clear"></div>
 	</div>
 
+	<% if current_user && !@repository.users.include?(current_user) %>
+	<div class="beans">
+		<h3><%= t(:beans) %></h3>
+		<p><%= @repository.beans.size %> <%= t(:beans_dropped) %> !</p>
+		<h5>
+			<%= t(:show_some_love) %> <%= link_to image_tag("/images/icons/bean.png", :title => t(:bean_drop), :alt => t(:bean_drop), :border => 0), {:controller => "beans", :action => "new", :repository_id => @repository.id} %>
+		</h5>
+	</div>
+	<% end %>
+
 	<div class="people">
 		<% for right in @repository.rights %>
 		<div class="committer">
