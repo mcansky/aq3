@@ -2,6 +2,8 @@
 	<div class="repository">
 		<h3>
 			<%= link_to repo.owner.login + "/" + repo.name, repo %>
+			<%= image_tag("/images/icons/beans.png", :title => t(:beans), :alt => t(:beans), :border => 0) %>
+			: <%= repo.beans.count %>
 		</h3>
 		<div class="desc">
 			<span class="img"><%= image_tag("/images/icons/big/drives_11.png", :border => 0) %></span>
