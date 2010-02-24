@@ -16,17 +16,19 @@
 		<div class="clear"></div>
 	</div>
 
-	<% if current_user && !@repository.users.include?(current_user) %>
+	<% if current_user %>
 	<div class="beans">
 		<h3><%= image_tag("/images/icons/beans.png", :title => t(:beans), :alt => t(:beans), :border => 0) %> <%= t(:beans) %> : <%= @repository.beans.size %> </h3>
-		<% if current_user.beaned_repositories.include?(@repository) %>
-			<p><%= t(:bean_already_dropped) %></p>
-		<% elsif current_user.max_beans? %>
-			<p><%= t(:no_more_beans_month) %></p>
-		<% else %>
-		<h5>
-			<%= t(:show_some_love) %> <%= link_to image_tag("/images/icons/bean.png", :title => t(:bean_drop), :alt => t(:bean_drop), :border => 0), {:controller => "beans", :action => "new", :repository_id => @repository.id} %>
-		</h5>
+		<% if !current_user.aq_repositories.include?(@repository) %>
+			<% if current_user.beaned_repositories.include?(@repository) %>
+				<p><%= t(:bean_already_dropped) %></p>
+			<% elsif current_user.max_beans? %>
+				<p><%= t(:no_more_beans_month) %></p>
+			<% else %>
+			<h5>
+				<%= t(:show_some_love) %> <%= link_to image_tag("/images/icons/bean.png", :title => t(:bean_drop), :alt => t(:bean_drop), :border => 0), {:controller => "beans", :action => "new", :repository_id => @repository.id} %>
+			</h5>
+			<% end %>
 		<% end %>
 	</div>
 	<% end %>
