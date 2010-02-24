@@ -68,4 +68,7 @@ en:
   beans: "Coffee beans"
   show_some_love: "Show some love : drop a coffee bean !"
   dropped: "dropped"
-  beans_dropped: "beans dropped"
+  beans_dropped: "coffee beans dropped"
+  bean_drop: "Drop a coffee bean"
+  bean_already_dropped: "You already dropped a bean for this project this month !"
+  no_more_beans_month: "You already dropped all your beans this month !"
