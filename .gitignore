@@ -12,3 +12,4 @@ vendor/*/doc/files/*.html
 vendor/*/doc/classes
 vendor/*/doc/*.rid
 vendor/*/doc/*.css
+vendor/*/bundled_gems
