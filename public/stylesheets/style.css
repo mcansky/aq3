@@ -65,7 +65,17 @@ input, textarea {
 	padding: 10px 10px 5px 10px;
 }
 #root img {
-	width: 32px;
+}
+
+#root a {
+	font-family: monospace;
+	text-decoration: none;
+	font-weight: bold;
+	color: #999;
+}
+
+#root a:hover {
+	color: #1d5794;
 }
 
 div.clear {
