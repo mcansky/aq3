@@ -1,0 +1,11 @@
+default: &defaults
+  database:
+    database: ../IIIaquarii/db/development.sqlite3
+    adapter: sqlite3
+    username:
+    password:
+  log: log/app.log
+  user_home: /Users
+  user_name: aq_git
+  repo_git_path: git
+  gitshell: /usr/local/bin/git-shell

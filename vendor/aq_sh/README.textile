@@ -1,0 +1,8 @@
+h1. Aquarii Lib
+
+Aquarii lib is a set of classes to allow git repositories access management with 3 Aquarii app.
+See the github page of the project for more information.
+
+NOTE : alpha status.
+
+Before starting this project we dissected Gitauth, to extract its very essence. We then decided to start from scratch on our own, tossing everything and starting from a clean slate. So it probably looks similar to GithAuth, or Gitosis, since these projects are pretty much the state-of-the-art.

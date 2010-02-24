@@ -6,3 +6,9 @@ tmp/**/*
 vendor/bundled_gems
 vendor/cache
 config/application.yml
+doc/*.html
+vendor/*/doc/*.html
+vendor/*/doc/files/*.html
+vendor/*/doc/classes
+vendor/*/doc/*.rid
+vendor/*/doc/*.css
