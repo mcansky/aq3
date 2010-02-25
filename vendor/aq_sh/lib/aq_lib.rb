@@ -58,10 +58,10 @@ module AqLib
 
     def grit_update
       base_dir = File.expand_path("../../../../", __FILE__ )
-      if system("#{base_dir}/rake git:pull RNAME=#{self.name}")
+      Dir.chdir(base_dir)
+      if system("rake git:pull RNAME=#{self.name}")
         self.aqlog("grit update #{self.name} : OK")
       else
-        self.aqlog(%x["#{base_dir}/rake git:pull RNAME=#{self.name}"])
         self.aqlog("grit update #{self.name} : KO")
       end
     end
