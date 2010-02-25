@@ -5,7 +5,7 @@
 		<%= t(:pushed) %>
 		<%= commit.sha %>
 		<%= t(:to) %>
-		<%= commit.branch %>
+		<%= commit.branch.name %>
 	</h4>
 	<p><%= commit.log.lines.first %></p>
 </div>

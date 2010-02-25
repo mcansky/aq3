@@ -19,6 +19,7 @@ class AqBranch < ActiveRecord::Base
             :created_at => c.committed_date,
             :committed_time => c.committed_date)
           self.commits << a_commit
+          self.save
         end
       end
       diff_c = new_commits_count - count
