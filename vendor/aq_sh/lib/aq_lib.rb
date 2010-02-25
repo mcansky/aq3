@@ -65,6 +65,14 @@ module AqLib
   	  end
     end
 
+    def is_write?
+      return write
+    end
+
+    def is_read?
+      return read
+    end
+
     def initialize(user,command)
       # r or w (read or write)
       @cmd_type = ""
@@ -81,6 +89,8 @@ module AqLib
       @user_login = ""
       @user_email = ""
       @user_id = nil
+      @write = false
+      @read = false
 
       begin
         key = SshKey.find_by_login(user)
@@ -123,11 +133,11 @@ module AqLib
 
       # check the command for type
       if reads.include?(self.cmd_cmd)
-        self.cmd_type = "r"
+        self.read = true
         self.aqlog("Read command")
       end
       if writes.include?(self.cmd_cmd)
-        self.cmd_type = "w"
+        self.write = true
         self.aqlog("Write command")
       end
       return true
@@ -182,17 +192,17 @@ module AqLib
           a_right = Right.find(:all, :conditions => ["user_id = ? AND aq_repository_id = ?", command.user_id, a_repo.id]).first
           if a_right
             command.aqlog("#{command.user_login} has #{a_right.right} right")
-            if (command.cmd_type == "r" || (a_right && a_right.right == "w")) && a_repo.public?
+            if (command.is_read? || (a_right && a_right.right == "w")) && a_repo.public?
               command.run
               # trigger the repo update if it's a write command
-              if command.cmd_type == "w"
+              if command.is_write?
                 a_repo.grit_update
                 command.aqlog("#{a_repo.name} grit updated")
               end
             else
               command.aqlog("insufficiant rights for #{command.user_login}")
             end
-          elsif command.cmd_type == "r"
+          elsif command.is_read?
             command.run
           else
             command.aqlog("insufficiant rights for #{command.user_login} (#{command.user_id})")
