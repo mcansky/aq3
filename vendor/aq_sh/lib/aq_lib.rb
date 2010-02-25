@@ -19,8 +19,12 @@ module AqLib
     source File.expand_path("../../config/application.yml", __FILE__ )
   end
 
+  File.open("/tmp/tmp.log", "a") do |log|
+	  log.puts "loading settings : #{File.expand_path("../../config/application.yml", __FILE__ )}"
+  end
+
   ActiveRecord::Base.establish_connection(
-    :adapter => Settings.default.database.adapter,
+    :adapter => "sqlite3",
     :database => File.expand_path("../../development.sqlite3", __FILE__ ))
 
   class User < ActiveRecord::Base
@@ -56,7 +60,7 @@ module AqLib
      :user_email, :user_id
 
     def aqlog(message)
-  	  File.open(Settings.default.user_home + "/" + Settings.default.user_name + "/" + Settings.default.log, "a") do |log|
+  	  File.open(Settings.defaults.user_home + "/" + Settings.defaults.user_name + "/" + Settings.defaults.log, "a") do |log|
   		  log.puts Time.now.strftime("%d/%m/%y %H:%M ") + message
   	  end
     end
@@ -90,7 +94,7 @@ module AqLib
         self.user_login = self.aq_user.login
         self.user_email = self.aq_user.email
         self.user_id = key.user_id
-        self.aqlog("Found #{user} : #{self.aq_user.email}")
+        self.aqlog("Found #{user} : #{self.aq_user.email} #{self.user_id}")
         self.aqlog("Want to :#{command}:")
         # can be either r (read) or w (write)
       end
@@ -133,9 +137,9 @@ module AqLib
     def repo_path
       if !self.cmd_opt.empty?
         self.fake_path = self.cmd_opt.gsub("'","").split("/")[-1]
-        self.real_path = Settings.default.user_home + "/" +
-                Settings.default.user_name + "/" +
-                Settings.default.repo_git_path + "/" +
+        self.real_path = Settings.defaults.user_home + "/" +
+                Settings.defaults.user_name + "/" +
+                Settings.defaults.repo_git_path + "/" +
                 self.username_from_cmd + "/" +
                 self.fake_path
         return self.real_path
@@ -155,7 +159,7 @@ module AqLib
     # the exec of the command
     def run
       self.aqlog("Running command : git-shell #{@cmd_cmd} '#{@real_path}'")
-      exec(Settings.default.gitshell, "-c", "#{@cmd_cmd} '#{@real_path}'")
+      exec(Settings.defaults.gitshell, "-c", "#{@cmd_cmd} '#{@real_path}'")
     end
 
     def self.kickstart!(user, sh_command)
@@ -175,11 +179,18 @@ module AqLib
             command.aqlog("Couldn't find the repository #{repo_name}")
             exit(1)
           end
-          a_right = Right.find(:all, :conditions => ["user_id = ? AND aq_repository_id = ?", command.user_id, a_repo.object_id]).first
-          if (command.cmd_type == "r" || (a_right && a_right.right == "w")) && a_repo.public?
+          a_right = Right.find(:all, :conditions => ["user_id = ? AND aq_repository_id = ?", command.user_id, a_repo.id]).first
+          if a_right
+            command.aqlog("#{command.user_login} has #{a_right.right} right")
+            if (command.cmd_type == "r" || (a_right && a_right.right == "w")) && a_repo.public?
+              command.run
+            else
+              command.aqlog("insufficiant rights for #{command.user_login}")
+            end
+          elsif command.cmd_type == "r"
             command.run
           else
-            command.aqlog("insufficiant rights for #{command.user_login}")
+            command.aqlog("insufficiant rights for #{command.user_login} (#{command.user_id})")
           end
         end
       else

@@ -1,6 +1,6 @@
-default: &defaults
+defaults: &defaults
   database:
-    database: ../IIIaquarii/db/development.sqlite3
+    database: development.sqlite3
     adapter: sqlite3
     username:
     password:
