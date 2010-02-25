@@ -19,10 +19,6 @@ module AqLib
     source File.expand_path("../../config/application.yml", __FILE__ )
   end
 
-  File.open("/tmp/tmp.log", "a") do |log|
-	  log.puts "loading settings : #{File.expand_path("../../config/application.yml", __FILE__ )}"
-  end
-
   ActiveRecord::Base.establish_connection(
     :adapter => "sqlite3",
     :database => File.expand_path("../../development.sqlite3", __FILE__ ))
@@ -55,7 +51,8 @@ module AqLib
     end
 
     def grit_update
-      system("#{Rails.root}/rake git:pull RNAME=#{self.name}")
+      base_dir = File.expand_path("../../../../", __FILE__ )
+      system("#{base_dir}/rake git:pull RNAME=#{self.name}")
     end
   end
 
