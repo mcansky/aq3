@@ -57,7 +57,7 @@ module AqLib
 
   class Command
     attr_accessor :cmd_type, :cmd_cmd, :cmd_opt, :fake_path, :real_path, :aq_user, :user_login,
-     :user_email, :user_id
+     :user_email, :user_id, :read, :write
 
     def aqlog(message)
   	  File.open(Settings.defaults.user_home + "/" + Settings.defaults.user_name + "/" + Settings.defaults.log, "a") do |log|
