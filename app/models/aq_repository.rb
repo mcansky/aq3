@@ -101,10 +101,12 @@ class AqRepository < ActiveRecord::Base
     # creating base files
     bare = true
     files.each do |l_file|
-      File.open("#{dot_git}/#{l_file}", "a") do |file_out|
-        template_dir = "templates"
-        template_dir += "-bare" if bare
-        IO.foreach("#{Rails.root}/config/#{template_dir}/#{l_file}") { |w| file_out.puts(w) }
+      if !File.exist?("#{dot_git}/#{l_file}")
+        File.open("#{dot_git}/#{l_file}", "a") do |file_out|
+          template_dir = "templates"
+          template_dir += "-bare" if bare
+          IO.foreach("#{Rails.root}/config/#{template_dir}/#{l_file}") { |w| file_out.puts(w) }
+        end
       end
     end
 
