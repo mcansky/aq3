@@ -6,7 +6,7 @@ class CreateAqCommits < ActiveRecord::Migration
       t.integer  "aq_branch_id"
       t.integer  "author_id"
       t.string   "author_name"
-      t.datetime "commited_time"
+      t.datetime "committed_time"
       t.timestamps
     end
   end
