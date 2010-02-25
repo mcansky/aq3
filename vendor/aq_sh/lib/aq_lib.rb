@@ -61,6 +61,7 @@ module AqLib
       if system("#{base_dir}/rake git:pull RNAME=#{self.name}")
         self.aqlog("grit update #{self.name} : OK")
       else
+        self.aqlog(%x["#{base_dir}/rake git:pull RNAME=#{self.name}"])
         self.aqlog("grit update #{self.name} : KO")
       end
     end
