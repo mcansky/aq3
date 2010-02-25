@@ -11,7 +11,11 @@ class AqRepository < ActiveRecord::Base
 
   def owner
     a_right = self.rights.find(:all, :conditions => ["role = ?",'o']).first
-    owner = a_right.user
+    if a_right
+      owner = a_right.user
+    else
+      owner = nil
+    end
   end
 
   def committers
@@ -66,7 +70,11 @@ class AqRepository < ActiveRecord::Base
 
     # repo dir is the repository own path
     # /home/aq_git/git/username
-    repo_dir = git_dir + self.owner.login
+    if self.owner
+      repo_dir = git_dir + self.owner.login
+    elsif current_user
+      repo_dir = git_dir + current_user.login
+    end
     repo_dir.mkdir if !repo_dir.exist?
 
     # the dot git dir is the .git located in the repository
