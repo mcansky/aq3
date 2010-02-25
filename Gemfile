@@ -15,6 +15,7 @@ gem "authlogic", :git => "git://github.com/binarylogic/authlogic.git"
 gem "settingslogic"
 gem "RedCloth"
 gem "nifty-generators"
+gem "grit"
 
 ## Bundle the gems you use:
 # gem "bj"
