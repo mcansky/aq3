@@ -9,6 +9,7 @@ namespace :git do
       require "rubygems"
       require "bundler"
       Bundler.setup
+      require "grit"
     end
     
     if (ENV['RNAME'])
