@@ -7,10 +7,10 @@ class AqBranch < ActiveRecord::Base
   # to be treated
   def grit_update
     grit_repo = Repo.new(self.aq_repository.repo_path)
-    new_commits_count = grit_rep.commit_count(self.name) - self.commits.count
+    new_commits_count = grit_repo.commit_count(self.name) - self.commits.count
     count = 0
     while (count < new_commits_count)
-      commits = foo_rep.commits(self.name, 10, count)
+      commits = grit_repo.commits(self.name, 10, count)
       commits.each do |c|
         if not AqCommit.find_by_sha(c.id)
           a_commit = AqCommit.new(:sha => c.id,
