@@ -106,5 +106,22 @@ class AqRepository < ActiveRecord::Base
       l_mkdirs(root + s_dir, dir_hash[s_dir]) if dir_hash[s_dir]
     end
   end
+  
+  # update branches stored in db
+  def update
+    grit_repo = Repo.new(self.repo_path)
+    grit_repo.branches.each do |b|
+      self.branches << AqBranch.new(:name => b.name) if not self.branches.find_by_name(b.name)
+    end
+    self.branches.each { |b| b.update }
+  end
+
+  # purge branches stored in db
+  def purge
+    self.branches.each do |b|
+      b.purge
+      b.destroy
+    end
+  end
 
 end
