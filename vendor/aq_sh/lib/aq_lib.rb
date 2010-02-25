@@ -53,6 +53,10 @@ module AqLib
     def public?
       return true
     end
+
+    def grit_update
+      system("#{Rails.root}/rake git:pull RNAME=#{self.name}")
+    end
   end
 
   class Command
@@ -171,11 +175,6 @@ module AqLib
       self.aqlog("Running command : git-shell #{@cmd_cmd} '#{@real_path}'")
       if system(Settings.defaults.gitshell, "-c", "#{@cmd_cmd} '#{@real_path}'")
         self.aqlog("\t\tOK")
-        # trigger the repo update if it's a write command
-        if command.is_write?
-          a_repo.grit_update
-          command.aqlog("#{a_repo.name} grit updated")
-        end
       else
         self.aqlog("\t\tKO")
       end
@@ -203,6 +202,11 @@ module AqLib
             command.aqlog("#{command.user_login} has #{a_right.right} right")
             if (command.is_read? || (a_right && a_right.right == "w")) && a_repo.public?
               command.run
+              # trigger the repo update if it's a write command
+              if command.is_write?
+                a_repo.grit_update
+                command.aqlog("#{a_repo.name} grit updated")
+              end
             else
               command.aqlog("insufficiant rights for #{command.user_login}")
             end
