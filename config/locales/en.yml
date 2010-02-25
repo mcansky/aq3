@@ -72,3 +72,5 @@ en:
   bean_drop: "Drop a coffee bean"
   bean_already_dropped: "You already dropped a bean for this project this month !"
   no_more_beans_month: "You already dropped all your beans this month !"
+  commits: "Commits"
+  branches: "Branches"

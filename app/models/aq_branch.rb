@@ -1,6 +1,6 @@
 class AqBranch < ActiveRecord::Base
   belongs_to :aq_repository
-  has_many :commits, :class_name => :AqCommit, :order => "committed_time"
+  has_many :commits, :class_name => "AqCommit", :order => "committed_time"
 
   # update AqBranch using GritRepoBranch commits
   # starts by comparing commit counts to determine how many commits need
@@ -16,7 +16,7 @@ class AqBranch < ActiveRecord::Base
           a_commit = AqCommit.new(:sha => c.id,
             :log => c.message,
             :author_name => c.author.name,
-            :created_at => c.committed_date
+            :created_at => c.committed_date,
             :committed_time => c.committed_date)
           self.commits << a_commit
         end

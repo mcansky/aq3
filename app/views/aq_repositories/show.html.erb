@@ -12,6 +12,8 @@
 		<p><strong><%= t(:kind) %> : </strong><%= @repository.kind %></p>
 		<p><strong><%= t(:public_path) %> : </strong><%= @repository.public_path %></p>
 		<p><strong><%= t(:owner) %> : </strong><%= link_to @repository.owner.login, @repository.owner %></p>
+		<p><strong><%= t(:branches) %> : <%= @repository.branches.count %></strong></p>
+		<p><strong><%= t(:commits) %> : <%= @repository.commits.count %></strong></p>
 		<p class="desc"><%= @repository.desc %></p>
 		<div class="clear"></div>
 	</div>
