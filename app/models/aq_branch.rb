@@ -5,7 +5,7 @@ class AqBranch < ActiveRecord::Base
   # update AqBranch using GritRepoBranch commits
   # starts by comparing commit counts to determine how many commits need
   # to be treated
-  def update
+  def grit_update
     grit_repo = Repo.new(self.aq_repository.repo_path)
     new_commits_count = grit_rep.commit_count(self.name) - self.commits.count
     count = 0

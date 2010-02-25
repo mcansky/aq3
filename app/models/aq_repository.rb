@@ -30,6 +30,23 @@ class AqRepository < ActiveRecord::Base
               split_path[-2] + "/" + split_path[-1]
   end
 
+  # update branches stored in db
+  def grit_update
+    grit_repo = Repo.new(self.repo_path)
+    grit_repo.branches.each do |b|
+      self.branches << AqBranch.new(:name => b.name) if not self.branches.find_by_name(b.name)
+    end
+    self.branches.each { |b| b.grit_update }
+  end
+
+  # purge branches stored in db
+  def purge
+    self.branches.each do |b|
+      b.purge
+      b.destroy
+    end
+  end
+
   private
   def current_user
   	@current_user_session = UserSession.find
@@ -87,9 +104,7 @@ class AqRepository < ActiveRecord::Base
       File.open("#{dot_git}/#{l_file}", "a") do |file_out|
         template_dir = "templates"
         template_dir += "-bare" if bare
-        if !File.exist?(file_out)
-          IO.foreach("#{Rails.root}/config/#{template_dir}/#{l_file}") { |w| file_out.puts(w) }
-        end
+        IO.foreach("#{Rails.root}/config/#{template_dir}/#{l_file}") { |w| file_out.puts(w) }
       end
     end
 
@@ -104,23 +119,6 @@ class AqRepository < ActiveRecord::Base
     dir_hash.each_key do |s_dir|
       Dir.mkdir(root + s_dir) if !(root + s_dir).exist?
       l_mkdirs(root + s_dir, dir_hash[s_dir]) if dir_hash[s_dir]
-    end
-  end
-  
-  # update branches stored in db
-  def update
-    grit_repo = Repo.new(self.repo_path)
-    grit_repo.branches.each do |b|
-      self.branches << AqBranch.new(:name => b.name) if not self.branches.find_by_name(b.name)
-    end
-    self.branches.each { |b| b.update }
-  end
-
-  # purge branches stored in db
-  def purge
-    self.branches.each do |b|
-      b.purge
-      b.destroy
     end
   end
 
