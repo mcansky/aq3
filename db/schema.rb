@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20100225111340) do
     t.integer  "aq_branch_id"
     t.integer  "author_id"
     t.string   "author_name"
-    t.datetime "commited_time"
+    t.datetime "committed_time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
