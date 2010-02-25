@@ -6,7 +6,7 @@ namespace :git do
   task(:pull => :environment) do
     repositories = AqRepository.find(:all)
     repositories.each do |repo|
-      repo.update
+      repo.grit_update
       repo.save
     end
   end
