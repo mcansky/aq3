@@ -6,6 +6,8 @@ class AqRepository < ActiveRecord::Base
   has_many :rights
   has_many :users, :through => :rights
   has_many :beans
+  has_many :branches, :class_name => :AqBranch
+  has_many :commits, :through => :branches
 
   def owner
     a_right = self.rights.find(:all, :conditions => ["role = ?",'o']).first
