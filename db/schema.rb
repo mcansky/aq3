@@ -9,7 +9,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100224001917) do
+ActiveRecord::Schema.define(:version => 20100225111340) do
+
+  create_table "aq_branches", :force => true do |t|
+    t.string   "name"
+    t.integer  "aq_repository_id"
+    t.integer  "owner_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "aq_commits", :force => true do |t|
+    t.string   "sha"
+    t.text     "log"
+    t.integer  "aq_branch_id"
+    t.integer  "author_id"
+    t.string   "author_name"
+    t.datetime "commited_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "aq_repositories", :force => true do |t|
     t.string   "name"
