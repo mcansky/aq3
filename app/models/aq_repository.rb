@@ -47,13 +47,6 @@ class AqRepository < ActiveRecord::Base
     end
   end
 
-  private
-  def current_user
-  	@current_user_session = UserSession.find
-  	@current_user = @current_user_session && @current_user_session.record
-  	return @current_user
-  end
-
   # generating the repo path
   #
   # check the config/application.yml file for setup
@@ -73,7 +66,7 @@ class AqRepository < ActiveRecord::Base
 
     # repo dir is the repository own path
     # /home/aq_git/git/username
-    repo_dir = git_dir + current_user.login
+    repo_dir = git_dir + self.owner.login
     repo_dir.mkdir if !repo_dir.exist?
 
     # the dot git dir is the .git located in the repository
@@ -82,6 +75,13 @@ class AqRepository < ActiveRecord::Base
     dot_git.mkdir if !dot_git.exist?
 
     self.path = dot_git.to_s
+  end
+
+  private
+  def current_user
+  	@current_user_session = UserSession.find
+  	@current_user = @current_user_session && @current_user_session.record
+  	return @current_user
   end
 
   # initilizing the repository
