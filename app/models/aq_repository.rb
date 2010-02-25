@@ -25,7 +25,7 @@ class AqRepository < ActiveRecord::Base
 
   def public_path
     split_path = self.path.split("/")
-    ppath = "git://" + Settings.application.repo_user + "@" +
+    ppath = Settings.application.repo_user + "@" +
               Settings.application.hostname + ":" +
               split_path[-2] + "/" + split_path[-1]
   end
