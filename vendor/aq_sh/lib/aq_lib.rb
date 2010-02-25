@@ -184,6 +184,10 @@ module AqLib
             command.aqlog("#{command.user_login} has #{a_right.right} right")
             if (command.cmd_type == "r" || (a_right && a_right.right == "w")) && a_repo.public?
               command.run
+              # trigger the repo update if it's a write command
+              if command.cmd_type == "w"
+                a_repo.grit_update
+              end
             else
               command.aqlog("insufficiant rights for #{command.user_login}")
             end
