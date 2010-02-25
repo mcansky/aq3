@@ -21,6 +21,7 @@ class AqRepositoriesController < ApplicationController
     a_right.right = 'w'
     a_right.role = 'o'
     @repository.rights << a_right
+    a_right.save
     if @repository.save
       flash[:notice] = t(:repo_create_ok)
       redirect_to @repository
