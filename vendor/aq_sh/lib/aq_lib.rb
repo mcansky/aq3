@@ -169,7 +169,11 @@ module AqLib
     # the exec of the command
     def run
       self.aqlog("Running command : git-shell #{@cmd_cmd} '#{@real_path}'")
-      exec(Settings.defaults.gitshell, "-c", "#{@cmd_cmd} '#{@real_path}'")
+      if system(Settings.defaults.gitshell, "-c", "#{@cmd_cmd} '#{@real_path}'")
+        self.aqlog("\t\tOK")
+      else
+        self.aqlog("\t\tKO")
+      end
     end
 
     def self.kickstart!(user, sh_command)
