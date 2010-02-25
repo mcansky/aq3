@@ -73,4 +73,8 @@ en:
   bean_already_dropped: "You already dropped a bean for this project this month !"
   no_more_beans_month: "You already dropped all your beans this month !"
   commits: "Commits"
+  commit: "Commit"
+  committed: "committed"
   branches: "Branches"
+  to: "to"
+  pushed: "pushed"

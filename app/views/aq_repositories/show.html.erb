@@ -58,4 +58,11 @@
 		<% end %>
 	</div>
 
+	<div class="commits">
+		<h3><%= t(:commits) %></h3>
+		<% for commit in @repository.commits.first(10) %>
+			<%= render "commit", :commit => commit %>
+		<% end %>
+	</div>
+
 </div>
