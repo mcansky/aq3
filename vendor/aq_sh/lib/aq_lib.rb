@@ -187,6 +187,7 @@ module AqLib
               # trigger the repo update if it's a write command
               if command.cmd_type == "w"
                 a_repo.grit_update
+                command.aqlog("#{a_repo.name} grit updated")
               end
             else
               command.aqlog("insufficiant rights for #{command.user_login}")
