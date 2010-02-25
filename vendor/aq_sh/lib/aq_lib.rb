@@ -50,12 +50,18 @@ module AqLib
       return true
     end
 
+    def aqlog(message)
+  	  File.open(Settings.defaults.user_home + "/" + Settings.defaults.user_name + "/" + Settings.defaults.log, "a") do |log|
+  		  log.puts Time.now.strftime("%d/%m/%y %H:%M ") + message
+  	  end
+    end
+
     def grit_update
       base_dir = File.expand_path("../../../../", __FILE__ )
       if system("#{base_dir}/rake git:pull RNAME=#{self.name}")
         self.aqlog("grit update #{self.name} : OK")
       else
-          self.aqlog("grit update #{self.name} : KO")
+        self.aqlog("grit update #{self.name} : KO")
       end
     end
   end
