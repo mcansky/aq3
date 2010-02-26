@@ -13,3 +13,4 @@ vendor/*/doc/classes
 vendor/*/doc/*.rid
 vendor/*/doc/*.css
 vendor/*/bundled_gems
+vendor/aq_sh/development.sqlite3
