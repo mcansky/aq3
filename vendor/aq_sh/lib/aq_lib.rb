@@ -79,7 +79,7 @@ module AqLib
 
   class Command
     attr_accessor :cmd_type, :cmd_cmd, :cmd_opt, :fake_path, :real_path, :aq_user, :user_login,
-     :user_email, :user_id, :read, :write, :kind
+     :user_email, :user_id, :read, :write, :kind, :fresh_cmd
 
     def aqlog(message)
   	  File.open(Settings.defaults.user_home + "/" + Settings.defaults.user_name + "/" + Settings.defaults.log, "a") do |log|
@@ -124,6 +124,7 @@ module AqLib
       @write = false
       @read = false
       @kind = nil
+      @fresh_cmd = ""
 
       begin
         key = SshKey.find_by_login(user)
@@ -139,6 +140,7 @@ module AqLib
         self.user_id = key.user_id
         self.aqlog("Found #{user} : #{self.aq_user.email} #{self.user_id}")
         self.aqlog("Want to :#{command}:")
+        self.fresh_cmd = command
         # can be either r (read) or w (write)
       end
     end
@@ -175,6 +177,7 @@ module AqLib
         end
         return true
       elsif !(command =~ /\n/) && (command =~ /^hg/)
+        # something fails in here
         self.kind = "hg"
         self.aqlog("Hg command")
         reads = ["-R"]
@@ -185,8 +188,10 @@ module AqLib
             :fake_path => sh_command[2],
             :cmd2 => sh_command[3],
             :cmd3 => sh_command[4] }
+        # probably those lines
         self.cmd_cmd = "hg #{hg_command[:cmd]}"
         self.cmd_opt = "#{hg_command[:cmdopt]} #{hg_command[:fake_path]} #{hg_command[:cmd2]} #{hg_command[:cmd3]}"
+        self.aqlog(cmd_opt)
         if reads.include?(self.cmd_cmd)
           self.read = true
           self.aqlog("Read command")
@@ -251,14 +256,14 @@ module AqLib
           self.aqlog("\t\tKO")
         end
       elsif self.is_hg?
-        sh_command = self.cmd_opt.split(" ")
-        hg_command = { :cmdopt => sh_command[0],
-            :fake_path => sh_command[1],
-            :cmd2 => sh_command[2],
-            :cmd3 => sh_command[3] }
-        cmd_to_run = "#{hg_command[:cmdopt]} #{self.real_path} #{hg_command[:cmd2]} #{hg_command[:cmd3]}"
-        self.aqlog("Running command : hg #{cmd_to_run}")
-        if system("hg", "#{cmd_to_run} 2&1> /tmp/log.log")
+        hg_commands = self.fresh_cmd.split(" ")
+        added_path = Settings.defaults.user_home + "/" +
+                Settings.defaults.user_name + "/" +
+                Settings.defaults.repo_hg_path
+        hg_command = "#{hg_commands[0]} #{hg_commands[1]} #{added_path}/#{hg_commands[2]} #{hg_commands[3]} #{hg_commands[4]}"
+        cmd_to_run = hg_command
+        self.aqlog("Running command : #{cmd_to_run}")
+        if system(cmd_to_run)
           self.aqlog("\t\tOK")
         else
           self.aqlog("\t\tKO")
