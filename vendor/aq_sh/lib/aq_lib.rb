@@ -50,6 +50,16 @@ module AqLib
       return true
     end
 
+    def is_git?
+      return true if self.kind == "git"
+      return false
+    end
+
+    def is_hg?
+      return true if self.kind == "hg"
+      return false
+    end
+
     def aqlog(message)
   	  File.open(Settings.defaults.user_home + "/" + Settings.defaults.user_name + "/" + Settings.defaults.log, "a") do |log|
   		  log.puts Time.now.strftime("%d/%m/%y %H:%M ") + message
@@ -69,7 +79,7 @@ module AqLib
 
   class Command
     attr_accessor :cmd_type, :cmd_cmd, :cmd_opt, :fake_path, :real_path, :aq_user, :user_login,
-     :user_email, :user_id, :read, :write
+     :user_email, :user_id, :read, :write, :kind
 
     def aqlog(message)
   	  File.open(Settings.defaults.user_home + "/" + Settings.defaults.user_name + "/" + Settings.defaults.log, "a") do |log|
@@ -83,6 +93,16 @@ module AqLib
 
     def is_read?
       return read
+    end
+
+    def is_git?
+      return true if self.kind == "git"
+      return false
+    end
+
+    def is_hg?
+      return true if self.kind == "hg"
+      return false
     end
 
     def initialize(user,command)
@@ -103,6 +123,7 @@ module AqLib
       @user_id = nil
       @write = false
       @read = false
+      @kind = nil
 
       begin
         key = SshKey.find_by_login(user)
@@ -127,55 +148,97 @@ module AqLib
 
     # basic sanity check and split of the command line
     def check(command)
-      if command =~ /\n/ || !(command =~ /^git/)
-        return false
-      end
-      reads = ["git-upload-pack", "git upload-pack"]
-      writes = ["git-receive-pack", "git receive-pack"]
-      sh_command = command.split(" ")
-      if sh_command.size == 3
-        self.cmd_cmd = sh_command[0] + " " + sh_command[1]
-        self.cmd_opt = sh_command[2]
-      elsif sh_command.size == 2
-        self.cmd_cmd = sh_command[0]
-        self.cmd_opt = sh_command[1]
+      if !(command =~ /\n/) && (command =~ /^git/)
+        self.kind = "git"
+        self.aqlog("Git command")
+        reads = ["git-upload-pack", "git upload-pack"]
+        writes = ["git-receive-pack", "git receive-pack"]
+        sh_command = command.split(" ")
+        if sh_command.size == 3
+          self.cmd_cmd = sh_command[0] + " " + sh_command[1]
+          self.cmd_opt = sh_command[2]
+        elsif sh_command.size == 2
+          self.cmd_cmd = sh_command[0]
+          self.cmd_opt = sh_command[1]
+        else
+          return false
+        end
+
+        # check the command for type
+        if reads.include?(self.cmd_cmd)
+          self.read = true
+          self.aqlog("Read command")
+        end
+        if writes.include?(self.cmd_cmd)
+          self.write = true
+          self.aqlog("Write command")
+        end
+        return true
+      elsif !(command =~ /\n/) && (command =~ /^hg/)
+        self.kind = "hg"
+        self.aqlog("Hg command")
+        reads = ["-R"]
+        writes = []
+        sh_command = command.split(" ")
+        hg_command = { :cmd => sh_command[0],
+            :cmdopt => sh_command[1],
+            :fake_path => sh_command[2],
+            :cmd2 => sh_command[2],
+            :cmd3 => sh_command[4] }
+        self.cmd_cmd = "hg #{hg_command[:cmd]}"
+        self.cmd_opt = "#{hg_command[:cmd_opt]} #{hg_command[:fake_path]} #{hg_command[:cmd2]} #{hg_command[:cmd3]}"
+        if reads.include?(self.cmd_cmd)
+          self.read = true
+          self.aqlog("Read command")
+        end
+        if writes.include?(self.cmd_cmd)
+          self.write = true
+          self.aqlog("Write command")
+        end
+        return true
       else
         return false
       end
-
-      # check the command for type
-      if reads.include?(self.cmd_cmd)
-        self.read = true
-        self.aqlog("Read command")
-      end
-      if writes.include?(self.cmd_cmd)
-        self.write = true
-        self.aqlog("Write command")
-      end
-      return true
     end
 
     # extract the repo path from the command
     def repo_path
       if !self.cmd_opt.empty?
-        self.fake_path = self.cmd_opt.gsub("'","").split("/")[-1]
-        self.real_path = Settings.defaults.user_home + "/" +
-                Settings.defaults.user_name + "/" +
-                Settings.defaults.repo_git_path + "/" +
-                self.username_from_cmd + "/" +
-                self.fake_path
-        return self.real_path
+        if self.is_git?
+          self.fake_path = self.cmd_opt.gsub("'","").split("/")[-1]
+          self.real_path = Settings.defaults.user_home + "/" +
+                  Settings.defaults.user_name + "/" +
+                  Settings.defaults.repo_git_path + "/" +
+                  self.username_from_cmd + "/" +
+                  self.fake_path
+          return self.real_path
+        elsif self.is_hg?
+          self.fake_path = self.cmd_opt.split(" ")[1]
+          self.real_path = Settings.defaults.user_home + "/" +
+                  Settings.defaults.user_name + "/" +
+                  Settings.defaults.repo_hg_path + "/" +
+                  self.fake_path
+          return self.real_path
+        end
       end
     end
 
     # extract the repo name from the command
     def repo_name
-      return self.cmd_opt.gsub("'","").split("/")[-1].split(".")[0] if !self.cmd_opt.empty?
+      if self.is_git?
+        return self.cmd_opt.gsub("'","").split("/")[-1].split(".")[0] if !self.cmd_opt.empty?
+      elsif self.is_hg?
+        return self.cmd_opt.split(" ")[1].split("/")[-1].split(".")[0] if !self.cmd_opt.empty?
+      end
     end
 
     # extract the user name from the command
     def username_from_cmd
-      return self.cmd_opt.gsub("'","").split("/")[0] if !self.cmd_opt.empty?
+      if self.is_git?
+        return self.cmd_opt.gsub("'","").split("/")[0] if !self.cmd_opt.empty?
+      elsif self.is_hg?
+        return self.cmd_opt.split(" ")[1].split("/")[0] if !self.cmd_opt.empty?
+      end
     end
 
     # the exec of the command
@@ -205,6 +268,7 @@ module AqLib
             command.aqlog("Couldn't find the repository #{repo_name}")
             exit(1)
           end
+          exit(2)
           a_right = Right.find(:all, :conditions => ["user_id = ? AND aq_repository_id = ?", command.user_id, a_repo.id]).first
           if a_right
             command.aqlog("#{command.user_login} has #{a_right.right} right")

@@ -8,4 +8,5 @@ defaults: &defaults
   user_home: /Users
   user_name: aq_git
   repo_git_path: git
+  repo_hg_path: hg
   gitshell: /usr/local/bin/git-shell
