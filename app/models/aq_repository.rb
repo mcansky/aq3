@@ -63,26 +63,32 @@ class AqRepository < ActiveRecord::Base
     # /home/aq_git
     base_dir = root_dir + Settings.application.repo_user
 
+    if self.kind == "git"
+      repo_path = Settings.application.repo_git_path
+    elsif self.kind == "hg"
+      repo_path = Settings.application.repo_hg_path
+    end
+
     # git_dir is where the repositories are gonna be stored, creating if needed
-    # /home/aq_git/git
-    git_dir = base_dir + Settings.application.repo_git_path
-    git_dir.mkdir if base_dir.exist? && !git_dir.exist?
+    # /home/aq_git/git or /home/aq_git/hg
+    scm_dir = base_dir + repo_path
+    scm_dir.mkdir if base_dir.exist? && !scm_dir.exist?
 
     # repo dir is the repository own path
     # /home/aq_git/git/username
     if self.owner
-      repo_dir = git_dir + self.owner.login
+      repo_dir = scm_dir + self.owner.login
     elsif current_user
-      repo_dir = git_dir + current_user.login
+      repo_dir = scm_dir + current_user.login
     end
     repo_dir.mkdir if !repo_dir.exist?
 
-    # the dot git dir is the .git located in the repository
+    # the dot dir is the .git (or .hg) located in the repository
     # /home/aq_git/git/username/reposit.git
-    dot_git = repo_dir + (self.name + ".git")
-    dot_git.mkdir if !dot_git.exist?
+    dot_dir = repo_dir + (self.name + ".#{self.kind}")
+    dot_dir.mkdir if !dot_dir.exist?
 
-    self.path = dot_git.to_s
+    self.path = dot_dir.to_s
   end
 
   private
@@ -94,6 +100,34 @@ class AqRepository < ActiveRecord::Base
 
   # initilizing the repository
   def repo_init
+    if self.kind == "git"
+      git_repo_init
+    elsif self.kind == "hg"
+      hg_repo_init
+    end
+  end
+
+  def hg_repo_init
+    File.umask(0001)
+    dirs = {"store" => nil}
+    files = ["00changelog.i", "requires"]
+    dot_hg = Pathname(self.path)
+
+    # creating dirs
+    l_mkdirs(dot_hg, dirs)
+
+    # creating files
+    files.each do |l_file|
+      if !File.exist?("#{dot_hg}/#{l_file}")
+        File.open("#{dot_hg}/#{l_file}", "a") do |file_out|
+          template_dir = "hg_templates"
+          IO.foreach("#{Rails.root}/config/#{template_dir}/#{l_file}") { |w| file_out.puts(w) }
+        end
+      end
+    end
+  end
+
+  def git_repo_init
     File.umask(0001)
     dirs = { "hooks" => nil,
       "info" => nil,
