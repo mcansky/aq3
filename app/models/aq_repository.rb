@@ -28,10 +28,27 @@ class AqRepository < ActiveRecord::Base
   end
 
   def public_path
+    if self.is_git?
     split_path = self.path.split("/")
     ppath = Settings.application.repo_user + "@" +
               Settings.application.hostname + ":" +
               split_path[-2] + "/" + split_path[-1]
+    elsif self.is_hg?
+      split_path = self.path.split("/")
+      ppath = "ssh://" + Settings.application.repo_user + "@" +
+                Settings.application.hostname + "/" +
+                split_path[-3] + "/" + split_path[-2]
+    end
+  end
+
+  def is_git?
+    return true if self.kind == "git"
+    return false
+  end
+
+  def is_hg?
+    return true if self.kind == "hg"
+    return false
   end
 
   # update branches stored in db
@@ -85,8 +102,15 @@ class AqRepository < ActiveRecord::Base
 
     # the dot dir is the .git (or .hg) located in the repository
     # /home/aq_git/git/username/reposit.git
-    dot_dir = repo_dir + (self.name + ".#{self.kind}")
-    dot_dir.mkdir if !dot_dir.exist?
+    if self.is_git?
+      dot_dir = repo_dir + (self.name + ".#{self.kind}")
+      dot_dir.mkdir if !dot_dir.exist?
+    elsif self.is_hg?
+      dot_dir = repo_dir + self.name
+      dot_dir.mkdir if !dot_dir.exist?
+      dot_dir += ".hg"
+      dot_dir.mkdir if !dot_dir.exist?
+    end
 
     self.path = dot_dir.to_s
   end
