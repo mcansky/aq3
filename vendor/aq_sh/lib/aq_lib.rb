@@ -258,7 +258,7 @@ module AqLib
             :cmd3 => sh_command[3] }
         cmd_to_run = "#{hg_command[:cmdopt]} #{self.real_path} #{hg_command[:cmd2]} #{hg_command[:cmd3]}"
         self.aqlog("Running command : hg #{cmd_to_run}")
-        if system(Settings.defaults.hgshell, "#{cmd_to_run}")
+        if system("hg", "#{cmd_to_run}")
           self.aqlog("\t\tOK")
         else
           self.aqlog("\t\tKO")
