@@ -13,7 +13,7 @@ namespace :git do
     else
       repositories = AqRepository.find(:all)
       repositories.each do |repo|
-        repo.grit_update if repository.kind == "git"
+        repo.grit_update if repo.kind == "git"
         repo.save
       end
     end
@@ -23,7 +23,7 @@ namespace :git do
   task(:purge => :environment) do
     repositories = AqRepository.find(:all)
     repositories.each do |repo|
-      repo.purge if repository.kind == "git"
+      repo.purge if repo.kind == "git"
     end
   end
 end
