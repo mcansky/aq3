@@ -10,3 +10,4 @@ defaults: &defaults
   repo_git_path: git
   repo_hg_path: hg
   gitshell: /usr/local/bin/git-shell
+  hgshell: /usr/local/bin/hg

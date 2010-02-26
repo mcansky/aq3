@@ -183,10 +183,10 @@ module AqLib
         hg_command = { :cmd => sh_command[0],
             :cmdopt => sh_command[1],
             :fake_path => sh_command[2],
-            :cmd2 => sh_command[2],
+            :cmd2 => sh_command[3],
             :cmd3 => sh_command[4] }
         self.cmd_cmd = "hg #{hg_command[:cmd]}"
-        self.cmd_opt = "#{hg_command[:cmd_opt]} #{hg_command[:fake_path]} #{hg_command[:cmd2]} #{hg_command[:cmd3]}"
+        self.cmd_opt = "#{hg_command[:cmdopt]} #{hg_command[:fake_path]} #{hg_command[:cmd2]} #{hg_command[:cmd3]}"
         if reads.include?(self.cmd_cmd)
           self.read = true
           self.aqlog("Read command")
@@ -243,11 +243,26 @@ module AqLib
 
     # the exec of the command
     def run
-      self.aqlog("Running command : git-shell #{@cmd_cmd} '#{@real_path}'")
-      if system(Settings.defaults.gitshell, "-c", "#{@cmd_cmd} '#{@real_path}'")
-        self.aqlog("\t\tOK")
-      else
-        self.aqlog("\t\tKO")
+      if self.is_git?
+        self.aqlog("Running command : git-shell #{@cmd_cmd} '#{@real_path}'")
+        if system(Settings.defaults.gitshell, "-c", "#{@cmd_cmd} '#{@real_path}'")
+          self.aqlog("\t\tOK")
+        else
+          self.aqlog("\t\tKO")
+        end
+      elsif self.is_hg?
+        sh_command = self.cmd_opt.split(" ")
+        hg_command = { :cmdopt => sh_command[0],
+            :fake_path => sh_command[1],
+            :cmd2 => sh_command[2],
+            :cmd3 => sh_command[3] }
+        cmd_to_run = "#{hg_command[:cmdopt]} #{self.real_path} #{hg_command[:cmd2]} #{hg_command[:cmd3]}"
+        self.aqlog("Running command : hg #{cmd_to_run}")
+        if system(Settings.defaults.hgshell, "#{cmd_to_run}")
+          self.aqlog("\t\tOK")
+        else
+          self.aqlog("\t\tKO")
+        end
       end
     end
 
@@ -268,17 +283,11 @@ module AqLib
             command.aqlog("Couldn't find the repository #{repo_name}")
             exit(1)
           end
-          exit(2)
           a_right = Right.find(:all, :conditions => ["user_id = ? AND aq_repository_id = ?", command.user_id, a_repo.id]).first
           if a_right
             command.aqlog("#{command.user_login} has #{a_right.right} right")
             if (command.is_read? || (a_right && a_right.right == "w")) && a_repo.public?
               command.run
-              # trigger the repo update if it's a write command
-              if command.is_write?
-                a_repo.grit_update
-                command.aqlog("#{a_repo.name} grit updated")
-              end
             else
               command.aqlog("insufficiant rights for #{command.user_login}")
             end
