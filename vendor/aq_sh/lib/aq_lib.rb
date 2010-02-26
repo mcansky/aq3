@@ -226,9 +226,9 @@ module AqLib
     # extract the repo name from the command
     def repo_name
       if self.is_git?
-        return self.cmd_opt.gsub("'","").split("/")[-1].split(".")[0] if !self.cmd_opt.empty?
+        return self.cmd_opt.gsub("'","").split("/")[-1] if !self.cmd_opt.empty?
       elsif self.is_hg?
-        return self.cmd_opt.split(" ")[1].split("/")[-1].split(".")[0] if !self.cmd_opt.empty?
+        return self.cmd_opt.split(" ")[1].split("/")[-1] if !self.cmd_opt.empty?
       end
     end
 
@@ -276,7 +276,7 @@ module AqLib
         repo_path = command.repo_path
         repo_name = command.repo_name
         if !repo_path.empty?
-          a_repo = AqRepository.find_by_path(repo_path)
+          a_repo = AqRepository.find_by_path(repo_path.to_s + "/.hg")
           if a_repo
             command.aqlog("Found repo in db : #{a_repo.name}")
           else
