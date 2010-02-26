@@ -258,7 +258,7 @@ module AqLib
             :cmd3 => sh_command[3] }
         cmd_to_run = "#{hg_command[:cmdopt]} #{self.real_path} #{hg_command[:cmd2]} #{hg_command[:cmd3]}"
         self.aqlog("Running command : hg #{cmd_to_run}")
-        if system("hg", "#{cmd_to_run}")
+        if system("hg", "#{cmd_to_run} 2&1> /tmp/log.log")
           self.aqlog("\t\tOK")
         else
           self.aqlog("\t\tKO")
@@ -276,7 +276,11 @@ module AqLib
         repo_path = command.repo_path
         repo_name = command.repo_name
         if !repo_path.empty?
-          a_repo = AqRepository.find_by_path(repo_path.to_s + "/.hg")
+          if command.is_git?
+            a_repo = AqRepository.find_by_path(repo_path)
+          elsif command.is_hg?
+            a_repo = AqRepository.find_by_path(repo_path.to_s + "/.hg")
+          end
           if a_repo
             command.aqlog("Found repo in db : #{a_repo.name}")
           else
