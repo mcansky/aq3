@@ -295,10 +295,18 @@ module AqLib
           a_right = Right.find(:all, :conditions => ["user_id = ? AND aq_repository_id = ?", command.user_id, a_repo.id]).first
           if a_right
             command.aqlog("#{command.user_login} has #{a_right.right} right")
-            if (command.is_read? || (a_right && a_right.right == "w")) && a_repo.public?
-              command.run
-            else
-              command.aqlog("insufficiant rights for #{command.user_login}")
+            if command.is_git?
+              if (command.is_read? || (a_right && a_right.right == "w")) && a_repo.public?
+                command.run
+              else
+                command.aqlog("insufficiant rights for #{command.user_login}")
+              end
+            elsif command.is_hg?
+              if (a_right && a_right.right == "w")
+                command.run
+              else
+                command.aqlog("insufficiant rights for #{command.user_login}")
+              end
             end
           elsif command.is_read?
             command.run
