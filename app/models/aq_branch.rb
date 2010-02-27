@@ -1,3 +1,6 @@
+require 'grit'
+include Grit
+
 class AqBranch < ActiveRecord::Base
   belongs_to :aq_repository
   has_many :commits, :class_name => "AqCommit", :order => "committed_time"
@@ -6,7 +9,7 @@ class AqBranch < ActiveRecord::Base
   # starts by comparing commit counts to determine how many commits need
   # to be treated
   def grit_update
-    grit_repo = Repo.new(self.aq_repository.repo_path)
+    grit_repo = Repo.new(self.aq_repository.path)
     new_commits_count = grit_repo.commit_count(self.name) - self.commits.count
     count = 0
     while (count < new_commits_count)

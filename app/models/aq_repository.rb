@@ -1,4 +1,6 @@
 require 'pathname'
+require 'grit'
+include Grit
 
 class AqRepository < ActiveRecord::Base
   before_save :repo_path
@@ -63,9 +65,14 @@ class AqRepository < ActiveRecord::Base
     return false
   end
 
+  def repo_update
+    self.grit_update if self.is_git?
+    self.hg_update if self.is_hg?
+  end
+
   # update branches stored in db
   def grit_update
-    grit_repo = Repo.new(self.repo_path)
+    grit_repo = Repo.new(self.path)
     grit_repo.branches.each do |b|
       self.branches << AqBranch.new(:name => b.name) if not self.branches.find_by_name(b.name)
     end
@@ -135,6 +142,7 @@ class AqRepository < ActiveRecord::Base
       system("cp -r #{parent_repo.path}/* #{self.path}")
       self.parent = parent_repo
       self.owner = current_user
+      self.repo_update
     else
       redirect_to parent_repo
     end
