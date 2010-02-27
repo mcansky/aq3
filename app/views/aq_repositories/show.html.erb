@@ -3,8 +3,11 @@
 	<% if current_user && @repository.owner == current_user %>
 		<%= link_to image_tag("/images/icons/pencil.png", :title => t(:repo_edit), :alt => t(:repo_edit), :border => 0), :action => "edit", :id => @repository.id %>
 	<% end %>
-	<% if current_user %>
-		<%= link_to image_tag("/images/icons/arrow-split.png", :title => t(:fork).capitalize, :alt => t(:fork).capitalize, :border => 0), {:action => "fork"}%>
+	<% if @repository.parent %>
+		<%= link_to image_tag("/images/icons/arrow-skip-090.png", :title => t(:parent), :alt => t(:parent), :border => 0), @repository.parent %>
+	<% end %>
+	<% if current_user && current_user != @repository.owner %>
+		<%= link_to image_tag("/images/icons/arrow-split.png", :title => t(:fork).capitalize, :alt => t(:fork).capitalize, :border => 0), {:action => "fork", :parent_id => @repository.id}%>
 	<% end %>
 </h2>
 
@@ -18,6 +21,7 @@
 		<p><strong><%= t(:branches) %> : <%= @repository.branches.count %></strong></p>
 		<p><strong><%= t(:commits) %> : <%= @repository.commits.count %></strong></p>
 		<p class="desc"><%= @repository.desc %></p>
+		<p><%= @repository.path %></p>
 		<div class="clear"></div>
 	</div>
 

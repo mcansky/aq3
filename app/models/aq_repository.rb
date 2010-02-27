@@ -8,6 +8,8 @@ class AqRepository < ActiveRecord::Base
   has_many :beans
   has_many :branches, :class_name => "AqBranch"
   has_many :commits, :through => :branches, :order => "committed_time"
+  has_many :forks, :class_name => "AqRepository", :foreign_key => "parent_id"
+  belongs_to :parent, :class_name => "AqRepository", :foreign_key => "parent_id"
 
   def owner
     a_right = self.rights.find(:all, :conditions => ["role = ?",'o']).first
@@ -123,6 +125,19 @@ class AqRepository < ActiveRecord::Base
     end
 
     self.path = dot_dir.to_s
+  end
+
+  def fork(parent_repo)
+    if !current_user.aq_repositories.find_by_name(parent_repo.name)
+      self.name = parent_repo.name
+      self.kind = parent_repo.kind
+      self.repo_path
+      system("cp -r #{parent_repo.path}/* #{self.path}")
+      self.parent = parent_repo
+      self.owner = current_user
+    else
+      redirect_to parent_repo
+    end
   end
 
   private

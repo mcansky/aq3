@@ -59,7 +59,7 @@ class AqRepositoriesController < ApplicationController
     flash[:notice] = t(:repo_destroy_ok)
     redirect_to root_url
   end
-  
+
   def join
     repository = AqRepository.find(params[:id])
     if !repository.users.include?(current_user)
@@ -71,6 +71,14 @@ class AqRepositoriesController < ApplicationController
       repository.rights << a_right
       repository.save
     end
+    redirect_to repository
+  end
+
+  def fork
+    parent_repo = AqRepository.find(params[:id])
+    repository = AqRepository.new
+    repository.fork(parent_repo)
+    repository.save if repository
     redirect_to repository
   end
 
