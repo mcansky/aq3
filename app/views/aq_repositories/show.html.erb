@@ -3,6 +3,9 @@
 	<% if current_user && @repository.owner == current_user %>
 		<%= link_to image_tag("/images/icons/pencil.png", :title => t(:repo_edit), :alt => t(:repo_edit), :border => 0), :action => "edit", :id => @repository.id %>
 	<% end %>
+	<% if current_user %>
+		<%= link_to image_tag("/images/icons/arrow-split.png", :title => t(:fork).capitalize, :alt => t(:fork).capitalize, :border => 0), {:action => "fork"}%>
+	<% end %>
 </h2>
 
 <div class="repository">

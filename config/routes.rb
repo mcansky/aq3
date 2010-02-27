@@ -29,6 +29,9 @@ IIIaquarii::Application.routes.draw do |map|
   match "/rights/accept/:id" => "rights#accept"
   match "/rights/reject/:id" => "rights#reject"
 
+  # fork
+  match "/aq_repositories/fork/:id" => "aq_repositories#fork"
+
   # Sample resource route with options:
   #   resources :products do
   #     member do
