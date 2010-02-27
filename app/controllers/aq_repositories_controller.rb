@@ -37,13 +37,7 @@ class AqRepositoriesController < ApplicationController
   def update
     @repository = AqRepository.find(params[:id])
     if @repository.rights.size == 0
-      a_right = Right.new
-      a_right.user = current_user
-      a_right.aq_repository = @repository
-      a_right.right = 'w'
-      a_right.role = 'o'
-      @repository.rights << a_right
-      a_right.save
+      @repository.owner = current_user
     end
     if @repository.update_attributes(params[:aq_repository])
       flash[:notice] = t(:repo_update_ok)
