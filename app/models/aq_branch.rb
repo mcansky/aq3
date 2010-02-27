@@ -15,7 +15,7 @@ class AqBranch < ActiveRecord::Base
     while (count < new_commits_count)
       commits = grit_repo.commits(self.name, 10, count)
       commits.each do |c|
-        if not AqCommit.find_by_sha(c.id)
+        if not self.commits.find_by_sha(c.id)
           a_commit = AqCommit.new(:sha => c.id,
             :log => c.message,
             :author_name => c.author.name,
