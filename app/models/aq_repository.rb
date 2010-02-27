@@ -18,6 +18,16 @@ class AqRepository < ActiveRecord::Base
     end
   end
 
+  def owner=(user)
+    a_right = Right.new
+    a_right.user = user
+    a_right.aq_repository = self
+    a_right.right = 'w'
+    a_right.role = 'o'
+    self.rights << a_right
+    a_right.save
+  end
+
   def committers
     some_rights = self.rights.find(:all, :conditions => ["role = ? AND status != ?",'c', 'p'])
     r_committers = []

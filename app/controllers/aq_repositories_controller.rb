@@ -15,13 +15,7 @@ class AqRepositoriesController < ApplicationController
 
   def create
     @repository = AqRepository.new(params[:aq_repository])
-    a_right = Right.new
-    a_right.user = current_user
-    a_right.aq_repository = @repository
-    a_right.right = 'w'
-    a_right.role = 'o'
-    @repository.rights << a_right
-    a_right.save
+    @repository.owner = current_user
     if @repository.save
       flash[:notice] = t(:repo_create_ok)
       redirect_to @repository
