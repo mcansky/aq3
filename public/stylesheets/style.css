@@ -71,6 +71,8 @@ body {
 	border-top: 1px solid #444;
 	border-bottom: 1px solid #DDD;
 	padding: 0;
+	padding-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 #content {
