@@ -13,12 +13,13 @@
 </head>
 
 <body>
-	<div id="main">
-		<div id="icon">
-			<%= image_tag("/images/icons/big/Network-wired.png", :title => "", :alt => "", :border => 0)%>
-		</div>
-
-		<div id="login">
+	
+	<div id="top_bar">
+		<h1>3AQii</h1>
+	</div>
+	<div id="sub_bar">
+		
+		<div id="sub_right">
 			<% if current_user %>
 				<%= link_to image_tag("/images/icons/wrench.png", :alt => t(:user_edit), :title => t(:user_edit), :border => 0), {:controller => "users", :action => "edit", :id => current_user.id} %>
 				<%= link_to image_tag("/images/icons/door.png", :alt =>t(:logout), :title => t(:logout), :border => 0), logout_path %>
@@ -27,18 +28,20 @@
 				<%= link_to image_tag("/images/icons/rocket-fly.png", :alt => t(:signup), :title => t(:signup), :border => 0), signup_url %>
 			<% end %>
 		</div>
-
-		<div id="root">
+		<div id="sub_left">
 			<%= link_to image_tag("/images/icons/home.png", :title => t(:home), :alt => t(:home), :border => 0) + " Home", root_url %>
 			<% if current_user %>
+				<span id="user_stuff">
 				<%= link_to image_tag("/images/icons/user-silhouette.png", :title => t(:home), :alt => t(:home), :border => 0) + " #{current_user.login}", current_user %>
 				<%= link_to image_tag("/images/icons/databases.png", :title => t(:repositories), :alt => t(:repositories), :border => 0) + " #{t(:repositories)}", aq_repositories_path %>
 				<%= link_to image_tag("/images/icons/license-key.png", :title => t(:sshkeys), :alt => t(:sshkeys), :border => 0) + " #{t(:sshkeys)}", ssh_keys_path %>
-			<% else %>
-
+				</span>
 			<% end %>
 		</div>
 		<div class="clear"></div>
+	</div>
+
+	<div id="main">
 
 		<div id="content">
 			<%= yield %>

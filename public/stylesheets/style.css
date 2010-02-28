@@ -7,46 +7,80 @@ body {
 	background: #222;
 }
 
-#icon {
-	float: left;
-	width: 35px;
-}
-
-#icon img {
-	width: 60px;
-	margin-left: 20px;
-	margin-top: 20px;
-}
-
-#main {
-	width: 95%;
-	margin-right: auto;
+#top_bar {
+	background: #DDD;
+	width: 80%;
+	margin-top: 25px;
 	margin-left: auto;
-	background: #FFF;
-	border-right: 1px solid #888;
-	border-left: 1px solid #888;
-	border-bottom: 1px solid #888;
+	margin-right: auto;
+	padding: 10px;
+	padding-left: 30px;
+	border-bottom: 1px solid #EEE;
+	border-top: 1px solid #FFF;
 }
 
-#content {
-	padding: 20px;
+#sub_bar {
+	background: #222;
+	color: #DDD;
+	padding: 10px;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-#login {
+#sub_bar a {
+	font-family: monospace;
+	text-decoration: none;
+	font-weight: bold;
+	color: #DDD;
+}
+
+#sub_bar a:hover {
+	color: #FFF;
+}
+
+#sub_left {
+	width: 65%;
+}
+
+#sub_bar #user_stuff {
+	margin-left: 40px;
+}
+
+#sub_bar #user_stuff a {
+	margin-left: 20px;
+}
+
+
+#sub_right {
 	float: right;
-	margin-right: 10px;
-	margin-top: 10px;
 	padding: 3px;
 	text-align: right;
 	width: 30%;
-	background: #DDD;
-	border: 1px solid #999;
 	font-family: monospace;
 }
 
-#login a {
+#sub_right a {
 	text-decoration: none;
 	font-weight: bold;
+}
+
+
+#main {
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+	background: #222;
+	border-top: 1px solid #444;
+	border-bottom: 1px solid #DDD;
+	padding: 0;
+}
+
+#content {
+	width: 80%;
+	padding: 0;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 input, textarea {
@@ -54,6 +88,23 @@ input, textarea {
 	border: 1px solid #CCC;
 	margin: 5px;
 	padding: 2px;
+}
+
+#img_banner {
+	border: 1px solid #DDD;
+	width: 100%;
+	background: #888;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 0;
+	margin-right: 0;
+	padding: 20px;
+}
+
+#img_banner p {
+	font-size: 16pt;
+	color: #FFF;
+	font-family: times;
 }
 
 #root {
@@ -68,10 +119,6 @@ input, textarea {
 }
 
 #root a {
-	font-family: monospace;
-	text-decoration: none;
-	font-weight: bold;
-	color: #999;
 }
 
 #root a:hover {
@@ -82,8 +129,30 @@ div.clear {
 	clear: both;
 }
 
+#content #left_content {
+	float: left;
+	width: 48%;
+	margin-left: 0;
+}
+
+#content #right_content {
+	float: right;
+	width: 48%;
+	margin-right: 0;
+}
+
+
+#left_content #intro_text, #commits, #repositories h2 {
+	background: #000;
+	padding: 10px;
+	color: #EEE;
+}
+
+#left_content #commits {
+	margin-top: 10px;
+}
+
 #content div#repositories {
-	width: 40%;
 }
 #content div.repository {
 	margin-left: 15px;

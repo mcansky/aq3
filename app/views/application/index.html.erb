@@ -1,9 +1,31 @@
-<h1>3 Aquarii</h1>
 
-<div id="repositories">
-	<h3><%= t(:repositories) %></h3>
-	<%= render "application/repositories", :repositories => @repositories %>
+<div id="img_banner">
+	<p>
+		We shall commit this.
+	</p>
 </div>
 
-<div id="commits">
+<div id="left_content">
+	<div id="intro_text">
+		<p>Loren ipsum osts our open-source projects and is a place for developers, but also targets anyone that want to get their hands dirty. Much of the work around these projects happen in community forums</p>
+	</div>
+
+	<div id="commits">
+		<ul>
+			<li>cezgergerges</li>
+				<li>cezgergerges</li>
+					<li>cezgergerges</li>
+						<li>cezgergerges</li>
+							<li>cezgergerges</li>
+			</ul>
+	</div>	
 </div>
+
+<div id="right_content">
+	<div id="repositories">
+		<h3><%= t(:repositories) %></h3>
+		<%= render "application/repositories", :repositories => @repositories %>
+	</div>
+</div>
+
+<div class="clear"></div>
