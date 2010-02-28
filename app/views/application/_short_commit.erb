@@ -1,0 +1,16 @@
+<div class="short_commit">
+	<div class="left_sh_commit">
+		<p>
+			<span class="date"><%= commit.committed_time.strftime("%I:%M %p %x").downcase %></span>
+			<span class="repository"><%= link_to commit.branch.aq_repository.owner.login + "/" + commit.branch.aq_repository.name, commit.branch.aq_repository %></span>
+		</p>
+	</div>
+	<div class="right_sh_commit">
+		<p>
+			<span class="commit_id"><%= t(:commit).downcase %> <%= link_to commit.sha.slice(0,7) + "...", "" %></span>
+			<span class="commit_author"><%= t(:by) %> <%= commit.author_name %></span>
+			<span class="commit_log"><%= commit.log.lines.first.slice(0,80) + "..." %></span>
+		</p>
+	</div>
+	<div class="clear"></div>
+</div>

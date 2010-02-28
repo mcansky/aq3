@@ -1,0 +1,22 @@
+<div class="two_repositories">
+	<div class="left_repo">
+		<p>
+			<% if rep1.is_git? %>
+				<span class="kind_git">G</span>
+			<% elsif rep1.is_hg? %>
+				<span class="kind_hg">H</span>
+			<% end %>
+			<span class="rep_name"><%= link_to rep1.name, rep1 %></span>
+	</div>
+	<div class="right_repo">
+		<p>
+			<% if rep2.is_git? %>
+				<span class="kind_git">G</span>
+			<% elsif rep2.is_hg? %>
+				<span class="kind_hg">H</span>
+			<% end %>
+			<span class="rep_name"><%= link_to rep2.name, rep2 %></span>
+		</p>
+	</div>
+	<div class="clear"></div>
+</div>
