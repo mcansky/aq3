@@ -237,12 +237,12 @@ div.clear {
 	padding-top: 5px;
 }
 
-#repositories span.kind_git {
+span.kind_git {
 	color: #1aa000;
 	font-weight: bold;
 }
 
-#repositories span.kind_hg {
+span.kind_hg {
 	color: #4275a5;
 	font-weight: bold;
 }
@@ -275,4 +275,15 @@ div.desc {
 
 #content div.beans {
 	margin-bottom: 20px;
+}
+
+#repository {
+	font-family: sans-serif;
+	font-size: 10pt;
+	color: #EEE;
+	padding-top: 15px;
+}
+
+#repository h2 {
+	letter-spacing: 1.2px;
 }
