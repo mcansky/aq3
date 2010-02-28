@@ -21,6 +21,22 @@
 
 <div class="repository">
 
+	<div class="people">
+		<% for right in @repository.rights %>
+		<div class="committer">
+			<h4>
+				<% if right.user == @repository.owner %>
+					<%= image_tag("/images/icons/user-worker-boss.png", :title => t(:owner), :alt => t(:owner), :border => 0) %>
+					<%= link_to right.user.login, right.user, :title => t(:owner) %>
+				<% elsif @repository.committers.include?(right.user) %>
+					<%= image_tag("/images/icons/user-worker.png", :title => t(:committer), :alt => t(:committer), :border => 0) %> 
+					<%= link_to right.user.login, right.user, :title => t(:committer) %>
+				<% end %>
+			</h4>
+		</div>
+		<% end %>
+	</div>
+
 	<div class="desc">
 		<p><strong><%= t(:public_path) %> : </strong><%= @repository.public_path %></p>
 		<p><strong><%= t(:branches) %> : <%= @repository.branches.count %></strong></p>
@@ -46,35 +62,8 @@
 	</div>
 	<% end %>
 
-	<div class="people">
-		<% for right in @repository.rights %>
-		<div class="committer">
-			<h4>
-				<%= image_tag("/images/icons/user-silhouette.png", :title => nil, :alt => nil, :border => 0) %>
-				<%= right.user.login %>
-			</h4>
-			<p>
-				<strong>Status :</strong>
-				<% if right.pending? %>
-					<%= image_tag("/images/icons/clock-frame.png", :title => t(:pending), :alt => t(:pending), :border => 0)%> <%= t(:pending) %>
-					<%= link_to image_tag("/images/icons/thumb-up.png", :title => t(:accept), :alt => t(:accept), :border => 0), {:controller => "rights", :action => "accept", :id => right.id } %>
-					<%= link_to image_tag("/images/icons/thumb.png", :title => t(:reject), :alt => t(:reject), :border => 0), {:controller => "rights", :action => "reject", :id => right.id } %>
-				<% elsif right.user == @repository.owner %>
-					<%= image_tag("/images/icons/user-worker-boss.png", :title => t(:owner), :alt => t(:owner), :border => 0) %> <%= t(:owner) %>
-				<% elsif @repository.committers.include?(right.user) %>
-					<%= image_tag("/images/icons/user-worker.png", :title => t(:committer), :alt => t(:committer), :border => 0) %> <%= t(:committer) %>
-				<% end %>
-			</p>
-		</div>
-		<% end %>
-	</div>
+	
 
-	<div class="commits">
-		<h3><%= t(:commits) %></h3>
-		<% for commit in @repository.commits.reverse.first(10) %>
-			<%= render "commit", :commit => commit %>
-		<% end %>
-	</div>
 	<div class="clear"></div>
 </div>
 </div>

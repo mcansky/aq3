@@ -287,3 +287,14 @@ div.desc {
 #repository h2 {
 	letter-spacing: 1.2px;
 }
+
+#repository div.people {
+	float: right;
+	width: 20%;
+}
+
+#repository div.people a {
+	color: #fb3700;
+	text-decoration: none;
+	font-weight: bold;
+}
