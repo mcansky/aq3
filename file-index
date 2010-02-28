@@ -1,0 +1,762 @@
+4a812e654f469be58aa080ff81d975892f6207b5 initial commit
+.gitignore
+Gemfile
+README
+Rakefile
+app/controllers/application_controller.rb
+app/helpers/application_helper.rb
+config.ru
+config/application.rb
+config/boot.rb
+config/database.yml
+config/environment.rb
+config/environments/development.rb
+config/environments/production.rb
+config/environments/test.rb
+config/initializers/backtrace_silencers.rb
+config/initializers/cookie_verification_secret.rb
+config/initializers/inflections.rb
+config/initializers/mime_types.rb
+config/initializers/session_store.rb
+config/locales/en.yml
+config/routes.rb
+db/seeds.rb
+doc/README_FOR_APP
+lib/tasks/.gitkeep
+public/404.html
+public/422.html
+public/500.html
+public/favicon.ico
+public/images/rails.png
+public/index.html
+public/javascripts/application.js
+public/javascripts/controls.js
+public/javascripts/dragdrop.js
+public/javascripts/effects.js
+public/javascripts/prototype.js
+public/javascripts/rails.js
+public/robots.txt
+public/stylesheets/.gitkeep
+script/rails
+test/performance/browsing_test.rb
+test/test_helper.rb
+vendor/plugins/.gitkeep
+9249ea9c63c5812f04587970a36046df91535acb 4a812e654f469be58aa080ff81d975892f6207b5 adding some basic gems
+Gemfile
+d3a5ff154febfe6df18c387433cb7a72e62b5634 9249ea9c63c5812f04587970a36046df91535acb adding base icons
+.gitignore
+public/images/icons/block-share.png
+public/images/icons/block.png
+public/images/icons/bookmark.png
+public/images/icons/broom.png
+public/images/icons/bug.png
+public/images/icons/calendar-list.png
+public/images/icons/calendar-month.png
+public/images/icons/calendar-task.png
+public/images/icons/chart.png
+public/images/icons/compass.png
+public/images/icons/database-network.png
+public/images/icons/envelope-label.png
+public/images/icons/feed-balloon.png
+public/images/icons/fingerprint-recognition.png
+public/images/icons/foaf.png
+public/images/icons/hammer-screwdriver.png
+public/images/icons/hard-hat-mine.png
+public/images/icons/heart-break.png
+public/images/icons/heart-empty.png
+public/images/icons/heart-half.png
+public/images/icons/heart.png
+public/images/icons/home.png
+public/images/icons/leaf-wormhole.png
+public/images/icons/leaf.png
+public/images/icons/license-key.png
+public/images/icons/luggage-tag.png
+public/images/icons/microformats.png
+public/images/icons/open-source.png
+public/images/icons/pill.png
+public/images/icons/price-tag-label.png
+public/images/icons/tag-label.png
+public/images/icons/tag.png
+public/images/icons/tags-label.png
+public/images/icons/target.png
+public/images/icons/user-business.png
+public/images/icons/user-detective.png
+public/images/icons/user-gray-female.png
+public/images/icons/user-silhouette.png
+public/images/icons/user-worker.png
+a487ec3da1feddd1808b76ac5b3ce53ba9456e2c d3a5ff154febfe6df18c387433cb7a72e62b5634 base readme
+README
+README.textile
+doc/README
+doc/README_FOR_APP
+f741cccd9282895506bafc7c5c07eedf154aede8 a487ec3da1feddd1808b76ac5b3ce53ba9456e2c adding licence
+LICENCE
+3655253cf60516320a6fd6d059ee06b8c9355056 f741cccd9282895506bafc7c5c07eedf154aede8 added gems
+Gemfile
+vendor/bundled_gems/bin/rake
+vendor/bundled_gems/bin/redcloth
+8ed3b5cdea640a6dfca56af4311fffd88b634806 3655253cf60516320a6fd6d059ee06b8c9355056 added some more config
+config/application.rb
+config/application.yml
+0a1215d115f468341afaf41e25dd74b8c685fffd 8ed3b5cdea640a6dfca56af4311fffd88b634806 some ignores
+.gitignore
+393631d9a2668d2718eb704132961cd0b1ec784e 0a1215d115f468341afaf41e25dd74b8c685fffd adding base AqRepo model
+app/models/aq_repo.rb
+db/migrate/20100220213606_create_aq_repos.rb
+test/fixtures/aq_repos.yml
+test/unit/aq_repo_test.rb
+e812b9be448fc1f10317c6cb924e4d06380d60ea 393631d9a2668d2718eb704132961cd0b1ec784e removing public index
+public/index.html
+e3765018d99ca104e3ecc86becb2e372bb3024cc e812b9be448fc1f10317c6cb924e4d06380d60ea adding root page
+app/controllers/application_controller.rb
+app/views/application/index.html.erb
+cd0239a05f2385b559965ebbbbac76261b3ca53a e3765018d99ca104e3ecc86becb2e372bb3024cc adding repositories controller and views
+app/controllers/repositories_controller.rb
+app/helpers/repositories_helper.rb
+app/views/repositories/index.html.erb
+config/locales/en.yml
+config/routes.rb
+db/schema.rb
+test/functional/repositories_controller_test.rb
+test/unit/helpers/repositories_helper_test.rb
+adfc2528f5a6e7b693714e4e680e7a83831e94a9 cd0239a05f2385b559965ebbbbac76261b3ca53a changing names
+app/controllers/aq_repositories_controller.rb
+app/controllers/repositories_controller.rb
+app/helpers/aq_repositories_helper.rb
+app/helpers/repositories_helper.rb
+app/models/aq_repo.rb
+app/models/aq_repository.rb
+app/views/application/index.html.erb
+app/views/aq_repositories/_form.erb
+app/views/aq_repositories/index.html.erb
+app/views/aq_repositories/new.html.erb
+app/views/repositories/index.html.erb
+config/locales/en.yml
+config/routes.rb
+db/migrate/20100220213606_create_aq_repos.rb
+db/schema.rb
+test/fixtures/aq_repos.yml
+test/fixtures/aq_repository.yml
+test/functional/aq_repositories_controller_test.rb
+test/functional/repositories_controller_test.rb
+test/unit/aq_repo_test.rb
+test/unit/aq_repository_test.rb
+6a022aa455ead21b958de92047d945e6047e9dfa adfc2528f5a6e7b693714e4e680e7a83831e94a9 finishing migration to new names
+app/controllers/aq_repositories_controller.rb
+6e7f0695e3b1767fc902a7faa4f5c5898ea2a4a5 6a022aa455ead21b958de92047d945e6047e9dfa adding show view
+app/views/aq_repositories/index.html.erb
+app/views/aq_repositories/show.html.erb
+config/locales/en.yml
+75fc497d2642bf2f5543de75d650902197af9672 6e7f0695e3b1767fc902a7faa4f5c5898ea2a4a5 adding settings logic required class
+app/models/settings.rb
+fe210bca55f81988d5097f0f12a09b8772f632c2 75fc497d2642bf2f5543de75d650902197af9672 adding repository creation methods
+app/models/aq_repository.rb
+app/views/aq_repositories/show.html.erb
+config/application.yml
+config/templates-bare/HEAD
+config/templates-bare/config
+config/templates-bare/description
+config/templates/HEAD
+config/templates/config
+config/templates/description
+cb3d442692864b73982cd139e4ea3cdc09f479f5 fe210bca55f81988d5097f0f12a09b8772f632c2 moving delete link to button to
+app/views/aq_repositories/index.html.erb
+app/views/aq_repositories/show.html.erb
+app/views/layouts/application.html.erb
+public/javascripts/application.js
+7ce60dd6e96e2cebbc70ff8ab8b92da5c29ca06a cb3d442692864b73982cd139e4ea3cdc09f479f5 adding user model
+app/models/user.rb
+db/migrate/20100221101739_create_users.rb
+test/fixtures/users.yml
+test/unit/user_test.rb
+705378305f624b3afcf3e8642c9adc546104fa3e 7ce60dd6e96e2cebbc70ff8ab8b92da5c29ca06a adding attributes for users auth
+db/migrate/20100221101739_create_users.rb
+e9d8585433b1c030ef3ecb6b1dbbc2e79e1370b6 705378305f624b3afcf3e8642c9adc546104fa3e migrating
+db/schema.rb
+f4e915c039c487e4c5cca43068cc33565d322826 e9d8585433b1c030ef3ecb6b1dbbc2e79e1370b6 adding users controller
+app/controllers/users_controller.rb
+app/helpers/users_helper.rb
+config/locales/en.yml
+test/functional/users_controller_test.rb
+test/unit/helpers/users_helper_test.rb
+cc79c3f58960672d19798236c2a76f20d2fda9a0 f4e915c039c487e4c5cca43068cc33565d322826 adding repository edit
+app/views/aq_repositories/edit.html.erb
+app/views/aq_repositories/index.html.erb
+b8c24e71f0b3f54d780dc5671239ed3e804b4018 cc79c3f58960672d19798236c2a76f20d2fda9a0 using the form partial
+app/views/aq_repositories/new.html.erb
+f43d2e199fcf5e4e8d7e94a2de4003c1e39a6a70 b8c24e71f0b3f54d780dc5671239ed3e804b4018 adding authlogic to the user model
+app/models/user.rb
+0e6d71636a8416e4c08cebe830e7fc8b9ef92a4e f43d2e199fcf5e4e8d7e94a2de4003c1e39a6a70 adding users controller to the resources
+config/routes.rb
+997f708e02502dfe7ed8b48c09a541b2e032b6d9 0e6d71636a8416e4c08cebe830e7fc8b9ef92a4e adding user management views
+app/views/users/_form.erb
+app/views/users/edit.html.erb
+app/views/users/index.html.erb
+app/views/users/show.html.erb
+config/locales/en.yml
+03c517fbb7fbbf6c08159c1675bafb2f0856ad85 997f708e02502dfe7ed8b48c09a541b2e032b6d9 adding user new view
+app/views/users/new.html.erb
+5e594f0004f272ac29b6ae6ff39d711731a1dbfa 03c517fbb7fbbf6c08159c1675bafb2f0856ad85 adding user session model
+app/models/user_session.rb
+db/migrate/20100222110523_create_user_sessions.rb
+test/fixtures/user_sessions.yml
+test/unit/user_session_test.rb
+3e767a35c995a8f5e15417b0e469bd6f0769a6f0 5e594f0004f272ac29b6ae6ff39d711731a1dbfa adding user session controller
+app/controllers/user_session_controller.rb
+app/helpers/user_session_helper.rb
+test/functional/user_session_controller_test.rb
+test/unit/helpers/user_session_helper_test.rb
+06ef587cc130c4e23aa5d8e778d76c315c5f5cb0 3e767a35c995a8f5e15417b0e469bd6f0769a6f0 adding user session controller code
+app/controllers/user_session_controller.rb
+config/locales/en.yml
+47f631f8530ea1b2362069351e83c9712ffde48c 06ef587cc130c4e23aa5d8e778d76c315c5f5cb0 adding tweaks to allow login or email login
+app/models/user.rb
+app/models/user_session.rb
+fe4f4f08d062de349da8bb2cd33accf878b3fe87 47f631f8530ea1b2362069351e83c9712ffde48c renaming controller
+app/controllers/user_session_controller.rb
+test/functional/user_session_controller_test.rb
+test/functional/user_sessions_controller_test.rb
+2a0e335eaf2f9ce885cf0b77378c829bf983d42f fe4f4f08d062de349da8bb2cd33accf878b3fe87 fixing typo
+test/functional/user_sessions_controller_test.rb
+7f82ff610a010b83f988317295b57c4436362d90 2a0e335eaf2f9ce885cf0b77378c829bf983d42f changing controller name
+app/controllers/user_session_controller.rb
+app/controllers/user_sessions_controller.rb
+491ac9033606efb18a8620a9a47c6060ae23b6e8 7f82ff610a010b83f988317295b57c4436362d90 adding login routes and login form
+app/models/user_session.rb
+app/views/layouts/application.html.erb
+app/views/user_sessions/new.html.erb
+config/locales/en.yml
+config/routes.rb
+dadbbcfdcf2dcb615e4c3467ab75b56c938e0073 491ac9033606efb18a8620a9a47c6060ae23b6e8 removing old stuff from other project
+app/controllers/user_sessions_controller.rb
+a8b8ced862369f09f187ad1a334d70877ecdfa77 dadbbcfdcf2dcb615e4c3467ab75b56c938e0073 fixing bug
+app/controllers/user_sessions_controller.rb
+006f23d6be2cec80514f5b8f80f19e106adce868 a8b8ced862369f09f187ad1a334d70877ecdfa77 adding current_user method
+app/controllers/application_controller.rb
+app/views/layouts/application.html.erb
+99f168f50b1b9bb77d8f6601ef2717aea4c26080 006f23d6be2cec80514f5b8f80f19e106adce868 adding ssh key model
+app/models/ssh_key.rb
+db/migrate/20100222134347_create_ssh_keys.rb
+test/fixtures/ssh_keys.yml
+test/unit/ssh_key_test.rb
+09c83a00e033139c2345d45b3e749bd638cb09e6 99f168f50b1b9bb77d8f6601ef2717aea4c26080 migrating the base
+db/migrate/20100222134347_create_ssh_keys.rb
+db/schema.rb
+96d33203ea1ed26b21255bd3af129aad1326f4e2 09c83a00e033139c2345d45b3e749bd638cb09e6 adding relations to SshKey and User models
+app/models/ssh_key.rb
+app/models/user.rb
+00b92d42f21db8a1c34ee34cd23784235867f276 96d33203ea1ed26b21255bd3af129aad1326f4e2 adding ssh keys controller
+app/controllers/ssh_keys_controller.rb
+app/helpers/ssh_keys_helper.rb
+test/functional/ssh_keys_controller_test.rb
+test/unit/helpers/ssh_keys_helper_test.rb
+20b1e2c2d43b62eb5235dcf565270f47367b0385 00b92d42f21db8a1c34ee34cd23784235867f276 adding ssh key  controller
+app/controllers/ssh_keys_controller.rb
+config/locales/en.yml
+config/routes.rb
+db/migrate/20100222134347_create_ssh_keys.rb
+db/schema.rb
+e2e12095bbcff39c7e92a9c2ccc8a21f9f85eea1 20b1e2c2d43b62eb5235dcf565270f47367b0385 adding ssh key controller views
+app/views/ssh_keys/_form.erb
+app/views/ssh_keys/index.html.erb
+app/views/ssh_keys/new.html.erb
+40590316cc97cabb4142806b785082ebe025f0d7 e2e12095bbcff39c7e92a9c2ccc8a21f9f85eea1 adding edit, show views fr ssh keys
+app/views/ssh_keys/edit.html.erb
+app/views/ssh_keys/show.html.erb
+config/locales/en.yml
+ed902e6cba9d56dd7279abc596283648fdfb6521 40590316cc97cabb4142806b785082ebe025f0d7 adding login extract method from sshkey
+app/controllers/ssh_keys_controller.rb
+app/models/ssh_key.rb
+app/views/ssh_keys/show.html.erb
+e4d980769a577f4aac982ff254b5f44e88b2b6a9 ed902e6cba9d56dd7279abc596283648fdfb6521 adding login display in the index view
+app/views/ssh_keys/index.html.erb
+c6068289eafd37b5911ada4e2be4a84a4e744c4b e4d980769a577f4aac982ff254b5f44e88b2b6a9 adding login require method and call
+app/controllers/application_controller.rb
+app/controllers/ssh_keys_controller.rb
+config/locales/en.yml
+8e4f0664d486152f39ad5e25266992a38dc7c8e5 c6068289eafd37b5911ada4e2be4a84a4e744c4b adding tests to limit keys display to owner
+app/controllers/ssh_keys_controller.rb
+config/locales/en.yml
+c86371307eb6a3a1682fa44b6ddf7013e182ee9a 8e4f0664d486152f39ad5e25266992a38dc7c8e5 sshkey rename if there is already a key in
+app/controllers/ssh_keys_controller.rb
+eb03b20e7cf96c7e43bfb5bac25dfedd2e6d93a6 c86371307eb6a3a1682fa44b6ddf7013e182ee9a adding basic export methods for keys
+app/controllers/ssh_keys_controller.rb
+app/models/ssh_key.rb
+app/views/ssh_keys/index.html.erb
+app/views/ssh_keys/show.html.erb
+config/application.yml
+config/locales/en.yml
+config/routes.rb
+5733f44ceb0ef3833ade237303119b1398a6baf1 eb03b20e7cf96c7e43bfb5bac25dfedd2e6d93a6 changing some paths to make it real
+app/models/aq_repository.rb
+347a362e7e46609390e357c806152106a2b5dbeb 5733f44ceb0ef3833ade237303119b1398a6baf1 passing to real tests and devs
+app/models/ssh_key.rb
+a1483021568fd75098b40e97d0ede6dc2dde7fb0 347a362e7e46609390e357c806152106a2b5dbeb adding username to repos creation path
+app/models/aq_repository.rb
+c11efd9a77e02b52f7d7e613175f9c1ca1f47a71 a1483021568fd75098b40e97d0ede6dc2dde7fb0 added local current_user method, fixed bad path gen
+app/models/aq_repository.rb
+7211b721300531921d26db19df770e493b3b3a09 c11efd9a77e02b52f7d7e613175f9c1ca1f47a71 adding some comments
+app/models/aq_repository.rb
+743b4200e653e1ec7bf00f690f2fa1c0f19111b2 7211b721300531921d26db19df770e493b3b3a09 adding umask to fix rights problem
+app/models/aq_repository.rb
+7d3c7e7fac99aaf8930692636ae7cc2d39b3492f 743b4200e653e1ec7bf00f690f2fa1c0f19111b2 changing shell place
+config/application.yml
+4a2995e6050a29e488713d523fb257f4aa672f7e 7d3c7e7fac99aaf8930692636ae7cc2d39b3492f generic config
+config/application.yml
+cfc5ce721fe7a84c2305b587c8aaa51879aa6ecb 4a2995e6050a29e488713d523fb257f4aa672f7e reverting
+config/application.yml
+bb696d2ef61d979e0cb518e01c4660efc2132eab cfc5ce721fe7a84c2305b587c8aaa51879aa6ecb generic conf
+config/application.yml.sample
+6adf4eab7b09c4b2d1ba7d073979057ee96e97eb bb696d2ef61d979e0cb518e01c4660efc2132eab ignoring the main config file (to use sample)
+.gitignore
+fc21fc73b14d3ffc3f1eb8ed99c492c41d9361cf 6adf4eab7b09c4b2d1ba7d073979057ee96e97eb removing specific file
+config/application.yml
+48dc10956d2a9dcc3d980943190d6c9c65f05f16 fc21fc73b14d3ffc3f1eb8ed99c492c41d9361cf adding right model
+app/models/right.rb
+db/migrate/20100223141853_create_rights.rb
+test/fixtures/rights.yml
+test/unit/right_test.rb
+f8a4e31d3f636d70bb55d519660e9de265883cb7 48dc10956d2a9dcc3d980943190d6c9c65f05f16 adding db and relations
+app/models/right.rb
+db/migrate/20100223141853_create_rights.rb
+db/schema.rb
+625d39c7cdf2c420f70a3696858925e6fb3098dc f8a4e31d3f636d70bb55d519660e9de265883cb7 adding more relations
+app/models/aq_repository.rb
+app/models/right.rb
+app/models/user.rb
+ba22811347610182f1b94f29ab8832b08f8d30f4 625d39c7cdf2c420f70a3696858925e6fb3098dc adding initial right insertion for repository
+app/controllers/aq_repositories_controller.rb
+app/models/right.rb
+314906d909d2a48b864b2854498f62c13a4cdc60 ba22811347610182f1b94f29ab8832b08f8d30f4 adding repository owner display
+app/controllers/aq_repositories_controller.rb
+app/models/aq_repository.rb
+app/models/right.rb
+app/views/aq_repositories/show.html.erb
+5f7db142ab63c64d3a5870f01dd4d009a2b22a7b 314906d909d2a48b864b2854498f62c13a4cdc60 adding some translations
+app/views/aq_repositories/show.html.erb
+config/locales/en.yml
+0dd5e2377acbd1f88be2326609a70cb121449151 5f7db142ab63c64d3a5870f01dd4d009a2b22a7b changing the title
+app/views/users/show.html.erb
+c333e95f5e0e5f1a52ccc5ac1143a2fe3f7f1231 0dd5e2377acbd1f88be2326609a70cb121449151 adding display of public path
+app/models/aq_repository.rb
+app/views/aq_repositories/show.html.erb
+config/locales/en.yml
+20bae561d3d319b5ed70cd7136c655dedf15b6fd c333e95f5e0e5f1a52ccc5ac1143a2fe3f7f1231 adding signup route
+app/views/layouts/application.html.erb
+config/locales/en.yml
+config/routes.rb
+97f32c9d1bab1d3c0e2ba7d83d4c559839f3a123 20bae561d3d319b5ed70cd7136c655dedf15b6fd limiting repositories display depending on owner
+app/controllers/aq_repositories_controller.rb
+app/helpers/application_helper.rb
+config/locales/en.yml
+0c1746c3c59f57d12b26c4a038f0b558f4dbb5c6 97f32c9d1bab1d3c0e2ba7d83d4c559839f3a123 fixing missing end
+app/controllers/aq_repositories_controller.rb
+8d66129e0c0218b50e4f0a908cfb6c1d4f88fa6a 0c1746c3c59f57d12b26c4a038f0b558f4dbb5c6 fixing some mistakes
+app/controllers/aq_repositories_controller.rb
+37b69156a97e765dd1c2a46cdb7fc0eb75dafa21 8d66129e0c0218b50e4f0a908cfb6c1d4f88fa6a adding tests to display buttons according to user rights
+app/controllers/aq_repositories_controller.rb
+app/models/aq_repository.rb
+app/views/aq_repositories/index.html.erb
+e0a561bd3a384396d197c1b702db76c81aa39a88 37b69156a97e765dd1c2a46cdb7fc0eb75dafa21 adding one more test to prevent bug when not logged in
+app/views/aq_repositories/index.html.erb
+0debbf584d0c1a95ebcd09e38c53ecee9f40366b e0a561bd3a384396d197c1b702db76c81aa39a88 adding test to only allow owner to delete repo
+app/views/aq_repositories/show.html.erb
+9e86e1eaf517bcf81d6c498fe55ba62c2355d580 0debbf584d0c1a95ebcd09e38c53ecee9f40366b adding test to only allow logged in user to add repo
+app/views/aq_repositories/index.html.erb
+1c21fef2fe3bbbd7d14865c4a0b9923354372f65 9e86e1eaf517bcf81d6c498fe55ba62c2355d580 adding some styling and icons
+app/views/layouts/application.html.erb
+public/images/icons/door-open-in.png
+public/images/icons/door.png
+public/images/icons/rocket-fly.png
+public/images/icons/wrench.png
+public/stylesheets/style.css
+5ac5ddcc5dc289e854cbc84bcae14ee961d716a3 1c21fef2fe3bbbd7d14865c4a0b9923354372f65 adding icons
+public/images/icons/big/120px-Assistant.png
+public/images/icons/big/blueprint_tool.png
+public/images/icons/big/books_01.png
+public/images/icons/big/contact.png
+public/images/icons/big/database4 2.png
+public/images/icons/big/db.png
+public/images/icons/big/dbmin2.png
+public/images/icons/big/dbplus2.png
+public/images/icons/big/drives_11.png
+public/images/icons/big/drives_12.png
+public/images/icons/big/drives_17.png
+public/images/icons/big/drives_19.png
+public/images/icons/big/injection.png
+public/images/icons/big/injectionorange.png
+public/images/icons/big/misc_51.png
+public/images/icons/big/misc_52.png
+f6f45bffc0e3edf59b653feab0e31b07698d1e93 5ac5ddcc5dc289e854cbc84bcae14ee961d716a3 adding more stylin' and icons
+app/views/layouts/application.html.erb
+config/locales/en.yml
+public/stylesheets/style.css
+e5b22c9d1e747feb726b5cec6d437831e85c6308 f6f45bffc0e3edf59b653feab0e31b07698d1e93 adding temporary icon for project
+app/views/layouts/application.html.erb
+public/images/icons/big/Network-wired.png
+public/stylesheets/style.css
+ed2cd471ca00a45c55fbac1bc791430b5bb33597 e5b22c9d1e747feb726b5cec6d437831e85c6308 removing delete link in index
+app/views/aq_repositories/index.html.erb
+46da0851dacd5971af77372b4bcc98ba0f05ab84 ed2cd471ca00a45c55fbac1bc791430b5bb33597 adding some style for repositories list
+app/controllers/aq_repositories_controller.rb
+app/views/aq_repositories/index.html.erb
+app/views/aq_repositories/show.html.erb
+public/stylesheets/style.css
+7ada894b42d6b4b9d69e6efb62782319abddeb48 46da0851dacd5971af77372b4bcc98ba0f05ab84 more repositories styling
+app/views/aq_repositories/index.html.erb
+ea3e6945ceeaa8e3aa8b1196c77102e45d58094e 7ada894b42d6b4b9d69e6efb62782319abddeb48 keys display styling
+app/views/ssh_keys/index.html.erb
+app/views/ssh_keys/show.html.erb
+config/locales/en.yml
+public/images/icons/pencil.png
+public/stylesheets/style.css
+354b36784714cc53d40fc62c0c2310dd4413bab3 ea3e6945ceeaa8e3aa8b1196c77102e45d58094e adding key display styling
+app/models/ssh_key.rb
+app/views/ssh_keys/show.html.erb
+public/stylesheets/style.css
+8f8d7ca863aaafc9b8c99de4fdb3576bf3ab49d2 354b36784714cc53d40fc62c0c2310dd4413bab3 moving repositories display to a partial
+app/views/application/_repositories.erb
+app/views/aq_repositories/index.html.erb
+fcdfb6440d41065729002b5c9c8e05d1c88dfb0a 8f8d7ca863aaafc9b8c99de4fdb3576bf3ab49d2 displaying more info on the user page
+app/views/users/show.html.erb
+config/locales/en.yml
+public/stylesheets/style.css
+41bd098c8dee355e8e90b05103e3979cc6794e27 fcdfb6440d41065729002b5c9c8e05d1c88dfb0a improving repositories display
+app/models/aq_repository.rb
+app/views/application/_repositories.erb
+fdcca8ae60f4831699f861700263a5c2def29b4c 41bd098c8dee355e8e90b05103e3979cc6794e27 improving public index display
+app/controllers/application_controller.rb
+app/views/application/_repositories.erb
+app/views/application/index.html.erb
+75e96d16d2fb119b6bece0ceb39997e5db10cd39 fdcca8ae60f4831699f861700263a5c2def29b4c putting back some default display for repos
+app/controllers/aq_repositories_controller.rb
+8bc043d235001739dde26de7b8149e7bab15b051 75e96d16d2fb119b6bece0ceb39997e5db10cd39 improving public display
+app/views/layouts/application.html.erb
+public/images/icons/big/database4 2.png
+public/images/icons/big/database42.png
+8c5564d9a38474c40f36d1cdd8ccb5d406a2485a 8bc043d235001739dde26de7b8149e7bab15b051 changing icon
+app/views/application/_repositories.erb
+public/images/icons/user-worker-boss.png
+858511da53fdb15041b96dda701099bc6bfea91e 8c5564d9a38474c40f36d1cdd8ccb5d406a2485a improving view
+app/views/aq_repositories/show.html.erb
+c196c5618a5cae9fa59dab41f7cf7bd916169d5f 858511da53fdb15041b96dda701099bc6bfea91e making the view more usable
+app/views/aq_repositories/edit.html.erb
+3b49fa49e692a71f0ed2685f68fde796b6f61823 c196c5618a5cae9fa59dab41f7cf7bd916169d5f adding link to join the repo
+app/views/application/_repositories.erb
+config/locales/en.yml
+config/routes.rb
+public/images/icons/hard-hat.png
+e283451a0e7791d9689693e578e63663a6fa3b5b 3b49fa49e692a71f0ed2685f68fde796b6f61823 adding a status attribute to rights
+db/migrate/20100223201844_add_status_to_rights.rb
+db/schema.rb
+b7864b9b78c3db07560af8f8b4538183ac796a57 e283451a0e7791d9689693e578e63663a6fa3b5b adding join functionnality
+app/controllers/aq_repositories_controller.rb
+app/models/aq_repository.rb
+app/models/right.rb
+app/views/application/_repositories.erb
+config/locales/en.yml
+config/routes.rb
+public/images/icons/clock-frame.png
+3e6accc4aab0a713c31cdd52b08f2faeba4d81e9 b7864b9b78c3db07560af8f8b4538183ac796a57 adding rights accept, reject methods and icons
+app/controllers/rights_controller.rb
+app/helpers/rights_helper.rb
+app/views/application/_repositories.erb
+app/views/aq_repositories/show.html.erb
+config/locales/en.yml
+config/routes.rb
+public/images/icons/thumb-up.png
+public/images/icons/thumb.png
+test/functional/rights_controller_test.rb
+test/unit/helpers/rights_helper_test.rb
+93a986af66458773847034f3c7465cca0755557f 3e6accc4aab0a713c31cdd52b08f2faeba4d81e9 finishing the repo display
+app/controllers/rights_controller.rb
+app/views/aq_repositories/show.html.erb
+config/routes.rb
+public/stylesheets/style.css
+395ab4016709b394b202f3c9183af96b4905b93b 93a986af66458773847034f3c7465cca0755557f making the display easier
+app/views/application/_repositories.erb
+e380188019f7e0a75c2b47ecc7493bec28e53523 395ab4016709b394b202f3c9183af96b4905b93b moving a link to make it visible by all
+app/views/layouts/application.html.erb
+a1c6376d92781c0ed15f5e38a4382b1a8b209a1e e380188019f7e0a75c2b47ecc7493bec28e53523 limiting quick users list to 10
+app/views/application/_repositories.erb
+c44e33bc41f5b71e27e43023ccd8c89c4d9793b4 a1c6376d92781c0ed15f5e38a4382b1a8b209a1e limiting access to important method
+app/controllers/ssh_keys_controller.rb
+7999a45a25ae6264b5eb086615ce96f2e7b266a9 c44e33bc41f5b71e27e43023ccd8c89c4d9793b4 improving the readme
+README.textile
+7eefbfd7f1976081f18d7f03e30593ee92795f22 7999a45a25ae6264b5eb086615ce96f2e7b266a9 adding ssh export rake task and cron
+app/models/ssh_key.rb
+lib/tasks/sshkeys.rake
+vendor/aq_cron.sh
+16d9c21317601ef121363228113012c110ac591b 7eefbfd7f1976081f18d7f03e30593ee92795f22 updating licence and readme
+LICENCE
+README.textile
+c69dfa50875dca300124342ea908af09c5c8af3d 16d9c21317601ef121363228113012c110ac591b improving the readme
+README.textile
+ab74c0a9969c976da032ecd20ad551ab8da70e1d c69dfa50875dca300124342ea908af09c5c8af3d adding desc attribute to repo schema
+db/migrate/20100224000630_add_repo_desc.rb
+db/schema.rb
+cbbd67f20af10dc3f5f489b5b03c2b9d46f3b40e ab74c0a9969c976da032ecd20ad551ab8da70e1d adding desc input in the form
+app/views/aq_repositories/_form.erb
+c339a34f6d63bad08a554a282e7f7e841309aac5 cbbd67f20af10dc3f5f489b5b03c2b9d46f3b40e adding desc display in the show view
+app/views/aq_repositories/show.html.erb
+config/locales/en.yml
+public/stylesheets/style.css
+eedb40c76aa75b29bfa5168a91868c8596c5c50f c339a34f6d63bad08a554a282e7f7e841309aac5 moving members display around in the view
+app/views/application/_repositories.erb
+config/locales/en.yml
+public/stylesheets/style.css
+5a8487e294fb1582968e0ad61724e9a4d61ff543 eedb40c76aa75b29bfa5168a91868c8596c5c50f adding beans
+app/models/bean.rb
+db/migrate/20100224001917_create_beans.rb
+db/schema.rb
+test/fixtures/beans.yml
+test/unit/bean_test.rb
+f54cef3938a0ca9d234606b42dd0c445c30a747c 5a8487e294fb1582968e0ad61724e9a4d61ff543 add beans controller
+app/controllers/beans_controller.rb
+app/helpers/beans_helper.rb
+test/functional/beans_controller_test.rb
+test/unit/helpers/beans_helper_test.rb
+e5bda7c4bd632ff4ae3f4000b9abe46e07b4203f f54cef3938a0ca9d234606b42dd0c445c30a747c adding relations to models
+app/models/aq_repository.rb
+app/models/bean.rb
+app/models/user.rb
+b34bed5e869fe250632648868793008f1e6fc8c8 e5bda7c4bd632ff4ae3f4000b9abe46e07b4203f cutting a bit the line
+app/models/aq_repository.rb
+8959a31bea868974cc0effa4ee862097e0c4f241 b34bed5e869fe250632648868793008f1e6fc8c8 adding coffee beans display
+app/controllers/beans_controller.rb
+app/views/aq_repositories/show.html.erb
+config/locales/en.yml
+config/routes.rb
+public/images/icons/bean-green.png
+public/images/icons/bean.png
+public/stylesheets/style.css
+33bd53fb6a17e61f91f5d6ae26aa78e2fe5a16f0 8959a31bea868974cc0effa4ee862097e0c4f241 importing the aq_sh from other repo
+.gitignore
+vendor/aq_sh/Gemfile
+vendor/aq_sh/LICENCE
+vendor/aq_sh/README.textile
+vendor/aq_sh/Rakefile
+vendor/aq_sh/aquarii-sh.rb
+vendor/aq_sh/config/application.yml
+vendor/aq_sh/lib/aq_lib.rb
+vendor/aq_sh/templates-bare/HEAD
+vendor/aq_sh/templates-bare/config
+vendor/aq_sh/templates-bare/description
+vendor/aq_sh/templates/HEAD
+vendor/aq_sh/templates/config
+vendor/aq_sh/templates/description
+f7917e397a64a5fffc5c3142423ed4812e68a423 33bd53fb6a17e61f91f5d6ae26aa78e2fe5a16f0 updating to ignore some more reps
+.gitignore
+a526dd4d4203d1ed001721cda7c6452b91dde423 f7917e397a64a5fffc5c3142423ed4812e68a423 updating according to the move into vendor
+app/models/ssh_key.rb
+dfcaa8bdd5c8c20275f863530379c22f9f5fcbfc a526dd4d4203d1ed001721cda7c6452b91dde423 improving the bean view in the repo show
+app/controllers/beans_controller.rb
+app/models/user.rb
+app/views/aq_repositories/show.html.erb
+config/locales/en.yml
+public/images/icons/beans.png
+96576b06a895b7d3cb84167ecb6a77de6ce46adb dfcaa8bdd5c8c20275f863530379c22f9f5fcbfc adding test to display the bean add
+app/views/aq_repositories/show.html.erb
+37b12f25828c9c8ab6f51a99c60198b4bdd9bec7 96576b06a895b7d3cb84167ecb6a77de6ce46adb reordering some tests
+vendor/aq_sh/lib/aq_lib.rb
+3c08a9145ac222b91d2325ac114968ac6db4ab45 37b12f25828c9c8ab6f51a99c60198b4bdd9bec7 updating the readme according to fusion
+README.textile
+291483b0e724df135ec7e9feca0ed9cf1f367fee 3c08a9145ac222b91d2325ac114968ac6db4ab45 displaying beans in the repos list
+app/views/application/_repositories.erb
+public/stylesheets/style.css
+2c3ce6fed325069bf270cd3ca52c4326fed100c8 291483b0e724df135ec7e9feca0ed9cf1f367fee moving to only small icons
+app/views/layouts/application.html.erb
+public/images/icons/databases.png
+public/stylesheets/style.css
+b5a71f8c5f1ce8e691f59b0d3f2c382d643aa9e1 2c3ce6fed325069bf270cd3ca52c4326fed100c8 adding branch model
+app/models/aq_branch.rb
+db/migrate/20100225111310_create_aq_branches.rb
+test/fixtures/aq_branches.yml
+test/unit/aq_branch_test.rb
+4dd5f320c6f6f7e51dc59fcadd78ed928c531f68 b5a71f8c5f1ce8e691f59b0d3f2c382d643aa9e1 adding commit model
+app/models/aq_commit.rb
+db/migrate/20100225111340_create_aq_commits.rb
+test/fixtures/aq_commits.yml
+test/unit/aq_commit_test.rb
+971746f05907adf99874d69b41d582348bbf4fcf 4dd5f320c6f6f7e51dc59fcadd78ed928c531f68 creating tables
+db/migrate/20100225111310_create_aq_branches.rb
+db/migrate/20100225111340_create_aq_commits.rb
+db/schema.rb
+bfa68eb894c8e87b08170f775fdc9b3a8ac3f8ac 971746f05907adf99874d69b41d582348bbf4fcf adding relations
+app/models/aq_branch.rb
+4dc02424470bedd5d56ead13ac88a2e46a150795 bfa68eb894c8e87b08170f775fdc9b3a8ac3f8ac adding repository, branch, commits relation
+app/models/aq_repository.rb
+54e43abb2eefcce2a273093a1e2df74719eac3b9 4dc02424470bedd5d56ead13ac88a2e46a150795 adding commit, branch, author relations
+app/models/aq_commit.rb
+ef8b456a91eeaba13b113b0c8a7f85e77e2ed4a6 54e43abb2eefcce2a273093a1e2df74719eac3b9 adding update and purge methods to repo model
+app/models/aq_repository.rb
+aff72521e332626a5935fafcc6fb6b598941af64 ef8b456a91eeaba13b113b0c8a7f85e77e2ed4a6 adding grit require
+Gemfile
+ac8a3468765390c1d78feadcb75371b28c19ca43 aff72521e332626a5935fafcc6fb6b598941af64 fixing typo in db schema
+db/migrate/20100225111340_create_aq_commits.rb
+29417f10cb2e9243c84e66904cfb249ea22cf55d ac8a3468765390c1d78feadcb75371b28c19ca43 typo fixed
+db/schema.rb
+e5c17d86eafb2090bcf7502f5d0ca89be2bc2e41 29417f10cb2e9243c84e66904cfb249ea22cf55d adding branch update method
+app/models/aq_branch.rb
+3fc421b2a6ae3151b445da99da02d45cdd5bd0f7 e5c17d86eafb2090bcf7502f5d0ca89be2bc2e41 adding quick display of branches and commits count
+app/models/aq_branch.rb
+app/models/aq_repository.rb
+app/views/aq_repositories/show.html.erb
+config/locales/en.yml
+1728d970a05aa80b005b09b6364575a6fbbef662 3fc421b2a6ae3151b445da99da02d45cdd5bd0f7 adding rake tasks to pull and purge commits
+lib/tasks/grit.rake
+dc97d346dc99d205150f29d422d401fcb1444ccd 1728d970a05aa80b005b09b6364575a6fbbef662 fixing perm problem
+vendor/aq_cron.sh
+46bc730c6c9afc586ceab14ecc27b5c768b31951 dc97d346dc99d205150f29d422d401fcb1444ccd changing names and moving out from private
+app/models/aq_branch.rb
+app/models/aq_repository.rb
+6de8612c362cf70fcd00dc68de7792be7f7c6bee 46bc730c6c9afc586ceab14ecc27b5c768b31951 fixing some errors due to update of settingslogic
+vendor/aq_sh/config/application.yml
+vendor/aq_sh/lib/aq_lib.rb
+9fcc1516e1388ca6d6e7d919e6622f7f7a345ae6 6de8612c362cf70fcd00dc68de7792be7f7c6bee making repo_dir generation more portable
+app/models/aq_repository.rb
+1bdca9c3f74e1a3e8c633a6082d78d410dae1233 9fcc1516e1388ca6d6e7d919e6622f7f7a345ae6 updating according to previous methods name update
+lib/tasks/grit.rake
+3ddb64f2339f670b1b311f653fb33480a9956bb3 1bdca9c3f74e1a3e8c633a6082d78d410dae1233 fixing different typos
+app/models/aq_branch.rb
+a165f07da8f233d7f2bafa6ec42bfbb36bc19d8d 3ddb64f2339f670b1b311f653fb33480a9956bb3 adding grit update trigger
+vendor/aq_sh/lib/aq_lib.rb
+4c22517ca302cc442651e5b34a77e2fd5821bb00 a165f07da8f233d7f2bafa6ec42bfbb36bc19d8d adding base commits list
+app/views/aq_repositories/_commit.erb
+app/views/aq_repositories/show.html.erb
+config/locales/en.yml
+568cf36dae5e46910952d92ba32b23ce30d8e079 4c22517ca302cc442651e5b34a77e2fd5821bb00 fixing display error
+app/models/aq_branch.rb
+app/models/aq_commit.rb
+app/views/aq_repositories/_commit.erb
+cc1f1d84ec09d75f32e906191339945806b8f0b2 568cf36dae5e46910952d92ba32b23ce30d8e079 adding a test to avoid destruction of existing files
+app/models/aq_repository.rb
+a5b68a43de072915c2eaed8299c250c2dfadea1a cc1f1d84ec09d75f32e906191339945806b8f0b2 removing git:// from git path
+app/models/aq_repository.rb
+6621e7e2daf343e099cd671f98e18d2019337fd1 a5b68a43de072915c2eaed8299c250c2dfadea1a fixing problem when adding repo
+app/models/aq_repository.rb
+027226b154031a08d74b5bd9f8abc4abab19ad8f 6621e7e2daf343e099cd671f98e18d2019337fd1 adding save command to avoid some loss
+app/controllers/aq_repositories_controller.rb
+7f90128443bf6f48f5105cf99e8261a3fe4c2137 027226b154031a08d74b5bd9f8abc4abab19ad8f adding a bit of logging
+vendor/aq_sh/lib/aq_lib.rb
+792f0f68cd3730f3c94b28d7ff5da17bbaa87274 7f90128443bf6f48f5105cf99e8261a3fe4c2137 adding boolean attributes to command class
+vendor/aq_sh/lib/aq_lib.rb
+dedd160a201f0c6bbdb6dd3001e2e55c9c59bec4 792f0f68cd3730f3c94b28d7ff5da17bbaa87274 fixing error
+vendor/aq_sh/lib/aq_lib.rb
+71d11527528849700ce7a26c3269f2f0fc0346af dedd160a201f0c6bbdb6dd3001e2e55c9c59bec4 moving from exec to system, adding log
+vendor/aq_sh/lib/aq_lib.rb
+bc053cf5fef8a31b99753df5001b652caf681adc 71d11527528849700ce7a26c3269f2f0fc0346af moving call to grit update
+vendor/aq_sh/lib/aq_lib.rb
+acdf3080e75fac0068c7cb0439dbf085d2b253ab bc053cf5fef8a31b99753df5001b652caf681adc making things easier : using rake task to pull
+lib/tasks/grit.rake
+vendor/aq_sh/lib/aq_lib.rb
+707f4e845923d224c01ba299a89852f102b0d265 acdf3080e75fac0068c7cb0439dbf085d2b253ab fixing call to rake
+vendor/aq_sh/lib/aq_lib.rb
+908ffca7077ed6c9dce4da228401d7686c1319c4 707f4e845923d224c01ba299a89852f102b0d265 fixing commits list display
+app/models/aq_repository.rb
+app/views/aq_repositories/show.html.erb
+a19e71dbaf2b230a707c2662fa173f891fac98f8 908ffca7077ed6c9dce4da228401d7686c1319c4 adding log
+vendor/aq_sh/lib/aq_lib.rb
+2a5b5f3096eaa1022fdb0eff60d776f04bac655e a19e71dbaf2b230a707c2662fa173f891fac98f8 adding log method
+vendor/aq_sh/lib/aq_lib.rb
+ba3b654142c339f54d8580436281fbfb166bcf7b 2a5b5f3096eaa1022fdb0eff60d776f04bac655e adding more log
+vendor/aq_sh/lib/aq_lib.rb
+220057388987ae62720d38f50302de53852d03d8 ba3b654142c339f54d8580436281fbfb166bcf7b changing rake call path
+vendor/aq_sh/lib/aq_lib.rb
+92e0e7b405693e63ef4725c8a57534b014eff742 220057388987ae62720d38f50302de53852d03d8 moving requires
+lib/tasks/grit.rake
+e7ebaf52e06db37569d7453f7382fd22532921a1 92e0e7b405693e63ef4725c8a57534b014eff742 changing requires
+lib/tasks/grit.rake
+ee39303b29e448724bd8a5286ca16b6290da1aba e7ebaf52e06db37569d7453f7382fd22532921a1 adding require
+lib/tasks/grit.rake
+40ff046b4a5e9a7f90489696cbd4046a973be4b6 ee39303b29e448724bd8a5286ca16b6290da1aba changing requires
+lib/tasks/grit.rake
+03f2e6a973c4e95571a18fdd3be9599fbd3643ea 40ff046b4a5e9a7f90489696cbd4046a973be4b6 adding image for browser
+public/images/icons/document-binary.png
+public/images/icons/document-block.png
+public/images/icons/document-bookmark.png
+public/images/icons/document-code.png
+public/images/icons/folder.png
+1e8bf752566ac7f4c38e795977b03f227833bf61 03f2e6a973c4e95571a18fdd3be9599fbd3643ea adding db ignore
+.gitignore
+bb97d2609b551e568b0c56a5b2b8dbade9cdc829 1e8bf752566ac7f4c38e795977b03f227833bf61 adding base hg repo inits
+app/models/aq_repository.rb
+config/hg_templates/00changelog.i
+config/hg_templates/requires
+2412cc2bd20bd65e9f4c6796ea4a8cc37b14530c bb97d2609b551e568b0c56a5b2b8dbade9cdc829 adding kind select in repo creation form
+app/views/aq_repositories/_form.erb
+989b2059fb08403b98932794ef18cc6671d91449 2412cc2bd20bd65e9f4c6796ea4a8cc37b14530c adding test to only grit update git repositories
+lib/tasks/grit.rake
+28a0488f9f9e0233737efab6606a2b9fcc7bddb7 989b2059fb08403b98932794ef18cc6671d91449 starting to add hg command support
+vendor/aq_sh/config/application.yml
+vendor/aq_sh/lib/aq_lib.rb
+8861966254c7e15f332aa47dc8d4a1d5f44271fe 28a0488f9f9e0233737efab6606a2b9fcc7bddb7 adding hg shell, setting up things to run hg commands
+vendor/aq_sh/config/application.yml
+vendor/aq_sh/lib/aq_lib.rb
+edd0043b6b59900c20a90c338f91e7757e220fd0 8861966254c7e15f332aa47dc8d4a1d5f44271fe fixing path generation for hg
+app/models/aq_repository.rb
+425a082cdc3669c42b7760d91aa5c28256caa4f9 edd0043b6b59900c20a90c338f91e7757e220fd0 fixing path extraction and generation
+vendor/aq_sh/lib/aq_lib.rb
+494b549fb34ba56fb8209625907b0a464ea9eb9f 425a082cdc3669c42b7760d91aa5c28256caa4f9 changing command call
+vendor/aq_sh/lib/aq_lib.rb
+70b9ae1da737ee2115d6e9cdfc14c32598c02696 494b549fb34ba56fb8209625907b0a464ea9eb9f fixing repo find with git
+vendor/aq_sh/lib/aq_lib.rb
+98bc895b92d65c93042d2b78216b9245fa98f541 70b9ae1da737ee2115d6e9cdfc14c32598c02696 fixing typo
+lib/tasks/grit.rake
+91e8c805c5a873224d7f7a71d8f573fa059476d9 98bc895b92d65c93042d2b78216b9245fa98f541 fixing hg checkout error
+vendor/aq_sh/lib/aq_lib.rb
+9cb98659ca13c12d68dc3d6274aa996100637843 91e8c805c5a873224d7f7a71d8f573fa059476d9 adding tests to avoid anonymous pushes
+vendor/aq_sh/lib/aq_lib.rb
+bd98f751ef7e976dfb8a6a8d7cf9d7101532958c 9cb98659ca13c12d68dc3d6274aa996100637843 changing rights system : only rights holder can r/w
+vendor/aq_sh/lib/aq_lib.rb
+e587101a9e5a15cb2d6e63a894a3cbcdf015a6aa bd98f751ef7e976dfb8a6a8d7cf9d7101532958c adding fork icon, route and link
+app/views/aq_repositories/show.html.erb
+config/locales/en.yml
+config/routes.rb
+public/images/icons/arrow-split.png
+7e83d20aabf525d1111e2ac8ef61412ec90754a7 e587101a9e5a15cb2d6e63a894a3cbcdf015a6aa adding parent_id attribute to aq repository model
+db/migrate/20100227210021_add_fork_link.rb
+db/schema.rb
+1127b0f21bf7a680f40dc9bc6a5e42a26b487924 7e83d20aabf525d1111e2ac8ef61412ec90754a7 moving owner code attribution to a proper method
+app/controllers/aq_repositories_controller.rb
+app/models/aq_repository.rb
+807ef59ae25657c6a337a8de723395b533a447e6 1127b0f21bf7a680f40dc9bc6a5e42a26b487924 adding fork methods and links
+app/controllers/aq_repositories_controller.rb
+app/models/aq_repository.rb
+app/views/aq_repositories/show.html.erb
+config/locales/en.yml
+public/images/icons/arrow-skip-090.png
+8f78dc820a2a64d124f22b5ae1b39bbeda6d43df 807ef59ae25657c6a337a8de723395b533a447e6 updating to use the new owner= method
+app/controllers/aq_repositories_controller.rb
+dd82b73020e8385559f9e0708bf98801af20fdec 8f78dc820a2a64d124f22b5ae1b39bbeda6d43df fixing repo update methods
+app/models/aq_branch.rb
+app/models/aq_repository.rb
+6b54c07a76317ba1e827edc3cf9aae9d163d6121 dd82b73020e8385559f9e0708bf98801af20fdec fixed grit repo update problem
+app/models/aq_branch.rb
+8cfe44bd8ea49f100ad6b4f26b7eadf6369c77f9 6b54c07a76317ba1e827edc3cf9aae9d163d6121 improving the design
+app/controllers/aq_repositories_controller.rb
+app/views/application/index.html.erb
+app/views/layouts/application.html.erb
+public/stylesheets/style.css
+a48a91cd9516b7a3e2d44d7181e01457e1cc9aa0 8cfe44bd8ea49f100ad6b4f26b7eadf6369c77f9 improving quick list of commits
+app/controllers/application_controller.rb
+app/views/application/index.html.erb
+public/stylesheets/style.css
+b68a5c1c33daf1d3f63ee3311472233064ccb951 a48a91cd9516b7a3e2d44d7181e01457e1cc9aa0 improving quick display of repositories
+app/views/application/_short_commit.erb
+app/views/application/_short_repositories.erb
+app/views/application/index.html.erb
+public/stylesheets/style.css
+c441152092b00d537d469c9206570f929e6b491b b68a5c1c33daf1d3f63ee3311472233064ccb951 improving display list of repositories
+app/helpers/application_helper.rb
+app/views/application/index.html.erb
+public/stylesheets/style.css
+42da7eaf8ca6de86ae65d6abe134918e86bc315e c441152092b00d537d469c9206570f929e6b491b making it much simpler
+app/views/application/_short_repositories.erb
+app/views/application/index.html.erb
+8fe45f78739202323d19613865dab419a9571bce 42da7eaf8ca6de86ae65d6abe134918e86bc315e simplifying the display
+app/views/aq_repositories/show.html.erb
+public/stylesheets/style.css
+78bd554d83c0ca561a1d048339ba720501d90485 8fe45f78739202323d19613865dab419a9571bce improving committers list display
+app/views/aq_repositories/show.html.erb
+public/stylesheets/style.css
