@@ -1,3 +1,6 @@
+require 'grit'
+include Grit
+
 class AqRepositoriesController < ApplicationController
   before_filter :login_required, :except => [:show]
 
@@ -7,6 +10,10 @@ class AqRepositoriesController < ApplicationController
 
   def show
     @repository = AqRepository.find(params[:id])
+    if @repository.is_git?
+      @grit_repo = Repo.new(@repository.path)
+      @grit_findex = Grit::GitRuby::FileIndex.new(@repository.path)
+    end
   end
 
   def new

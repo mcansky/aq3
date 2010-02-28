@@ -1,0 +1,32 @@
+<table cellspacing=0>
+	<tr>
+	<th>Filename</th>
+	<th>Commit log</th>
+	</tr>
+	<% root_dir = "" %>
+	<% root_dir = params[:dir] + "/" if params[:dir] %>
+	<% tree = @grit_repo.tree %>
+	<% tree = @grit_repo.tree(params[:tree]) if params[:tree] %>
+	<% if params[:back] %>
+		<tr>
+			<% troot = (Pathname(root_dir) + "..").to_s %>
+			<% if (params[:back] == "master") || troot == "." %>
+				<td><%= link_to "..", :action => "show", :id => @repository.id %></td>
+			<% else %>
+				<td><%= link_to "..", :action => 'show', :id => @repository.id, :dir => troot, :tree => @grit_repo.tree(params[:back]).id, :back => tree.id %></td>
+			<% end %>
+			<td></td>
+		</tr>
+	<% end %>
+	<% for dir in tree.trees %>
+	<tr><td><%= link_to dir.basename, :action => 'show', :id => @repository.id, :dir => root_dir +"#{dir.basename}", :tree => dir.id, :back => tree.id %></td>
+		<td></td>
+		</tr>
+	<% end %>
+	<% for file in tree.blobs %>
+	<tr>
+		<td><%= file.name %></td>
+		<td><%= @repository.commits.find_by_sha(@grit_findex.commits_for(root_dir + file.name).last).log.lines.first.slice(0,30) %></td>
+	</tr>
+	<% end %>
+</table>
