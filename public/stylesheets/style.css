@@ -9,12 +9,11 @@ body {
 
 #top_bar {
 	background: #DDD;
-	width: 80%;
+	width: 950px;
 	margin-top: 25px;
 	margin-left: auto;
 	margin-right: auto;
 	padding: 10px;
-	padding-left: 30px;
 	border-bottom: 1px solid #EEE;
 	border-top: 1px solid #FFF;
 }
@@ -23,7 +22,7 @@ body {
 	background: #222;
 	color: #DDD;
 	padding: 10px;
-	width: 80%;
+	width: 950px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -68,19 +67,17 @@ body {
 
 #main {
 	width: 100%;
-	margin-right: auto;
-	margin-left: auto;
-	background: #222;
+	background: #111;
 	border-top: 1px solid #444;
 	border-bottom: 1px solid #DDD;
 	padding: 0;
 }
 
 #content {
-	width: 80%;
-	padding: 0;
+	width: 970px;
 	margin-right: auto;
 	margin-left: auto;
+	padding: 0px;
 }
 
 input, textarea {
@@ -92,13 +89,14 @@ input, textarea {
 
 #img_banner {
 	border: 1px solid #DDD;
-	width: 100%;
+	width: 950px;
 	background: #888;
+	margin: 0;
 	margin-top: 20px;
 	margin-bottom: 20px;
-	margin-left: 0;
-	margin-right: 0;
-	padding: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px;
 }
 
 #img_banner p {
@@ -107,23 +105,6 @@ input, textarea {
 	font-family: times;
 }
 
-#root {
-	float: left;
-	margin-top: 15px;
-	margin-left: 30%;
-	background: #DDD;
-	border: 1px solid #999;
-	padding: 10px 10px 5px 10px;
-}
-#root img {
-}
-
-#root a {
-}
-
-#root a:hover {
-	color: #1d5794;
-}
 
 div.clear {
 	clear: both;
@@ -133,6 +114,7 @@ div.clear {
 	float: left;
 	width: 48%;
 	margin-left: 0;
+	padding: 0;
 }
 
 #content #right_content {
@@ -141,89 +123,98 @@ div.clear {
 	margin-right: 0;
 }
 
+#left_content #intro_text, #commits, #repositories {
+	font-family: sans-serif;
+}
 
 #left_content #intro_text, #commits, #repositories h2 {
 	background: #000;
 	padding: 10px;
 	color: #EEE;
+	font-size: 10pt;
+	line-height: 14pt;
+	font-family: sans-serif;
 }
 
 #left_content #commits {
 	margin-top: 10px;
+	padding: 0;
 }
 
-#content div#repositories {
-}
-#content div.repository {
-	margin-left: 15px;
-	border-bottom: 2px solid #999;
-	margin-bottom: 10px;
-}
-#content div.repository span.img {
-	float: left;
-	margin: 10px;
-}
-#content div.repository p {
-	font-size: 12px;
-}
-#content div.repository h3 {
-	font-size: 14px;
-	font-family: monospace;
-}
-#content div.repository h3 a {
-	text-decoration: none;
-	color: #1d5794;
-	font-family: monospace;
-	font-size: 16px;
-}
-
-#content div.repository h3 a:hover {
-	text-decoration: underline;
-}
-
-#content div#sshkeys {
-	width: 40%;
-	margin-left: 20px;
-}
-
-#content div.sshkey {
+#left_content #commits h2 {
+	font-size: 10pt;
+	font-weight: normal;
+	font-variant: small-caps;
+	margin: 5px;
 	margin-top: 10px;
 }
 
-#content div.sshkey a {
+#commits div.short_commit {
+	padding: 0;
+	background: #222;
+}
+#commits div.short_commit a {
+	color: #fb3700;
 	text-decoration: none;
-	color: #1d5794;
-	font-family: monospace;
+	font-weight: bold;
 }
 
-#content div.sshkey a:hover {
+#commits div.short_commit div.left_sh_commit {
+	float: left;
+	margin-left: 0;
+	width: 30%;
+	border-top: 1px solid #111;
+	background: #000;
+	height: 80px;
+}
+
+#commits div.short_commit div.left_sh_commit span {
+	display: block;
+}
+
+#commits div.short_commit div.left_sh_commit span.repository {
+	margin-top: 15px;
+}
+#commits div.short_commit div.left_sh_commit .repository a {
+	color: #fb3700;
+	text-decoration: none;
+	font-weight: bold;
+	margin-left: 15px;
+	letter-spacing: 1.5px;
+}
+#commits div.short_commit div.left_sh_commit .repository a:hover {
 	text-decoration: underline;
 }
 
-#content div.sshkey {
-	width: 80%;
-}
-#content div.sshkey p.sshkey {
+
+
+#commits div.short_commit div.right_sh_commit {
+	float: right;
+	margin-right: 0;
 	width: 70%;
-	margin-left: 20px;
-	font-size: 10px;
-	font-family: monospace;
-	border: 1px solid #999;
-	background: #DDD;
-	padding: 5px;
+	border-top: 1px solid #111;
 }
 
-#content div#user {
-	margin-bottom: 20px;
-}
-
-#content div.committer {
+#commits div.short_commit p {
+	margin-top: 10px;
 	margin-bottom: 10px;
+	margin-left: 10px;
 }
 
-#content div#repository {
-	width: 40%;
+#commits div.short_commit div.right_sh_commit span {
 }
+
+#commits div.short_commit div.right_sh_commit span.commit_log {
+	display: block;
+	font-family: monospace;
+	font-size: 9pt;
+	margin-left: 10px;
+}
+
+#content div#repositories {
+
+
+
 
 div.desc {
 	margin-bottom: 20px;

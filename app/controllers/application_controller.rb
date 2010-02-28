@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   def index
     @repositories = AqRepository.find(:all)
+    @commits = AqCommit.find(:all, :order => "committed_time DESC")
   end
 
 	private

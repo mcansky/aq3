@@ -11,20 +11,19 @@
 	</div>
 
 	<div id="commits">
-		<ul>
-			<li>cezgergerges</li>
-				<li>cezgergerges</li>
-					<li>cezgergerges</li>
-						<li>cezgergerges</li>
-							<li>cezgergerges</li>
-			</ul>
+		<h2>Latest commits</h2>
+		<% for commit in @commits.first(10) %>
+			<%= render "short_commit", :commit => commit %>
+		<% end %>
 	</div>	
 </div>
 
 <div id="right_content">
 	<div id="repositories">
 		<h3><%= t(:repositories) %></h3>
-		<%= render "application/repositories", :repositories => @repositories %>
+		<% for repository in @repositories %>
+			<%= render "short_repository", :repository => repository %>
+		<% end %>
 	</div>
 </div>
 
