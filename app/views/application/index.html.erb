@@ -21,13 +21,7 @@
 <div id="right_content">
 	<div id="repositories">
 		<h2>Repositories</h2>
-		<% if is_even?(@repositories.size) %>
-			<% max = @repositories.size %>
-		<% else %>
-			<% max = @repositories.size - 1 %>
-		<% end %>
-		<% max = 30 if max > 30 %>
-		<% @repositories.first(max).each_slice(2) do |rep1,rep2| %>
+		<% @repositories.first(30).each_slice(2) do |rep1,rep2| %>
 			<%= render "short_repositories", :rep1 => rep1, :rep2 => rep2 %>
 		<% end %>
 	</div>

@@ -8,6 +8,7 @@
 			<% end %>
 			<span class="rep_name"><%= link_to rep1.name, rep1 %></span>
 	</div>
+	<% if rep2 %>
 	<div class="right_repo">
 		<p>
 			<% if rep2.is_git? %>
@@ -18,5 +19,6 @@
 			<span class="rep_name"><%= link_to rep2.name, rep2 %></span>
 		</p>
 	</div>
+	<% end %>
 	<div class="clear"></div>
 </div>
