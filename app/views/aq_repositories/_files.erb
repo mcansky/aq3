@@ -1,36 +1,51 @@
-<table cellspacing=0>
-	<tr>
-	<th>Filename</th>
-	<th>Commit log</th>
-	</tr>
-	<% branch = "master" %>
-  <% branch = params[:branch] if params[:branch] %>
-	<% root_dir = "" %>
-	<% root_dir = params[:dir] + "/" if params[:dir] %>
-	<% tree = @grit_repo.tree(branch) %>
-	<% tree = @grit_repo.tree(params[:tree]) if params[:tree] %>
-	<% if params[:back] %>
+<div id="repo_browser">
+	<div class="path">
+		<% path = "root" %>
+		<% path = params[:dir] if params[:dir] %>
+		<p><%= path %>/</p>
+	</path>
+	<table cellspacing=0>
 		<tr>
-			<% troot = (Pathname(root_dir) + "..").to_s %>
-			<% if (params[:back] == branch) || troot == "." %>
-				<td><%= link_to "..", :action => "show", :id => @repository.id, :branch => branch %></td>
-			<% else %>
-				<td><%= link_to "..", :action => 'show', :id => @repository.id, :dir => troot, :tree => @grit_repo.tree(params[:back]).id, :back => tree.id, :branch => branch %></td>
-			<% end %>
-			<td></td>
+		<th>Filename</th>
+		<th>Commit log</th>
 		</tr>
-	<% end %>
-	<% for dir in tree.trees %>
-	<tr><td><%= link_to dir.basename, :action => 'show', :id => @repository.id, :dir => root_dir +"#{dir.basename}", :tree => dir.id, :back => tree.id, :branch => branch %></td>
-		<td></td>
-		</tr>
-	<% end %>
-	<% for file in tree.blobs %>
-		<% if file.name != "file-index" %>
-			<tr>
-				<td><%= file.name %></td>
-				<td><%= @repository.commits.find_by_sha(@grit_findex.commits_for(root_dir + file.name).last).log.lines.first.slice(0,30) %></td>
+		<% branch = "master" %>
+	  <% branch = params[:branch] if params[:branch] %>
+		<% root_dir = "" %>
+		<% root_dir = params[:dir] + "/" if params[:dir] %>
+		<% tree = @grit_repo.tree(branch) %>
+		<% tree = @grit_repo.tree(params[:tree]) if params[:tree] %>
+		<% if params[:back] %>
+			<tr class="dir">
+				<% troot = (Pathname(root_dir) + "..").to_s %>
+				<% if (params[:back] == branch) || troot == "." %>
+					<td>
+						<%= image_tag("/images/icons/folder-horizontal.png", :title => t(:up), :alt => t(:up), :border => 0)%>
+						<%= link_to "..", :action => "show", :id => @repository.id, :branch => branch %></td>
+				<% else %>
+					<td><%= link_to "..", :action => 'show', :id => @repository.id, :dir => troot, :tree => @grit_repo.tree(params[:back]).id, :back => tree.id, :branch => branch %></td>
+				<% end %>
+				<td></td>
 			</tr>
 		<% end %>
-	<% end %>
-</table>
+		<% for dir in tree.trees %>
+			<tr class="dir">
+				<td>
+				<%= image_tag("/images/icons/folder-horizontal.png", :title => dir.basename, :alt => dir.basename, :border => 0)%>
+				<%= link_to dir.basename, :action => 'show', :id => @repository.id, :dir => root_dir +"#{dir.basename}", :tree => dir.id, :back => tree.id, :branch => branch %></td>
+				<td></td>
+			</tr>
+		<% end %>
+		<% for file in tree.blobs %>
+			<% if file.name != "file-index" %>
+				<tr class="file">
+					<td>
+						<%= image_tag("/images/icons/document-code.png", :title => file.name, :alt => file.name, :border => 0)%>
+						<%= file.name %>
+					</td>
+					<td><%= @repository.commits.find_by_sha(@grit_findex.commits_for(root_dir + file.name).last).log.lines.first.slice(0,30) %></td>
+				</tr>
+			<% end %>
+		<% end %>
+	</table>
+</div>

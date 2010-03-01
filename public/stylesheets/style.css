@@ -293,8 +293,46 @@ div.desc {
 	width: 20%;
 }
 
-#repository div.people a {
+#repository a {
 	color: #fb3700;
 	text-decoration: none;
 	font-weight: bold;
+}
+
+#files {
+}
+
+#files #repo_browser {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#files .path p {
+	margin: 10px;
+	font-weight: bold;
+	color: #fb3700;
+}
+
+#files table {
+	border: 1px solid #888;
+	width: 100%;
+	font-family: sans-serif;
+	background: #555;
+}
+
+#files table th {
+	padding: 5px;
+	text-align: left;
+}
+
+#files table td {
+	padding: 5px;
+	border-bottom: 1px dashed #888;
+}
+
+#files table tr.dir a {
+	color: #fb3700;
+	font-weight: bold;
+	text-decoration: none;
 }
