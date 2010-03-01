@@ -8,12 +8,15 @@
 	</p>
 	</div>
 
-	<div id="repositories">
-		<h3><%= t(:repositories) %></h3>
-		<%= render "application/repositories", :repositories => @user.aq_repositories, :user => @user %>
+	<div class="user_repositories">
+		<h2><%= t(:repositories) %></h2>
+		<% @user.aq_repositories.first(10).each_slice(2) do |rep1,rep2| %>
+			<%= render "application/short_repositories", :rep1 => rep1, :rep2 => rep2 %>
+		<% end %>
 	</div>
 
-	<div id="commits">
+	<div class="user_commits">
 	</div>
+	<div class="clear"></div>
 
 </div>
