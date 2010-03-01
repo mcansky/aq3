@@ -336,3 +336,25 @@ div.desc {
 	font-weight: bold;
 	text-decoration: none;
 }
+
+#user {
+	margin-top: 15px;
+}
+
+#user div.user_desc {
+	color: #EEE;
+	background: #222;
+}
+
+#user div.user_desc h2 {
+	background: #000;
+	padding: 10px;
+	color: #EEE;
+	font-size: 12pt;
+	line-height: 14pt;
+	font-family: sans-serif;
+}
+
+#user div.user_desc p {
+	padding: 10px;
+}

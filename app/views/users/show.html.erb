@@ -1,16 +1,19 @@
-<h2><%= image_tag("/images/icons/user-silhouette.png", :title => nil, :alt => nil, :border => 0) %> <%= @user.login %></h2>
-
-
 <div id="user">
+
+	<div class="user_desc">
+	<h2><%= image_tag("/images/icons/user-silhouette.png", :title => nil, :alt => nil, :border => 0) %> <%= @user.login %></h2>
+
 	<p>
 		<strong><%= t(:contact) %> :</strong> <%= @user.email %>
 	</p>
-</div>
+	</div>
 
-<div id="repositories">
-	<h3><%= t(:repositories) %></h3>
-	<%= render "application/repositories", :repositories => @user.aq_repositories, :user => @user %>
-</div>
+	<div id="repositories">
+		<h3><%= t(:repositories) %></h3>
+		<%= render "application/repositories", :repositories => @user.aq_repositories, :user => @user %>
+	</div>
 
-<div id="commits">
+	<div id="commits">
+	</div>
+
 </div>
