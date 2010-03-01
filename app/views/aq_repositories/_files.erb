@@ -1,8 +1,8 @@
 <div id="repo_browser">
 	<div class="path">
-		<% path = "root" %>
-		<% path = params[:dir] if params[:dir] %>
-		<p><%= path %>/</p>
+		<% path = "" %>
+		<% path = params[:dir] + "/" if params[:dir] %>
+		<p>/<%= path %></p>
 	</path>
 	<table cellspacing=0>
 		<tr>
