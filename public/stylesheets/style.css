@@ -409,14 +409,16 @@ div.desc {
 	padding-top: 5px;
 }
 
-span.kind_git {
+#user div.user_repositories span.kind_git {
 	color: #1aa000;
 	font-weight: bold;
+	font-family: sans-serif;
 }
 
-span.kind_hg {
+#user div.user_repositories span.kind_hg {
 	color: #4275a5;
 	font-weight: bold;
+	font-family: sans-serif;
 }
 
 #user div.user_repositories span.rep_name {
@@ -431,4 +433,3 @@ span.kind_hg {
 	font-size: 10pt;
 	font-family: sans-serif;
 }
-
