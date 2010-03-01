@@ -2,7 +2,7 @@
 	<div class="path">
 		<% path = "" %>
 		<% path = params[:dir] + "/" if params[:dir] %>
-		<p>/<%= path %></p>
+		<p>/<%= path %> (<%= params[:branch] || "master" %>)</p>
 	</path>
 	<table cellspacing=0>
 		<tr>
@@ -31,7 +31,7 @@
 		<% for dir in tree.trees %>
 			<tr class="dir">
 				<td>
-				<%= image_tag("/images/icons/folder-horizontal.png", :title => dir.basename, :alt => dir.basename, :border => 0)%>
+				<%= image_tag("/images/icons/folder-horizontal.png", :title => dir.basename, :alt => dir.basename, :border => 0) %>
 				<%= link_to dir.basename, :action => 'show', :id => @repository.id, :dir => root_dir +"#{dir.basename}", :tree => dir.id, :back => tree.id, :branch => branch %></td>
 				<td></td>
 			</tr>
