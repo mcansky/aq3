@@ -39,7 +39,7 @@
 
 	<div class="desc">
 		<p><strong><%= t(:public_path) %> : </strong><%= @repository.public_path %></p>
-		<p><strong><%= t(:branches) %> : <%= @repository.branches.count %></strong>
+		<p><strong><%= t(:branches) %> : </strong>
 			<% @repository.branches.each do |br| %>
 				<%= link_to br.name, :action => "show", :branch => br.name %>
 			<% end %>
