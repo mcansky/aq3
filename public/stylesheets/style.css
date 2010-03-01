@@ -138,7 +138,7 @@ div.clear {
 	font-family: sans-serif;
 }
 
-#left_content #intro_text, #commits {
+#left_content #intro_text, #commits, #user div.user_commits {
 	background: #000;
 	padding: 10px;
 	color: #EEE;
@@ -147,22 +147,22 @@ div.clear {
 	font-family: sans-serif;
 }
 
-#left_content #commits {
+#left_content #commits, #user div.user_commits {
 	margin-top: 10px;
 	padding: 0;
 }
 
-#commits div.short_commit {
+#commits div.short_commit, div.user_commits div.short_commit {
 	padding: 0;
 	background: #222;
 }
-#commits div.short_commit a {
+#commits div.short_commit a, div.user_commits div.short_commit a {
 	color: #fb3700;
 	text-decoration: none;
 	font-weight: bold;
 }
 
-#commits div.short_commit div.left_sh_commit {
+#commits div.short_commit div.left_sh_commit, div.user_commits div.short_commit div.left_sh_commit {
 	float: left;
 	margin-left: 0;
 	width: 30%;
@@ -171,42 +171,50 @@ div.clear {
 	height: 80px;
 }
 
-#commits div.short_commit div.left_sh_commit span {
+#commits div.short_commit div.left_sh_commit span, div.user_commits div.short_commit div.left_sh_commit span {
 	display: block;
 }
 
-#commits div.short_commit div.left_sh_commit span.repository {
+#commits div.short_commit div.left_sh_commit span.repository,
+div.user_commits div.short_commit div.left_sh_commit span.repository {
 	margin-top: 15px;
 }
-#commits div.short_commit div.left_sh_commit .repository a {
+
+#commits div.short_commit div.left_sh_commit .repository a,
+div.user_commits div.short_commit div.left_sh_commit .repository a {
 	color: #fb3700;
 	text-decoration: none;
 	font-weight: bold;
 	margin-left: 5px;
 }
-#commits div.short_commit div.left_sh_commit .repository a:hover {
+#commits div.short_commit div.left_sh_commit .repository a:hover,
+div.user_commits div.short_commit div.left_sh_commit .repository a:hover {
 	text-decoration: underline;
 }
 
 
 
-#commits div.short_commit div.right_sh_commit {
+#commits div.short_commit div.right_sh_commit,
+div.user_commits div.short_commit div.right_sh_commit {
 	float: right;
 	margin-right: 0;
 	width: 70%;
 	border-top: 1px solid #111;
 }
 
-#commits div.short_commit p {
+#commits div.short_commit p,
+div.user_commits div.short_commit p {
 	margin-top: 10px;
 	margin-bottom: 10px;
 	margin-left: 10px;
 }
 
-#commits div.short_commit div.right_sh_commit span {
+#commits div.short_commit div.right_sh_commit span,
+div.user_commits div.short_commit div.right_sh_commit span {
 }
 
-#commits div.short_commit div.right_sh_commit span.commit_log {
+#commits div.short_commit div.right_sh_commit span.commit_log,
+div.user_commits div.short_commit div.right_sh_commit span.commit_log {
 	display: block;
 	font-family: monospace;
 	font-size: 9pt;
@@ -338,7 +346,7 @@ div.desc {
 }
 
 #user {
-	margin-top: 15px;
+	margin-top: 0px;
 }
 
 #user div.user_desc, #user div.user_repositories {
@@ -355,7 +363,7 @@ div.desc {
 
 #user div.user_commits {
 	float: right;
-	width 49%;
+	width: 49%;
 	margin-right: 0;
 }
 
@@ -370,6 +378,10 @@ div.desc {
 
 #user div.user_desc p {
 	padding: 10px;
+}
+
+#user div.user_repositories {
+	margin-top: 10px;
 }
 
 #user div.user_repositories div.left_repo {
@@ -419,3 +431,4 @@ span.kind_hg {
 	font-size: 10pt;
 	font-family: sans-serif;
 }
+

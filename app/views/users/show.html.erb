@@ -16,6 +16,10 @@
 	</div>
 
 	<div class="user_commits">
+		<h2>Latest commits</h2>
+		<% for commit in @user.aq_commits.first(10) %>
+			<%= render "application/short_commit", :commit => commit %>
+		<% end %>
 	</div>
 	<div class="clear"></div>
 
