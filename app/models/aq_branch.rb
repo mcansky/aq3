@@ -21,6 +21,7 @@ class AqBranch < ActiveRecord::Base
             :author_name => c.author.name,
             :created_at => c.committed_date,
             :committed_time => c.committed_date)
+          a_commit.author = self.aq_repository.owner
           self.commits << a_commit
           self.save
         end
