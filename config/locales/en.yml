@@ -35,7 +35,7 @@ en:
   logout_ok: "Logout successfull"
   password: "Password"
   password_confirmation: "Password confirm"
-  confirm_ask: "Are you sure ?"
+  ask_confirm: "Are you sure ?"
   repositories: "Repositories"
   repo_new: "New repository"
   repo_list: "All repositories"

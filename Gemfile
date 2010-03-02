@@ -16,6 +16,9 @@ gem "settingslogic"
 gem "RedCloth"
 gem "nifty-generators"
 gem "grit"
+gem "acts_as_versioned"
+gem "jquery_helpers"
+gem "thin"
 
 ## Bundle the gems you use:
 # gem "bj"

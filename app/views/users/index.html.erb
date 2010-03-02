@@ -2,7 +2,10 @@
 <div id="users">
 	<ul>
 	<% for user in @users %>
-		<li><%= link_to user.login, user %> <%= button_to t(:user_del), user, :confirm => t(:confirm_ask), :method => :delete %></li>
+		<li>
+			<%= link_to user.login, user %>
+			<%= link_to t(:user_del), user, {:method => :delete, :confirm => t(:ask_confirm), :title => t(:user_del) }%>
+		</li>
 	<% end %>
 	</ul>
 	<%= link_to t(:user_new), new_user_path %>
