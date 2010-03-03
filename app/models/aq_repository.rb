@@ -12,6 +12,7 @@ class AqRepository < ActiveRecord::Base
   has_many :commits, :through => :branches, :order => "committed_time"
   has_many :forks, :class_name => "AqRepository", :foreign_key => "parent_id"
   belongs_to :parent, :class_name => "AqRepository", :foreign_key => "parent_id"
+  has_many :files, :class_name => "AqFile", :through => :branches
 
   def owner
     a_right = self.rights.find(:all, :conditions => ["role = ?",'o']).first
@@ -86,7 +87,11 @@ class AqRepository < ActiveRecord::Base
       b.destroy
     end
   end
-  
+
+  def file(path)
+    self.files.find_by_path(path)
+  end
+
   def branch(name)
     self.branches.find_by_name(name)
   end

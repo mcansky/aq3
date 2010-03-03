@@ -15,7 +15,7 @@
 		<% root_dir = "" %>
 		<% root_dir = params[:dir] + "/" if params[:dir] %>
 		<% tree = @grit_repo.tree(branch) %>
-		<% tree = @grit_repo.tree(params[:tree]) if params[:tree] %>
+		<% tree = @grit_repo.tree(branch, root_dir ) if params[:dir] %>
 		<% if params[:back] %>
 			<tr class="dir">
 				<% troot = (Pathname(root_dir) + "..").to_s %>
@@ -41,14 +41,23 @@
 		<% end %>
 		<% for file in tree.blobs %>
 			<% if file.name != "file-index" %>
-				<% a_file = @repository.branch(branch).file(root_dir + file.name) %>
+				<% a_file = nil %>
+				<% a_file = @repository.branch(branch).file(file.name) %>
+				<% a_file = @repository.branch("master").file(file.name) if !a_file %>
+				<% a_file = @repository.file(file.name) if !a_file %>
+				<% commit_time = "" %>
+				<% last_log = "-- not found (#{file.name})"%>
+				<% if a_file %>
+					<% commit_time = a_file.aq_commits.last.committed_time.strftime("%d/%m/%y %H:%M") %>
+					<% last_log = a_file.aq_commits.last.log.lines.first.slice(0,30) %>
+				<% end %>
 				<tr class="file">
 					<td>
 						<%= image_tag("/images/icons/document-code.png", :title => file.name, :alt => file.name, :border => 0)%>
 						<%= file.name %>
 					</td>
-					<td><%= a_file.aq_commits.last.committed_time.strftime("%d/%m/%y %H:%M") %></td>
-					<td><%= a_file.aq_commits.last.log.lines.first.slice(0,30) %></td>
+					<td><%= commit_time %></td>
+					<td><%= last_log %></td>
 				</tr>
 			<% end %>
 		<% end %>
