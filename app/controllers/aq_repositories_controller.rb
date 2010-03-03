@@ -12,7 +12,6 @@ class AqRepositoriesController < ApplicationController
     @repository = AqRepository.find(params[:id])
     if @repository.is_git?
       @grit_repo = Repo.new(@repository.path)
-      @grit_findex = Grit::GitRuby::FileIndex.new(@repository.path)
     end
   end
 
@@ -58,7 +57,7 @@ class AqRepositoriesController < ApplicationController
     repository = AqRepository.find(params[:id])
     repository.destroy
     flash[:notice] = t(:repo_destroy_ok)
-    redirect_to root_url
+    redirect_to aq_repositories_path
   end
 
   def join
