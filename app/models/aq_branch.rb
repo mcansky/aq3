@@ -25,7 +25,7 @@ class AqBranch < ActiveRecord::Base
           c.diffs.each do |diff|
             a_file = nil
             begin
-              a_file = self.files.find_by_path(diff.b_path)
+              a_file = AqFile.find_by_path(diff.b_path, :conditions => ["aq_branch_id = ?", self.id])
             rescue
             end
             if !a_file
@@ -55,7 +55,6 @@ class AqBranch < ActiveRecord::Base
       f.destroy
     end
     self.commits.each do |c|
-      c.purge
       c.destroy
     end
   end
