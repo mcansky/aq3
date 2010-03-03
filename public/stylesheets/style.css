@@ -433,3 +433,36 @@ div.desc {
 	font-size: 10pt;
 	font-family: sans-serif;
 }
+
+#repositories div.left_rep{
+	float: left;
+	width: 49%;
+	margin-left: 0;
+}
+#repositories div.right_rep {
+	float: right;
+	width: 49%;
+	margin-right: 0;
+}
+
+#repositories div.repository {
+	margin-top: 20px;
+	background: #222;
+	padding-bottom: 1px;
+}
+
+#repositories div.repository h3 {
+	padding: 5px;
+	background: #000;
+}
+#repositories div.repository span.rep_name {
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+#repositories div.repository p {
+	margin: 10px;
+	margin-bottom: 0;
+	font-size: 10pt;
+	color: #EEE;
+}

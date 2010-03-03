@@ -1,9 +1,13 @@
-<h1>
-	<%= t(:repositories) %>
-	<% if current_user %>
-		<%= link_to image_tag("/images/icons/big/dbplus2.png", :title => t(:repo_new), :alt => t(:repo_new), :border => 0, :width => "30px"), {:action => "new"}%>
-	<% end %>
-</h1>
 <div id="repositories">
-	<%= render "application/repositories", :repositories => @repositories %>
+	<h2>
+		<%= t(:repositories) %>
+		<% if current_user %>
+			<%= link_to image_tag("/images/icons/plus-small.png", :title => t(:repo_new), :alt => t(:repo_new), :border => 0), {:action => "new"}%>
+		<% end %>
+	</h2>
+	
+	<% @repositories.first(10).each_slice(2) do |rep1,rep2| %>
+		<%= render "application/repository", :rep1 => rep1, :rep2 => rep2 %>
+	<% end %>
+	<div class="clear"></div>
 </div>
