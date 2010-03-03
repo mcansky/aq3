@@ -67,7 +67,9 @@
 	<% end %>
 
 	<div id="files">
-		<%= render "files", :repository => @repository %>
+		<% if @repository.branches.size != 0 %>
+			<%= render "files", :repository => @repository %>
+		<% end %>
 	</div>
 	
 
