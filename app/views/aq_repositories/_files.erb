@@ -14,9 +14,8 @@
 	  <% branch = params[:branch] if params[:branch] %>
 		<% root_dir = "" %>
 		<% root_dir = params[:dir] + "/" if params[:dir] %>
-		<% tree = @grit_repo.tree(branch) %>
-		<% tree = @grit_repo.tree(branch, root_dir ) if params[:dir] %>
-		<% if params[:back] %>
+		<% tree = @grit_repo.tree(branch, root_dir) %>
+		<% if params[:dir] %>
 			<tr class="dir">
 				<% troot = (Pathname(root_dir) + "..").to_s %>
 				<% if (params[:back] == branch) || troot == "." %>
@@ -24,7 +23,7 @@
 						<%= image_tag("/images/icons/folder-horizontal.png", :title => t(:up), :alt => t(:up), :border => 0)%>
 						<%= link_to "..", :action => "show", :id => @repository.id, :branch => branch %></td>
 				<% else %>
-					<td><%= link_to "..", :action => 'show', :id => @repository.id, :dir => troot, :tree => @grit_repo.tree(params[:back]).id, :back => tree.id, :branch => branch %></td>
+					<td><%= link_to "..", :action => 'show', :id => @repository.id, :dir => troot, :branch => branch %></td>
 				<% end %>
 				<td></td>
 				<td></td>
@@ -34,7 +33,7 @@
 			<tr class="dir">
 				<td>
 				<%= image_tag("/images/icons/folder-horizontal.png", :title => dir.basename, :alt => dir.basename, :border => 0) %>
-				<%= link_to dir.basename, :action => 'show', :id => @repository.id, :dir => root_dir +"#{dir.basename}", :tree => dir.id, :back => tree.id, :branch => branch %></td>
+				<%= link_to dir.basename, :action => 'show', :id => @repository.id, :dir => root_dir +"#{dir.basename}", :branch => branch %></td>
 				<td></td>
 				<td></td>
 			</tr>
