@@ -4,6 +4,7 @@ include Grit
 class AqBranch < ActiveRecord::Base
   belongs_to :aq_repository
   has_many :commits, :class_name => "AqCommit", :order => "committed_time"
+  has_many :files, :class_name => "AqFile", :foreign_key => "aq_branch_id"
 
   # update AqBranch using GritRepoBranch commits
   # starts by comparing commit counts to determine how many commits need
@@ -21,6 +22,19 @@ class AqBranch < ActiveRecord::Base
             :author_name => c.author.name,
             :created_at => c.committed_date,
             :committed_time => c.committed_date)
+          c.diffs.each do |diff|
+            a_file = nil
+            begin
+              a_file = self.files.find_by_path(diff.b_path)
+            rescue
+            end
+            if !a_file
+              a_file = AqFile.new(:name => diff.b_path.split("/").last,
+                :path => diff.b_path)
+            end
+            self.files << a_file if !a_file.branch
+            a_commit.aq_files << a_file
+          end
           a_commit.author = self.aq_repository.owner
           self.commits << a_commit
           self.save
@@ -36,6 +50,12 @@ class AqBranch < ActiveRecord::Base
   end
 
   def purge
-    self.commits.each { |c| c.destroy }
+    self.files.each do |f|
+      f.destroy
+    end
+    self.commits.each do |c|
+      c.purge
+      c.destroy
+    end
   end
 end

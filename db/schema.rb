@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20100303094734) do
     t.datetime "updated_at"
   end
 
-  create_table "aq_commits_aq_files", :force => true do |t|
+  create_table "aq_commits_aq_files", :id => false, :force => true do |t|
     t.integer  "aq_commit_id"
     t.integer  "aq_file_id"
     t.datetime "created_at"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20100303094734) do
   create_table "aq_files", :force => true do |t|
     t.string   "name"
     t.string   "path"
+    t.integer  "aq_branch_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
