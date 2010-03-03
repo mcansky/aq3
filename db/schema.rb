@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20100303094734) do
     t.string   "name"
     t.string   "path"
     t.integer  "aq_branch_id"
+    t.integer  "aq_repository_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

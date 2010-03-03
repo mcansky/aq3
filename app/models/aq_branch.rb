@@ -33,6 +33,7 @@ class AqBranch < ActiveRecord::Base
                 :path => diff.b_path)
             end
             self.files << a_file if !a_file.branch
+            self.aq_repository.files << a_file if !a_file.repository
             a_commit.aq_files << a_file
           end
           a_commit.author = self.aq_repository.owner

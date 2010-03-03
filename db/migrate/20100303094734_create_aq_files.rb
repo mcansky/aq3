@@ -4,6 +4,7 @@ class CreateAqFiles < ActiveRecord::Migration
       t.string :name
       t.string :path
       t.integer :aq_branch_id
+      t.integer :aq_repository_id
       t.timestamps
     end
     create_table :aq_commits_aq_files, :id => false do |t|
