@@ -9,7 +9,7 @@ class AqRepository < ActiveRecord::Base
   has_many :users, :through => :rights
   has_many :beans
   has_many :branches, :class_name => "AqBranch"
-  has_many :commits, :through => :branches, :order => "committed_time"
+  has_many :commits, :class_name => "AqCommit", :order => "committed_time"
   has_many :forks, :class_name => "AqRepository", :foreign_key => "parent_id"
   belongs_to :parent, :class_name => "AqRepository", :foreign_key => "parent_id"
   has_many :files, :class_name => "AqFile", :through => :branches
