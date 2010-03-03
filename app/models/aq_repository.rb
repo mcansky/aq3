@@ -9,7 +9,7 @@ class AqRepository < ActiveRecord::Base
   has_many :users, :through => :rights
   has_many :beans
   has_many :branches, :class_name => "AqBranch"
-  has_many :commits, :class_name => "AqCommit", :order => "committed_time"
+  has_many :commits, :class_name => "AqCommit", :through => :branches, :order => "committed_time"
   has_many :forks, :class_name => "AqRepository", :foreign_key => "parent_id"
   belongs_to :parent, :class_name => "AqRepository", :foreign_key => "parent_id"
   has_many :files, :class_name => "AqFile", :foreign_key => "aq_repository_id"
@@ -74,10 +74,15 @@ class AqRepository < ActiveRecord::Base
   # update branches stored in db
   def grit_update
     grit_repo = Repo.new(self.path)
+    count = 0
     grit_repo.branches.each do |b|
       self.branches << AqBranch.new(:name => b.name) if not self.branches.find_by_name(b.name)
     end
-    self.branches.each { |b| b.grit_update }
+    self.branches.each do |b|
+      b.grit_update
+      count += 1
+    end
+    aq_logger(Settings.logs.scm, "User #{self.owner}, Repository : #{self.name}, #{count} branches treated.")
     self.save
   end
 
@@ -160,6 +165,12 @@ class AqRepository < ActiveRecord::Base
     else
       redirect_to parent_repo
     end
+  end
+
+  def aq_logger(logfile, message)
+    File.open(Rails.root + "log/" + logfile, "a") do |log|
+		  log.puts Time.now.strftime("%d/%m/%y %H:%M ") + message
+	  end
   end
 
   private

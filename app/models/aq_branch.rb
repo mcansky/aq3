@@ -29,8 +29,8 @@ class AqBranch < ActiveRecord::Base
             rescue
             end
             if !a_file
-              a_file = AqFile.new(:name => diff.b_path.split("/").last,
-                :path => diff.b_path)
+              a_file = AqFile.new(:name => diff.b_path.split("/").last, :path => diff.b_path)
+              a_file.branch = self
             end
             self.files << a_file if !a_file.branch
             self.aq_repository.files << a_file if !a_file.repository
@@ -48,6 +48,7 @@ class AqBranch < ActiveRecord::Base
         count += diff_c
       end
     end
+    aq_logger(Settings.logs.scm, "User #{self.aq_repository.owner}, Branch : #{self.name}, #{count} commits treated.")
   end
 
   def purge
@@ -61,5 +62,10 @@ class AqBranch < ActiveRecord::Base
   
   def file(path)
     self.files.find_by_path(path)
+  end
+  def aq_logger(logfile, message)
+    File.open(Rails.root + "log/" + logfile, "a") do |log|
+		  log.puts Time.now.strftime("%d/%m/%y %H:%M ") + message
+	  end
   end
 end

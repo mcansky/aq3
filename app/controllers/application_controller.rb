@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  helper_method :current_user_session, :current_user, :login_required
+  helper_method :current_user_session, :current_user, :login_required, :aq_logger
 
   def index
     @repositories = AqRepository.find(:all)
@@ -26,4 +26,5 @@ class ApplicationController < ActionController::Base
       redirect_to login_path
     end
   end
+
 end
