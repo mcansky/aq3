@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20100303094734) do
     t.datetime "committed_time"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "aq_repository_id"
   end
 
   create_table "aq_commits_aq_files", :id => false, :force => true do |t|

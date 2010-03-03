@@ -11,10 +11,12 @@ class CreateAqFiles < ActiveRecord::Migration
       t.integer :aq_file_id
       t.timestamps
     end
+    add_column :aq_commits, :aq_repository_id, :integer
   end
 
   def self.down
     drop_table :aq_files
     drop_table :aq_commits_aq_files
+    remove_column :aq_commits, :aq_repository_id
   end
 end
