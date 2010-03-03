@@ -78,29 +78,6 @@ class AqRepository < ActiveRecord::Base
       self.branches << AqBranch.new(:name => b.name) if not self.branches.find_by_name(b.name)
     end
     self.branches.each { |b| b.grit_update }
-    # treating the orphan commits
-    grit_repo.commits(nil).each do |c|
-      a_commit = AqCommit.new(:sha => c.id,
-        :log => c.message,
-        :author_name => c.author.name,
-        :created_at => c.committed_date,
-        :committed_time => c.committed_date)
-      self.commits << a_commit
-      c.diffs.each do |diff|
-        a_file = nil
-        begin
-          a_file = self.files.find_by_path(diff.b_path)
-        rescue
-        end
-        if !a_file
-          a_file = AqFile.new(:name => diff.b_path.split("/").last,
-            :path => diff.b_path)
-        end
-        self.files << a_file if !a_file.branch
-        a_commit.aq_files << a_file
-        a_commit.author = self.owner
-      end
-    end
     self.save
   end
 
@@ -110,6 +87,10 @@ class AqRepository < ActiveRecord::Base
       b.purge
       b.destroy
     end
+  end
+
+  def orphan_files
+    self.files.find(:all, :conditions => ["aq_branch_id = ?", nil])
   end
 
   def file(path)

@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(:version => 20100303094734) do
   create_table "aq_files", :force => true do |t|
     t.string   "name"
     t.string   "path"
-    t.integer  "aq_branch_id"
-    t.integer  "aq_repository_id"
+    t.integer  "aq_branch_id",     :default => 0
+    t.integer  "aq_repository_id", :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
