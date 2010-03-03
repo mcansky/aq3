@@ -7,6 +7,7 @@
 	<table cellspacing=0>
 		<tr>
 		<th>Filename</th>
+		<th>Updated on</th>
 		<th>Commit log</th>
 		</tr>
 		<% branch = "master" %>
@@ -26,24 +27,28 @@
 					<td><%= link_to "..", :action => 'show', :id => @repository.id, :dir => troot, :tree => @grit_repo.tree(params[:back]).id, :back => tree.id, :branch => branch %></td>
 				<% end %>
 				<td></td>
+				<td></td>
 			</tr>
 		<% end %>
-		<% for dir in tree.trees %>
+		<% for dir in @grit_repo.tree(branch, root_dir).trees %>
 			<tr class="dir">
 				<td>
 				<%= image_tag("/images/icons/folder-horizontal.png", :title => dir.basename, :alt => dir.basename, :border => 0) %>
 				<%= link_to dir.basename, :action => 'show', :id => @repository.id, :dir => root_dir +"#{dir.basename}", :tree => dir.id, :back => tree.id, :branch => branch %></td>
 				<td></td>
+				<td></td>
 			</tr>
 		<% end %>
 		<% for file in tree.blobs %>
 			<% if file.name != "file-index" %>
+				<% a_file = @repository.branch(branch).file(root_dir + file.name) %>
 				<tr class="file">
 					<td>
 						<%= image_tag("/images/icons/document-code.png", :title => file.name, :alt => file.name, :border => 0)%>
 						<%= file.name %>
 					</td>
-					<td><%= @repository.commits.find_by_sha(@grit_findex.commits_for(root_dir + file.name).last).log.lines.first.slice(0,30) %></td>
+					<td><%= a_file.aq_commits.last.committed_time.strftime("%d/%m/%y %H:%M") %></td>
+					<td><%= a_file.aq_commits.last.log.lines.first.slice(0,30) %></td>
 				</tr>
 			<% end %>
 		<% end %>

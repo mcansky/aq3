@@ -86,6 +86,10 @@ class AqRepository < ActiveRecord::Base
       b.destroy
     end
   end
+  
+  def branch(name)
+    self.branches.find_by_name(name)
+  end
 
   # generating the repo path
   #

@@ -58,4 +58,8 @@ class AqBranch < ActiveRecord::Base
       c.destroy
     end
   end
+  
+  def file(path)
+    self.files.find_by_path(path)
+  end
 end
