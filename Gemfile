@@ -19,6 +19,7 @@ gem "grit"
 gem "acts_as_versioned"
 gem "jquery_helpers"
 gem "thin"
+gem "amp"
 
 ## Bundle the gems you use:
 # gem "bj"
