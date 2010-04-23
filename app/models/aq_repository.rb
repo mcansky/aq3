@@ -1,6 +1,8 @@
 require 'pathname'
 require 'grit'
 include Grit
+require "amp"
+include Amp
 
 class AqRepository < ActiveRecord::Base
   before_save :repo_path
@@ -84,6 +86,12 @@ class AqRepository < ActiveRecord::Base
     end
     aq_logger(Settings.logs.scm, "User #{self.owner}, Repository : #{self.name}, #{count} branches treated.")
     self.save
+  end
+  
+  # update branches stored in db (hg)
+  def hg_update
+    amp_repo = Repositories::LocalRepository.new(self.path)
+    
   end
 
   # purge branches stored in db
