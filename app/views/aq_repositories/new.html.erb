@@ -1,5 +1,7 @@
-<h1><%= t(:repo_new) %></h1>
+<div id="repositories">
+<h2><%= t(:repo_new) %></h2>
 
 <%= render "form", :repository => @repository %>
 
 <%= link_to t(:repo_list), :controller => "aq_repositories", :action => "index" %>
+</div>

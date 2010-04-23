@@ -1,4 +1,5 @@
-<h1><%= t(:login) %></h1>
+<div id="login">
+<h2><%= t(:login) %></h2>
 
 <% form_for @user_session do |f| %>
   <%= f.error_messages %>
@@ -6,3 +7,4 @@
   <p><%= f.label t(:password) %><br /><%= f.password_field :password %></p>
   <p><%= f.submit "Login" %></p>
 <% end %>
+</div>

@@ -1,11 +1,11 @@
-<h1>
-	<%= t(:sshkeys_yours )%>
-	<% if current_user %>
-		<%= link_to image_tag("/images/icons/big/drives_17.png", :title => t(:sshkey_new), :alt => t(:sshkey_new), :border => 0, :width => "30px"), {:action => "new"}%>
-	<% end %>
-</h1>
-
 <div id="sshkeys">
+	<h2>
+		<%= t(:sshkeys_yours )%>
+		<% if current_user %>
+			<%= link_to image_tag("/images/icons/big/drives_17.png", :title => t(:sshkey_new), :alt => t(:sshkey_new), :border => 0, :width => "30px"), {:action => "new"}%>
+		<% end %>
+	</h2>
+
 	<% for key in @keys %>
 		<div class="sshkey">
 			<h3>

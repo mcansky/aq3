@@ -268,6 +268,14 @@ span.kind_hg {
 	font-family: sans-serif;
 }
 
+#repositories form {
+	color: #EEE;
+	font-size: 10pt;
+	font-family: sans-serif;
+	margin-left: 20px;
+}
+
+
 div.desc {
 	margin-bottom: 20px;
 }
@@ -305,6 +313,22 @@ div.desc {
 	color: #fb3700;
 	text-decoration: none;
 	font-weight: bold;
+}
+
+#sshkeys {
+	color: #EEE;
+	font-family: sans-serif;
+	margin-top: 15px;
+}
+
+#sshkeys div.sshkey {
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+#sshkeys a, #sshkeys a:hover {
+	text-decoration: none;
+	color: #fb3700;
 }
 
 #files {
@@ -465,4 +489,12 @@ div.desc {
 	margin-bottom: 0;
 	font-size: 10pt;
 	color: #EEE;
+}
+
+#login {
+	color: #EEE;
+	font-family: sans-serif;
+}
+#login form {
+	font-size: 10pt;
 }
