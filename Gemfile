@@ -2,7 +2,7 @@
 source 'http://gemcutter.org'
 
 
-gem "rails", "3.0.0.beta"
+gem "rails", "3.0.0.beta3"
 
 ## Bundle edge rails:
 # gem "rails", :git => "git://github.com/rails/rails.git"
@@ -11,15 +11,13 @@ gem "rails", "3.0.0.beta"
 # Rails has selected sqlite3.
 gem "sqlite3-ruby", :require => "sqlite3"
 
-gem "authlogic", :git => "git://github.com/binarylogic/authlogic.git"
+gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3'
 gem "settingslogic"
 gem "RedCloth"
 gem "nifty-generators"
 gem "grit"
 gem "acts_as_versioned"
-gem "jquery_helpers"
 gem "thin"
-gem "amp"
 
 ## Bundle the gems you use:
 # gem "bj"
