@@ -1,8 +1,6 @@
 require 'pathname'
 require 'grit'
 include Grit
-require "amp"
-include Amp
 
 class AqRepository < ActiveRecord::Base
   before_save :repo_path
