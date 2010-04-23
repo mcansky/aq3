@@ -47,21 +47,11 @@ class AqRepository < ActiveRecord::Base
     ppath = Settings.application.repo_user + "@" +
               Settings.application.hostname + ":" +
               split_path[-2] + "/" + split_path[-1]
-    elsif self.is_hg?
-      split_path = self.path.split("/")
-      ppath = "ssh://" + Settings.application.repo_user + "@" +
-                Settings.application.hostname + "/" +
-                split_path[-3] + "/" + split_path[-2]
     end
   end
 
   def is_git?
     return true if self.kind == "git"
-    return false
-  end
-
-  def is_hg?
-    return true if self.kind == "hg"
     return false
   end
 
@@ -119,8 +109,6 @@ class AqRepository < ActiveRecord::Base
 
     if self.kind == "git"
       repo_path = Settings.application.repo_git_path
-    elsif self.kind == "hg"
-      repo_path = Settings.application.repo_hg_path
     end
 
     # git_dir is where the repositories are gonna be stored, creating if needed
@@ -141,11 +129,6 @@ class AqRepository < ActiveRecord::Base
     # /home/aq_git/git/username/reposit.git
     if self.is_git?
       dot_dir = repo_dir + (self.name + ".#{self.kind}")
-      dot_dir.mkdir if !dot_dir.exist?
-    elsif self.is_hg?
-      dot_dir = repo_dir + self.name
-      dot_dir.mkdir if !dot_dir.exist?
-      dot_dir += ".hg"
       dot_dir.mkdir if !dot_dir.exist?
     end
 
@@ -183,8 +166,6 @@ class AqRepository < ActiveRecord::Base
   def repo_init
     if self.kind == "git"
       git_repo_init
-    elsif self.kind == "hg"
-      hg_repo_init
     end
   end
 
