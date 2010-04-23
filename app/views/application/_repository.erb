@@ -7,8 +7,6 @@
 			<span class="kind_hg">H</span>
 		<% end %>
 		<span class="rep_name"><%= link_to rep1.owner.login + "/" + rep1.name, rep1 %></span>
-		<%= image_tag("/images/icons/beans.png", :title => t(:beans), :alt => t(:beans), :border => 0) %>
-		: <%= rep1.beans.count %>
 		<%= link_to t(:user_del), rep1, {:method => :delete, :confirm => t(:ask_confirm), :title => t(:user_del) }%>
 	</h3>
 	<div class="desc">
@@ -28,8 +26,6 @@
 			<span class="kind_hg">H</span>
 		<% end %>
 		<span class="rep_name"><%= link_to rep2.owner.login + "/" + rep2.name, rep2 %></span>
-		<%= image_tag("/images/icons/beans.png", :title => t(:beans), :alt => t(:beans), :border => 0) %>
-		: <%= rep2.beans.count %>
 		<%= link_to t(:user_del), rep2, {:method => :delete, :confirm => t(:ask_confirm), :title => t(:user_del) }%>
 	</h3>
 	<div class="desc">
