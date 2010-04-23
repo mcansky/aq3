@@ -7,7 +7,6 @@ class AqRepository < ActiveRecord::Base
   after_save :repo_init
   has_many :rights
   has_many :users, :through => :rights
-  has_many :beans
   has_many :branches, :class_name => "AqBranch"
   has_many :commits, :class_name => "AqCommit", :through => :branches, :order => "committed_time"
   has_many :forks, :class_name => "AqRepository", :foreign_key => "parent_id"
@@ -84,12 +83,6 @@ class AqRepository < ActiveRecord::Base
     end
     aq_logger(Settings.logs.scm, "User #{self.owner}, Repository : #{self.name}, #{count} branches treated.")
     self.save
-  end
-  
-  # update branches stored in db (hg)
-  def hg_update
-    amp_repo = Repositories::LocalRepository.new(self.path)
-    
   end
 
   # purge branches stored in db
@@ -192,26 +185,6 @@ class AqRepository < ActiveRecord::Base
       git_repo_init
     elsif self.kind == "hg"
       hg_repo_init
-    end
-  end
-
-  def hg_repo_init
-    File.umask(0001)
-    dirs = {"store" => nil}
-    files = ["00changelog.i", "requires"]
-    dot_hg = Pathname(self.path)
-
-    # creating dirs
-    l_mkdirs(dot_hg, dirs)
-
-    # creating files
-    files.each do |l_file|
-      if !File.exist?("#{dot_hg}/#{l_file}")
-        File.open("#{dot_hg}/#{l_file}", "a") do |file_out|
-          template_dir = "hg_templates"
-          IO.foreach("#{Rails.root}/config/#{template_dir}/#{l_file}") { |w| file_out.puts(w) }
-        end
-      end
     end
   end
 

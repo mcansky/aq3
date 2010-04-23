@@ -4,8 +4,6 @@ class User < ActiveRecord::Base
   has_many :rights
   has_many :aq_repositories, :through => :rights
   has_many :aq_commits, :foreign_key => "author_id", :order => "committed_time DESC"
-  has_many :beans
-  has_many :beaned_repositories, :through => :beans, :source => :aq_repository
 
   def self.find_by_login_or_email(login)
     find_by_login(login) || find_by_email(login)
