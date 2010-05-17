@@ -23,7 +23,8 @@ class SshKey < ActiveRecord::Base
     if self.key
       key_pieces = self.key.split(" ")
       small_key = key_pieces[0] + " " + key_pieces[1]
-      if small_key =~ /^(ssh-\w+ [a-zA-Z0-9\/\+]+==?).*$/
+      #if small_key =~ /^(ssh-\w+ [a-zA-Z0-9\/\+]+==?).*$/
+      if small_key =~ /^(ssh-\w+ [a-zA-Z0-9\/\+].*)$/
         return true
       else
         return false
