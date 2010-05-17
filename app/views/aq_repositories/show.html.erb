@@ -2,8 +2,6 @@
 <h2>
 	<% if @repository.is_git? %>
 		<span class="kind_git">G</span>
-	<% elsif @repository.is_hg? %>
-		<span class="kind_hg">H</span>
 	<% end %>
 	<%= @repository.owner.login %> /
 	<%= @repository.name %>
