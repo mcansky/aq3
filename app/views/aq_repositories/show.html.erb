@@ -68,7 +68,7 @@
       <% blobs = tree.blobs %>
       <% if blobs %>
         <% blobs.each do |blobinou| %>
-          <% if blobinou.name =~ /^(README|README.md|README.textile)$/ %>
+          <% if blobinou.name =~ /^(README|README.md|README.textile)$/ and blobinou.mime_type =~ /^text\/(.*)$/ %>
  <pre><%= blobinou.data %></pre>
           <% end %>
         <% end %>
