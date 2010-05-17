@@ -28,7 +28,7 @@
 					<%= image_tag("/images/icons/user-worker-boss.png", :title => t(:owner), :alt => t(:owner), :border => 0) %>
 					<%= link_to right.user.login, right.user, :title => t(:owner) %>
 				<% elsif @repository.committers.include?(right.user) %>
-					<%= image_tag("/images/icons/user-worker.png", :title => t(:committer), :alt => t(:committer), :border => 0) %> 
+					<%= image_tag("/images/icons/user-worker.png", :title => t(:committer), :alt => t(:committer), :border => 0) %>
 					<%= link_to right.user.login, right.user, :title => t(:committer) %>
 				<% end %>
 			</h4>
@@ -39,7 +39,7 @@
   <div class="desc">
     <% if @repository.have_public_clone? %>
       <p><strong><%= t(:public_path) %> : </strong><%= @repository.public_path %></p>
-    <% end %
+    <% end %>
     <% if @repository.owner == current_user %>
       <p><strong><%= t(:private_path) %> : </strong><%= @repository.private_path %></p>
     <% end %>
