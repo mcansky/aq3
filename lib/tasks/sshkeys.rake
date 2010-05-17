@@ -5,7 +5,9 @@ namespace :sshkeys do
     keys = SshKey.find(:all)
     auth_keys_file = "/tmp/authorized_keys"
     keys.each do |key|
-      File.open(auth_keys_file, "a") { |keyfile| keyfile.puts(key.export) }
+      if key.valid
+        File.open(auth_keys_file, "a") { |keyfile| keyfile.puts(key.export) }
+      end
     end
   end
 end

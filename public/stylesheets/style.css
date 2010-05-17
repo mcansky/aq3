@@ -10,7 +10,7 @@ body {
 #top_bar {
 	background: #000;
 	width: 950px;
-	margin-top: 25px;
+	margin-top: 20px;
 	margin-left: auto;
 	margin-right: auto;
 	padding: 10px;
@@ -21,7 +21,8 @@ body {
 #sub_bar {
 	background: #222;
 	color: #DDD;
-	padding: 10px;
+	padding: 5px;
+	padding-top: 8px;
 	width: 950px;
 	margin-left: auto;
 	margin-right: auto;
@@ -53,7 +54,6 @@ body {
 
 #sub_right {
 	float: right;
-	padding: 3px;
 	text-align: right;
 	width: 30%;
 	font-family: monospace;
@@ -64,6 +64,9 @@ body {
 	font-weight: bold;
 }
 
+#sub_right img {
+    border: none;
+}
 
 #main {
 	width: 100%;
@@ -80,6 +83,7 @@ body {
 	margin-right: auto;
 	margin-left: auto;
 	padding: 0px;
+	color: #DDDDDD;
 }
 
 input, textarea {
@@ -497,4 +501,33 @@ div.desc {
 }
 #login form {
 	font-size: 10pt;
+}
+
+#footer {
+  text-align: center;
+  font-size: 10px;
+  color: grey;
+}
+
+#view_file {
+    width: 90%;
+    padding: 3px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    border: 1px solid #888;
+}
+
+#view_readme_file {
+    width: 90%;
+    padding: 3px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    border: 1px solid #888;
+}
+
+#view_file pre, #view_readme_file pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }

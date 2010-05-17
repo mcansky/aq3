@@ -21,7 +21,7 @@ module AqLib
 
   ActiveRecord::Base.establish_connection(
     :adapter => "sqlite3",
-    :database => File.expand_path("../../development.sqlite3", __FILE__ ))
+    :database => File.expand_path("../../../../db/development.sqlite3", __FILE__ ))
 
   class User < ActiveRecord::Base
     has_many :ssh_keys

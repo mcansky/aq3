@@ -2,7 +2,9 @@
 	<div class="path">
 		<% path = "" %>
 		<% path = params[:dir] + "/" if params[:dir] %>
-		<p>/<%= path %> (<%= params[:branch] || "master" %>)</p>
+    <p>
+    <%= link_to "/", :action => :show, :id => @repository.id %>
+    <%= path %> (<%= params[:branch] || "master" %>)</p>
 	</path>
 	<table cellspacing=0>
 		<tr>
@@ -23,7 +25,7 @@
 						<%= image_tag("/images/icons/folder-horizontal.png", :title => t(:up), :alt => t(:up), :border => 0)%>
 						<%= link_to "..", :action => "show", :id => @repository.id, :branch => branch %></td>
 				<% else %>
-					<td><%= link_to "..", :action => 'show', :id => @repository.id, :dir => troot, :branch => branch %></td>
+          <td><%= link_to "..", "/aq_repositories/browse/#{@repository.id}/#{troot}?branch=#{branch}" %></td>
 				<% end %>
 				<td></td>
 				<td></td>
@@ -33,7 +35,7 @@
 			<tr class="dir">
 				<td>
 				<%= image_tag("/images/icons/folder-horizontal.png", :title => dir.basename, :alt => dir.basename, :border => 0) %>
-				<%= link_to dir.basename, :action => 'show', :id => @repository.id, :dir => root_dir +"#{dir.basename}", :branch => branch %></td>
+        <%= link_to dir.basename, "/aq_repositories/browse/#{@repository.id}/#{root_dir}#{dir.basename}?branch=#{branch}" %></td>
 				<td></td>
 				<td></td>
 			</tr>
@@ -52,8 +54,8 @@
 				<% end %>
 				<tr class="file">
 					<td>
-						<%= image_tag("/images/icons/document-code.png", :title => file.name, :alt => file.name, :border => 0)%>
-						<%= file.name %>
+            <%= image_tag("/images/icons/document-code.png", :title => file.name, :alt => file.name, :border => 0)%>
+            <%= link_to file.name, "/aq_repositories/view_file/#{@repository.id}/#{file.name}" %>
 					</td>
 					<td><%= commit_time %></td>
 					<td><%= last_log %></td>

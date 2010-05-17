@@ -14,3 +14,4 @@ vendor/*/doc/*.rid
 vendor/*/doc/*.css
 vendor/*/bundled_gems
 vendor/aq_sh/development.sqlite3
+vendor/aq_sh/config/application.yml

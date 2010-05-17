@@ -7,7 +7,7 @@
 	</div>
 	<div class="right_sh_commit">
 		<p>
-			<span class="commit_id"><%= t(:commit).downcase %> <%= link_to commit.sha.slice(0,7) + "...", "" %></span>
+    <span class="commit_id"><%= t(:commit).downcase %> <%= link_to commit.sha.slice(0,7) + "...", "/aq_repositories/commits/#{commit.branch.aq_repository.id}/#{commit.sha}?branch=#{commit.branch.name}" %></span>
 			<span class="commit_author"><%= t(:by) %> <%= link_to commit.author.login, commit.author %></span>
 			<span class="commit_log"><%= commit.log.lines.first.slice(0,80) + "..." %></span>
 		</p>

@@ -1,7 +1,9 @@
 <div id="repository">
 <h2>
 	<% if @repository.is_git? %>
-		<span class="kind_git">G</span>
+		<span class="kind_git" title="git" >G</span>
+	<% elsif @repository.is_hg? %>
+		<span class="kind_hg" title="hg" >H</span>
 	<% end %>
   <%= link_to @repository.owner.login, :controller => :users, :action => :show, :id => @repository.owner.id %> /
   <%= link_to @repository.name, :action => :show, :id => @repository.id %>
@@ -26,7 +28,7 @@
 					<%= image_tag("/images/icons/user-worker-boss.png", :title => t(:owner), :alt => t(:owner), :border => 0) %>
 					<%= link_to right.user.login, right.user, :title => t(:owner) %>
 				<% elsif @repository.committers.include?(right.user) %>
-					<%= image_tag("/images/icons/user-worker.png", :title => t(:committer), :alt => t(:committer), :border => 0) %> 
+					<%= image_tag("/images/icons/user-worker.png", :title => t(:committer), :alt => t(:committer), :border => 0) %>
 					<%= link_to right.user.login, right.user, :title => t(:committer) %>
 				<% end %>
 			</h4>
@@ -41,39 +43,43 @@
     <% if @repository.owner == current_user %>
       <p><strong><%= t(:private_path) %> : </strong><%= @repository.private_path %></p>
     <% end %>
+
 		<p><strong><%= t(:branches) %> : </strong>
 			<% @repository.branches.each do |br| %>
 				<%= link_to br.name, :action => "show", :branch => br.name %>
 			<% end %>
 		</p>
-    <p><strong><%= link_to t(:commits), "/aq_repositories/commits/#{@repository.id}" %> : <%= @repository.commits.count %></strong></p>
+		<p><strong><%= t(:commits) %> : <%= @repository.commits.count %></strong></p>
 		<p class="desc"><%= @repository.desc %></p>
 		<div class="clear"></div>
 	</div>
 
-	<div id="files">
+  <div id="commits_list">
 		<% if @repository.branches.size != 0 %>
-			<%= render "files", :repository => @repository %>
-		<% end %>
-	</div>
-
-	<div id="view_readme_file">
-		<% if @repository.branches.size != 0 and params[:dir].nil? %>
 		<% branch = "master" %>
-	  <% branch = params[:branch] if params[:branch] %>
-    <% tree = @grit_repo.tree(branch, "") %>
-    <% if !params[:dir] %>
-      <% blobs = tree.blobs %>
-      <% if blobs %>
-        <% blobs.each do |blobinou| %>
-          <% if blobinou.name =~ /^(README|README.md|README.textile)$/ and blobinou.mime_type =~ /^text\/(.*)$/ %>
- <pre><%= blobinou.data %></pre>
-          <% end %>
-        <% end %>
+    <% branch = params[:branch] if params[:branch] %>
+    <% commit = params[:commit_id] %>
+    <% commit = @grit_repo.commit(commit) %>
+    <% if commit %>
+      <div class="commit">
+        <div class="commit_date">
+          <%= link_to "#{commit.sha.slice(0,7)}", "/aq_repositories/commits/#{@repository.id}/#{commit.sha}?branch=#{branch}" %>...
+        <%= "on: #{commit.date.strftime("%I:%M %p %x").downcase} by: #{commit.author.name} #{commit.author.email}" %>
+        </div>
+        <div class="commit_m=essage">
+          <%= commit.message %>
+        </div>
+        <br />
+        <div class="commit_diff">
+        <% diffs = commit.diffs %>
+        <% for diff in diffs %>
+ <pre><%= diff.diff %></pre>
       <% end %>
+        </div>
+      </div>
+      <br />
     <% end %>
   <% end %>
-
 	</div>
 
 	<div class="clear"></div>
