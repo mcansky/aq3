@@ -22,6 +22,7 @@ en:
   accept: "Accept"
   reject: "Reject"
   public_path: "Public Path"
+  private_path: "Private Path"
   owner: "Owner"
   users: "Users"
   user: "User"
