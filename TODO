@@ -9,3 +9,12 @@ Improve commit listing, commit display
 Colorize files view and commit diff display
 
 Check for all non-escapped params[] in templates
+
+BUG with repository renaming ?
+test case:
+  clean install without repos
+  create repos "todo"
+  rename it to "plop"
+  rename it to "todo"
+  NO checks ? permissions ? owner ?
+  you will see sometimes two repos...
