@@ -64,6 +64,9 @@ body {
 	font-weight: bold;
 }
 
+#sub_right img {
+    border: none;
+}
 
 #main {
 	width: 100%;
