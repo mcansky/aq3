@@ -68,10 +68,10 @@
     <% if params[:path] %>
       <% blobs = tree.blobs %>
       <% if blobs %>
-        <% blobs.each do |blobinou| %>
-          <% if blobinou.name == params[:path].split("/").last %>
-            <% if blobinou.mime_type =~ /^(text)\/(.*)$/ %>
- <pre><%= blobinou.data %></pre>
+        <% blobs.each do |a_blob| %>
+          <% if a_blob.name == params[:path].split("/").last %>
+            <% if a_blob.mime_type =~ /^(text)\/(.*)$/ %>
+ <pre><%= a_blob.data %></pre>
           <% end %>
           <% end %>
         <% end %>
