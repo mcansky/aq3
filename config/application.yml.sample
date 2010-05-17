@@ -11,6 +11,7 @@ defaults: &defaults
     aq_shell: aquarii-lib/aquarii-sh.rb
   logs:
     email: email.log
+    scm: scm.log
 
 
 development:
