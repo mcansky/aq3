@@ -8,6 +8,7 @@ defaults: &defaults
     repo_user: aq_git
     repo_git_path: git
     repo_hg_path: hg
+    have_public_clone: false
     aq_shell: aquarii-lib/aquarii-sh.rb
   logs:
     email: email.log

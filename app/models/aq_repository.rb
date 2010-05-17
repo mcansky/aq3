@@ -41,6 +41,10 @@ class AqRepository < ActiveRecord::Base
     return r_committers
   end
 
+  def have_public_clone?
+    Settings.application.have_public_clone
+  end
+
   def public_path
     if self.is_git?
     split_path = self.path.split("/")

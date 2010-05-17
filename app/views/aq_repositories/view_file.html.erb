@@ -38,7 +38,7 @@
 
 	<div class="desc">
     <p><strong><%= t(:public_path) %> : </strong><%= @repository.public_path %></p>
-    <% if @repository.owner == current_user %>
+    <% if @repository.owner == current_user and @repository.have_public_clone? %>
       <p><strong><%= t(:private_path) %> : </strong><%= @repository.private_path %></p>
     <% end %>
 
