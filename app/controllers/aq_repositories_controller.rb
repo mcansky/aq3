@@ -89,4 +89,19 @@ class AqRepositoriesController < ApplicationController
     end
   end
 
+  def show_commits
+    @repository = AqRepository.find(params[:id])
+    if @repository.is_git?
+      @grit_repo = Repo.new(@repository.path)
+    end
+  end
+
+  def show_commit
+    @repository = AqRepository.find(params[:id])
+    if @repository.is_git?
+      @grit_repo = Repo.new(@repository.path)
+    end
+  end
+
+
 end

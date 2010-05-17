@@ -38,6 +38,10 @@ IIIaquarii::Application.routes.draw do |map|
   # view a file
   match "/aq_repositories/view_file/:id/(:path)", :to => "aq_repositories#view_file", :path => /(.*)/
 
+  # commit log
+  match "/aq_repositories/commits/:id", :to => "aq_repositories#show_commits"
+  match "/aq_repositories/commits/:id/:commit_id", :to => "aq_repositories#show_commit"
+
   # Sample resource route with options:
   #   resources :products do
   #     member do
