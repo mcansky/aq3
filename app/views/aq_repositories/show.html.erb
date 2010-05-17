@@ -58,9 +58,24 @@
 			<%= render "files", :repository => @repository %>
 		<% end %>
 	</div>
-	
-	<div id="file">
-		
+
+	<div id="view_readme_file">
+		<% if @repository.branches.size != 0 and params[:dir].nil? %>
+		<% branch = "master" %>
+	  <% branch = params[:branch] if params[:branch] %>
+    <% tree = @grit_repo.tree(branch, "") %>
+    <% if !params[:dir] %>
+      <% blobs = tree.blobs %>
+      <% if blobs %>
+        <% blobs.each do |blobinou| %>
+          <% if blobinou.name =~ /^(README|README.md|README.textile)$/ %>
+ <pre><%= blobinou.data %></pre>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+
 	</div>
 
 	<div class="clear"></div>
