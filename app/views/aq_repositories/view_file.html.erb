@@ -64,9 +64,9 @@
       <% if blobs %>
         <% blobs.each do |blobinou| %>
           <% if blobinou.name == params[:path].split("/").last %>
-            <pre>
-              <%= blobinou.data %>
-            </pre>
+            <% if blobinou.mime_type =~ /^(text)\/(.*)$/ %>
+ <pre><%= blobinou.data %></pre>
+          <% end %>
           <% end %>
         <% end %>
       <% end %>
