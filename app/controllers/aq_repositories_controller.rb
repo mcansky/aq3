@@ -2,7 +2,7 @@ require 'grit'
 include Grit
 
 class AqRepositoriesController < ApplicationController
-  before_filter :login_required, :except => [:show]
+  before_filter :login_required, :except => [:show, :view_file]
 
   def index
     @repositories = current_user.aq_repositories
@@ -80,6 +80,13 @@ class AqRepositoriesController < ApplicationController
     repository.fork(parent_repo)
     repository.save if repository
     redirect_to repository
+  end
+
+  def view_file
+    @repository = AqRepository.find(params[:id])
+    if @repository.is_git?
+      @grit_repo = Repo.new(@repository.path)
+    end
   end
 
 end

@@ -48,14 +48,30 @@
 		<div class="clear"></div>
 	</div>
 
-	<div id="files">
+	<div id="show_file">
 		<% if @repository.branches.size != 0 %>
-			<%= render "files", :repository => @repository %>
-		<% end %>
-	</div>
-	
-	<div id="file">
-		
+		<% branch = "master" %>
+	  <% branch = params[:branch] if params[:branch] %>
+		<% root_dir = "" %>
+    <% root_dir = params[:path] + "/" if params[:path] %>
+    <% root_dir = (Pathname(root_dir) + "..").to_s %>
+    <% if root_dir == "." %>
+      <% root_dir = "" %>
+    <% end %>
+    <% tree = @grit_repo.tree(branch, root_dir) %>
+    <% if params[:path] %>
+      <% blobs = tree.blobs %>
+      <% if blobs %>
+        <% blobs.each do |blobinou| %>
+          <% if blobinou.name == params[:path].split("/").last %>
+            <pre>
+              <%= blobinou.data %>
+            </pre>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
 	</div>
 
 	<div class="clear"></div>

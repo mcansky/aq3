@@ -32,6 +32,12 @@ IIIaquarii::Application.routes.draw do |map|
   # fork
   match "/aq_repositories/fork/:id" => "aq_repositories#fork"
 
+  # browse
+  match "/aq_repositories/browse/:id/(:dir)", :to => "aq_repositories#show", :dir => /(.*)/
+
+  # view a file
+  match "/aq_repositories/view_file/:id/(:path)", :to => "aq_repositories#view_file", :path => /(.*)/
+
   # Sample resource route with options:
   #   resources :products do
   #     member do

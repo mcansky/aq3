@@ -1,0 +1,3 @@
+If 0 commits, show a 'plz commit' page
+
+If non existant ?branch=pouet redirect_to the /aq_rep/<n>
