@@ -41,6 +41,7 @@ en:
   repo_list: "All repositories"
   repo_del: "Delete"
   repo_edit: "Edit"
+  repo_kind: "Repository type"
   user_list: "All users"
   user_del: "Delete"
   user_edit: "Edit"
