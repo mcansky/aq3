@@ -65,9 +65,9 @@
     <% if !params[:dir] %>
       <% blobs = tree.blobs %>
       <% if blobs %>
-        <% blobs.each do |blobinou| %>
-          <% if blobinou.name =~ /^(README|README.md|README.textile)$/ and blobinou.mime_type =~ /^text\/(.*)$/ %>
- <pre><%= blobinou.data %></pre>
+        <% blobs.each do |a_blob| %>
+          <% if a_blob.name =~ /^(README|README.md|README.textile)$/ and a_blob.mime_type =~ /^text\/(.*)$/ %>
+ <pre><%= a_blob.data %></pre>
           <% end %>
         <% end %>
       <% end %>
