@@ -1,0 +1,15 @@
+<div class="people">
+  <% for right in @repository.rights %>
+  <div class="committer">
+    <h4>
+      <% if right.user == @repository.owner %>
+        <%= image_tag("/images/icons/user-worker-boss.png", :title => t(:owner), :alt => t(:owner), :border => 0) %>
+        <%= link_to right.user.login, right.user, :title => t(:owner) %>
+      <% elsif @repository.committers.include?(right.user) %>
+        <%= image_tag("/images/icons/user-worker.png", :title => t(:committer), :alt => t(:committer), :border => 0) %> 
+        <%= link_to right.user.login, right.user, :title => t(:committer) %>
+      <% end %>
+    </h4>
+  </div>
+  <% end %>
+</div>

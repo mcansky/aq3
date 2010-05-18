@@ -1,58 +1,11 @@
 <div id="repository">
-<h2>
-	<% if @repository.is_git? %>
-		<span class="kind_git" title="git" >G</span>
-	<% elsif @repository.is_hg? %>
-		<span class="kind_hg" title="hg" >H</span>
-	<% end %>
-  <%= link_to @repository.owner.login, :controller => :users, :action => :show, :id => @repository.owner.id %> /
-  <%= link_to @repository.name, :action => :show, :id => @repository.id %>
-	<% if current_user && @repository.owner == current_user %>
-		<%= link_to image_tag("/images/icons/pencil.png", :title => t(:repo_edit), :alt => t(:repo_edit), :border => 0), :action => "edit", :id => @repository.id %>
-	<% end %>
-	<% if @repository.parent %>
-		<%= link_to image_tag("/images/icons/arrow-skip-090.png", :title => t(:parent), :alt => t(:parent), :border => 0), @repository.parent %>
-	<% end %>
-	<% if current_user && current_user != @repository.owner %>
-		<%= link_to image_tag("/images/icons/arrow-split.png", :title => t(:fork).capitalize, :alt => t(:fork).capitalize, :border => 0), {:action => "fork", :parent_id => @repository.id}%>
-	<% end %>
-</h2>
+  <%= render "infos", :repository => @repository %>
 
 <div class="repository">
 
-	<div class="people">
-		<% for right in @repository.rights %>
-		<div class="committer">
-			<h4>
-				<% if right.user == @repository.owner %>
-					<%= image_tag("/images/icons/user-worker-boss.png", :title => t(:owner), :alt => t(:owner), :border => 0) %>
-					<%= link_to right.user.login, right.user, :title => t(:owner) %>
-				<% elsif @repository.committers.include?(right.user) %>
-					<%= image_tag("/images/icons/user-worker.png", :title => t(:committer), :alt => t(:committer), :border => 0) %>
-					<%= link_to right.user.login, right.user, :title => t(:committer) %>
-				<% end %>
-			</h4>
-		</div>
-		<% end %>
-	</div>
+  <%= render "people", :repository => @repository %>
 
-  <div class="desc">
-    <% if @repository.have_public_clone? %>
-      <p><strong><%= t(:public_path) %> : </strong><%= @repository.public_path %></p>
-    <% end %>
-    <% if @repository.owner == current_user %>
-      <p><strong><%= t(:private_path) %> : </strong><%= @repository.private_path %></p>
-    <% end %>
-
-		<p><strong><%= t(:branches) %> : </strong>
-			<% @repository.branches.each do |br| %>
-				<%= link_to br.name, :action => "show", :branch => br.name %>
-			<% end %>
-		</p>
-		<p><strong><%= t(:commits) %> : <%= @repository.commits.count %></strong></p>
-		<p class="desc"><%= @repository.desc %></p>
-		<div class="clear"></div>
-	</div>
+  <%= render "desc", :repository => @repository %>
 
   <div id="commits_list">
 		<% if @repository.branches.size != 0 %>
