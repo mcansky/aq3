@@ -13,7 +13,6 @@
 		<% end %>
 	</div>
 
-	<div id="view_readme_file">
 		<% if @repository.branches.size != 0 and params[:dir].nil? %>
 		<% branch = "master" %>
 	  <% branch = params[:branch] if params[:branch] %>
@@ -22,15 +21,15 @@
       <% blobs = tree.blobs %>
       <% if blobs %>
         <% blobs.each do |a_blob| %>
-          <% if a_blob.name =~ /^(README|README.(.*))$/ and a_blob.mime_type =~ /^text\/(.*)$/ %>
+            <% if a_blob.name =~ /^(README|README.(.*))$/ and a_blob.mime_type =~ /^text\/(.*)$/ %>
+              <div id="view_readme_file">
  <pre><%= a_blob.data %></pre>
+              </div>
           <% end %>
         <% end %>
       <% end %>
     <% end %>
   <% end %>
-
-	</div>
 
 	<div class="clear"></div>
 </div>
