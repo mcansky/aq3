@@ -1,3 +1,9 @@
+<% content_for :head do %>
+  <title>
+    <%= Settings.application.name %> - <%= t(:repo_edit) %>
+  </title>
+<% end %>
+
 <h1><%= @repository.name %></h1>
 
 <%= render "form", :repository => @repository %>

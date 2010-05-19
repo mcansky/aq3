@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <title><%= Settings.application.name %> - <%= t(:repo_commits_show) %></title>
+<% end %>
+
 <div id="repository">
   <%= render "infos", :repository => @repository %>
 

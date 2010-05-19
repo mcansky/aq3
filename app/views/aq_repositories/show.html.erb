@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <title><%= Settings.application.name %> - <%= t(:repo_sources) %></title>
+<% end %>
+
 <div id="repository">
   <%= render "infos", :repository => @repository %>
 
