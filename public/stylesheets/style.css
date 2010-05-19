@@ -507,6 +507,7 @@ div.desc {
   text-align: center;
   font-size: 10px;
   color: grey;
+  margin-bottom: 10px;
 }
 
 #view_file {
