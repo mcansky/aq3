@@ -67,6 +67,7 @@ en:
   sshkey_edit: "Edit SSH Key"
   sshkey_delete: "Delete"
   sshkey_export: "Export key"
+  sshkey_show: "Show key"
   sshkeys_list: "All SSH Keys"
   sshkeys_yours: "Your SSH Keys"
   sshkey_not_owner: "You don't own this key"

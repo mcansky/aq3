@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <title><%= Settings.application.name %> - <%= t(:sshkey_show) %></title>
+<% end %>
+
 <div id="sshkeys">
 <h2>
 	<%= image_tag("/images/icons/license-key.png", :title => t(:sshkey), :alt => t(:sshkey), :border => 0)%> 

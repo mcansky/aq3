@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <title><%= Settings.application.name %> - <%= t(:sshkey_new) %></title>
+<% end %>
+
 <h1><%= t(:sshkey_new) %></h1>
 
 <%= render "form", :key => @key %>
