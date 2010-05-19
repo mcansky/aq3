@@ -52,6 +52,7 @@ en:
   user_del: "Delete"
   user_edit: "Edit"
   user_new: "New user"
+  user_show: "Show user"
   user_create_ok: "User created successfully."
   user_destroy_ok: "User destroyed successfully."
   user_update_ok: "User updated successfully."

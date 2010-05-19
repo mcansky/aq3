@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <title><%= Settings.application.name %> - <%= t(:user_new) %></title>
+<% end %>
+
 <h1><%= t(:user_new) %></h1>
 
 <%= render "form", :user => @user %>
