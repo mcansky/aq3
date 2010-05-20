@@ -1,7 +1,10 @@
 <h2>
 	<% if @repository.is_git? %>
-		<span class="kind_git">G</span>
-	<% end %>
+		<span class="kind_git" title="git" >G</span>
+  <% end %>
+  <% if @repository.is_private? %>
+    <span class="repo_private" title="<%= t(:repo_private) %>" >P</span>
+  <% end %>
   <%= link_to @repository.owner.login, :controller => :users, :action => :show, :id => @repository.owner.id %> /
   <%= link_to @repository.name, :action => :show, :id => @repository.id %>
 	<% if current_user && @repository.owner == current_user %>

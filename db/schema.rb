@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100303094734) do
+ActiveRecord::Schema.define(:version => 20100520081726) do
 
   create_table "aq_branches", :force => true do |t|
     t.string   "name"
@@ -55,14 +55,7 @@ ActiveRecord::Schema.define(:version => 20100303094734) do
     t.datetime "updated_at"
     t.text     "desc"
     t.integer  "parent_id"
-  end
-
-  create_table "beans", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "aq_repository_id"
-    t.string   "kind"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "visibility"
   end
 
   create_table "rights", :force => true do |t|

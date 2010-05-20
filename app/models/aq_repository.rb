@@ -5,6 +5,7 @@ include Grit
 class AqRepository < ActiveRecord::Base
   before_save :repo_path
   after_save :repo_init
+  after_save :repo_set_visibility
   has_many :rights
   has_many :users, :through => :rights
   has_many :branches, :class_name => "AqBranch"
@@ -65,6 +66,11 @@ class AqRepository < ActiveRecord::Base
 
   def is_git?
     return true if self.kind == "git"
+    return false
+  end
+
+  def is_private?
+    return true if self.visibility == 1
     return false
   end
 
@@ -218,6 +224,41 @@ class AqRepository < ActiveRecord::Base
     dir_hash.each_key do |s_dir|
       Dir.mkdir(root + s_dir) if !(root + s_dir).exist?
       l_mkdirs(root + s_dir, dir_hash[s_dir]) if dir_hash[s_dir]
+    end
+  end
+
+  # Set the repo visibility public/private
+  def repo_set_visibility
+    if self.kind == "git"
+      repo_set_git_visibility
+    end
+  end
+
+  # Set the visibility of the repo by git-daemon
+  # If repo is public we 'touch REPO_PATH.git/git-daemon-export-ok'
+  # else, not.
+  # visibility field:
+  #   0 = public
+  #   1 = private
+  def repo_set_git_visibility
+    File.umask(0001)
+    file_export = "git-daemon-export-ok"
+
+    dot_git = Pathname(self.path)
+
+    if self.visibility == 0
+      # 0 / public
+      f = File.open(dot_git + file_export, "w")
+      f.close()
+    else
+      # If the repo starts private, the file doesn't exist, we don't want to raise
+      # an error for that.
+      # XXX Can probably be improved?
+      begin
+        f = File.delete(dot_git + file_export)
+        f.close()
+      rescue
+      end
     end
   end
 
